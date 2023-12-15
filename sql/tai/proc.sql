@@ -2,7 +2,7 @@
 
 -- Thêm tài khoản nhân viên, quản trị viên
 go
-create or alter proc add_account_ad_st
+create or alter proc add_account_adst
 @username varchar(12),
 @password varchar(50),
 @name varchar(20),
@@ -13,12 +13,12 @@ create or alter proc add_account_ad_st
 @address varchar(50)
 as
 begin
-	insert into ACCOUNT_AD_ST (Staff_Username, Staff_Password, Staff_Name, Staff_Gender, Staff_Type, Staff_Phone, Staff_Email, Staff_Address)
+	insert into account_adst (username, [password], [name], gender, [admin], phone, email, [address])
 	values (@username, @password, @name, @gender, @type, @phone, @email, @address)
 end
 -- Thêm tài khoản nha sĩ
 go
-create or alter proc add_account_dt
+create or alter proc add_account_de
 @username varchar(12),
 @password varchar(50),
 @name varchar(20),
@@ -29,12 +29,12 @@ create or alter proc add_account_dt
 @address varchar(50)
 as
 begin
-	insert into ACCOUNT_DT (Dentist_Username, Dentist_Password, Dentist_Name, Dentist_Gender, Dentist_Department, Dentist_Phone, Dentist_Email, Dentist_Address)
+	insert into account_de(username, [password], [name], gender, department, phone, email, [address])
 	values (@username, @password, @name, @gender, @department, @phone, @email, @address)
 end
 --Sửa tài khoản nhân viên, quản trị viên
 go
-create or alter proc update_account_ad_st
+create or alter proc update_account_adst
 @username varchar(12),
 @name varchar(20),
 @gender char(1),
@@ -44,18 +44,18 @@ create or alter proc update_account_ad_st
 as
 begin
     declare @Query nvarchar(MAX)
-    set @Query = 'update ACCOUNT_AD_ST set '
+    set @Query = 'update account_adst set '
     if @name IS NOT NULL
-        set @Query = @Query + 'Staff_Name' + ' = ''' + @name + ''', '
+        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
 	if @gender IS NOT NULL
-        set @Query = @Query + 'Staff_Gender' + ' = ' + @gender + ', '
+        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
 	if @phone IS NOT NULL
-        set @Query = @Query + 'Staff_Phone' + ' = ''' + @phone + ''', '
+        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
 	if @email IS NOT NULL
-        set @Query = @Query + 'Staff_Email' + ' = ''' + @email + ''', '
+        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
 	if @address IS NOT NULL
-        set @Query = @Query + 'Staff_Address' + ' = ''' + @address + ''''
-	if @Query = @Query + ' where Staff_username' + ' = ''' + @username + ''''
+        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
+	if @Query = @Query + ' where username' + ' = ''' + @username + ''''
 
     exec sp_executesql @Query
 end
@@ -71,31 +71,31 @@ create or alter proc update_account_de
 as
 begin
     declare @Query nvarchar(MAX)
-    set @Query = 'update ACCOUNT_DT set '
+    set @Query = 'update account_de set '
     if @name IS NOT NULL
-        set @Query = @Query + 'Dentist_Name' + ' = ''' + @name + ''', '
+        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
 	if @gender IS NOT NULL
-        set @Query = @Query + 'Dentist_Gender' + ' = ' + @gender + ', '
+        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
 	if @phone IS NOT NULL
-        set @Query = @Query + 'Dentist_Phone' + ' = ''' + @phone + ''', '
+        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
 	if @email IS NOT NULL
-        set @Query = @Query + 'Dentist_Email' + ' = ''' + @email + ''', '
+        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
 	if @address IS NOT NULL
-        set @Query = @Query + 'Dentist_Address' + ' = ''' + @address + ''''
-	set @Query = @Query + ' where Dentist_username' + ' = ''' + @username + ''''
+        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
+	set @Query = @Query + ' where username' + ' = ''' + @username + ''''
 
     exec sp_executesql @Query
 end
 --Đổi mật khẩu nhân viên, quản trị viên
 go
-create or alter proc pr_change_password_st_ad
+create or alter proc pr_change_password_stad
 @username varchar(12),
 @password nvarchar(50)
 as
 begin
-	update ACCOUNT_AD_ST
-	set Staff_password = @password
-	where Staff_username = @username
+	update account_adst
+	set [password] = @password
+	where username = @username
 end
 --Đổi mật khẩu nha sĩ
 go
@@ -104,52 +104,139 @@ create or alter proc pr_change_password_de
 @password nvarchar(50)
 as
 begin
-	update ACCOUNT_DE
-	set Dentist_password = @password
-	where Dentist_username = @username
+	update account_de
+	set [password] = @password
+	where username = @username
 end
 --Cấp/gỡ quyền quản trị viên
 go
-create or alter proc pr_change_type_st_ad
+create or alter proc pr_change_type_stad
 @username varchar(12),
 @type bit
 as
 begin
-	update ACCOUNT_AD_ST
-	set Staff_type = Staft_type^1
-	where Staff_username = @username
+	update account_adst
+	set [admin] = [admin]^1
+	where username = @username
 end
 --Thống kê thuốc theo ngày
 go
 create or alter proc pr_used_medicine_day
 as
 begin
-	select Prescription_Medicine, count(*) as Usage_Count
-	from Prescription p join TREATMENT t on p.Prescription_Treatment = t.TreatmentID
-	where convert(date, t.Treatment_Date) = convert(date, getdate())
-	group by Prescription_Medicine
-	order by Usage_Count desc
+	select medicine, sum(quantity) as usage_count
+	from prescription p join treatment t on p.treatment = t.id
+	where convert(date, t.[date]) = convert(date, getdate())
+	group by medicine
+	order by usage_count desc
 end
 --Thống kê thuốc theo tuần
 go
 create or alter proc pr_used_medicine_week
 as
 begin
-	select Prescription_Medicine, count(*) as Usage_Count
-	from Prescription p join TREATMENT t on p.Prescription_Treatment = t.TreatmentID
-	where t.Treatment_Date - dateadd(week, datediff(week, 0, getdate()), 0) >= 0
-	group by Prescription_Medicine
-	order by Usage_Count desc
+	select medicine, count(*) as Usage_Count
+	from prescription p join treatment t on p.treatment = t.id
+	where t.[date] - dateadd(week, datediff(week, 0, getdate()), 0) >= 0
+	group by medicine
+	order by usage_count desc
 end
 --Thống kê thuốc theo tháng
 go
 create or alter proc pr_used_medicine_month
 as
 begin
-	select Prescription_Medicine, count(*) as Usage_Count
-	from Prescription p join TREATMENT t on p.Prescription_Treatment = t.TreatmentID
-	where year(t.Treatment_Date) = year(getdate())
-		  and month(t.Treatment_Date) = month(getdate())
-	group by Prescription_Medicine
-	order by Usage_Count desc
+	select medicine, count(*) as Usage_Count
+	from prescription p join treatment t on p.treatment = t.id
+	where year(t.[date]) = year(getdate())
+		  and month(t.[date]) = month(getdate())
+	group by medicine
+	order by usage_count desc
 end
+--Thêm hồ sơ bệnh nhân
+go 
+create or alter proc pr_create_patient
+@name varchar(20),
+@birth date,
+@phone varchar(12),
+@email varchar(50),
+@address varchar(50),
+@gender bit
+as
+begin
+	declare @id int
+	if exists (select 1 from patient_profile)
+	begin
+		set @id = (select MAX(id) from patient_profile) + 1
+	end
+	else
+	begin
+		set @id = 1
+	end
+	insert into patient_profile (id, [name], birth, phone, email, [address], gender, bill, paid, overall_condition, contraindicated_note)
+	values (@id, @name, @birth, @phone, @email, @address, @gender, 0, 0, null, null)
+end
+--Xem hồ sơ bệnh nhân
+go 
+create or alter proc pr_select_patient
+as
+begin
+	select [name], birth, phone, email, [address], gender 
+	from patient_profile
+end
+--Sửa hồ sơ bệnh nhân
+go
+create or alter proc pr_update_patient
+@id varchar(6),
+@name varchar(20),
+@birth date,
+@gender char(1),
+@phone varchar(12),
+@email varchar(50),
+@address varchar(50)
+as
+begin
+    declare @Query nvarchar(MAX)
+    set @Query = 'update patient_profile set'
+    if @name IS NOT NULL
+        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
+	if @birth IS NOT NULL
+        set @Query = @Query + '[name]' + ' = ''' + @birth + ''', '
+	if @gender IS NOT NULL
+        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
+	if @phone IS NOT NULL
+        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
+	if @email IS NOT NULL
+        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
+	if @address IS NOT NULL
+        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
+	set @Query = @Query + ' where id' + ' = ''' + @id + ''''
+
+    exec sp_executesql @Query
+end
+----Xem danh sách nhân viên
+go
+create or alter proc pr_select_adst
+as
+begin
+	select [name], phone, email, [address], gender
+	from account_adst 
+	where [admin] = 0
+end
+----Xem danh sách nha sĩ
+go 
+create or alter proc pr_select_de
+as
+begin
+	select [name], phone, email, [address], gender, department 
+	from account_de
+end
+--Xem lịch hẹn bản thân nha sĩ
+go
+create or alter proc pr_select_schedule_self
+as
+begin
+	select [date], shift_id, patient, assistant, [type], department 
+	from schedule 
+end
+--
