@@ -2,7 +2,7 @@
 --go
 --drop database csc12002_21clc10_n10
 create database csc12002_21clc10_n10
-
+go
 use csc12002_21clc10_n10
 
 create table account_de (
