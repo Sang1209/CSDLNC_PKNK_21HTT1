@@ -239,4 +239,14 @@ begin
 	select [date], shift_id, patient, assistant, [type], department 
 	from schedule 
 end
---
+--Thêm/cập nhật thông tin sức khỏe bệnh nhân
+go
+create or alter proc pr_create_patient_condition
+@id int,
+@condition varchar(100)
+as
+begin
+	update patient_profile
+	set overall_condition = @condition
+	where id = @id
+end
