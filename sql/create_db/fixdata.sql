@@ -26,4 +26,14 @@ close cur
 deallocate cur
 end
 
+go
+create or alter proc fix2
+as 
+begin
+update schedule set accept = 0 where patient is NULL
+end
+
+
+
 exec fix1
+exec fix2
