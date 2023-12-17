@@ -1,8 +1,10 @@
---use master
---go
+use master
+go
 --drop database csc12002_21clc10_n10
---create database csc12002_21clc10_n10
-
+create database csc12002_21clc10_n10
+go
+use csc12002_21clc10_n10
+go
 
 create table account_de (
 	username char(10) not null primary key,
