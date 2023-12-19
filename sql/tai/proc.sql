@@ -130,17 +130,7 @@ begin
 	group by medicine
 	order by usage_count desc
 end
---Thống kê thuốc theo tuần
-go
-create or alter proc pr_used_medicine_week
-as
-begin
-	select medicine, count(*) as Usage_Count
-	from prescription p join treatment t on p.treatment = t.id
-	where t.[date] - dateadd(week, datediff(week, 0, getdate()), 0) >= 0
-	group by medicine
-	order by usage_count desc
-end
+
 --Thống kê thuốc theo tháng
 go
 create or alter proc pr_used_medicine_month
@@ -189,7 +179,7 @@ go
 create or alter proc pr_update_patient
 @id varchar(6),
 @name varchar(20),
-@birth date,
+@birth varchar(15),
 @gender char(1),
 @phone varchar(12),
 @email varchar(50),
