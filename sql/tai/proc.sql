@@ -126,27 +126,31 @@ as
 begin
 	select medicine, sum(quantity) as usage_count
 	from prescription p join treatment t on p.treatment = t.id
-	where convert(date, t.[date]) = convert(date, getdate())
+	where convert(date, t.[date]) - convert(date, getdate()) = 0
 	group by medicine
 	order by usage_count desc
 end
+<<<<<<< Updated upstream
+
+=======
 --Thống kê thuốc theo tuần
 go
 create or alter proc pr_used_medicine_week
 as
 begin
-	select medicine, count(*) as Usage_Count
+	select medicine, count(medicine) as Usage_Count
 	from prescription p join treatment t on p.treatment = t.id
 	where t.[date] - dateadd(week, datediff(week, 0, getdate()), 0) >= 0
 	group by medicine
 	order by usage_count desc
 end
+>>>>>>> Stashed changes
 --Thống kê thuốc theo tháng
 go
 create or alter proc pr_used_medicine_month
 as
 begin
-	select medicine, count(*) as Usage_Count
+	select medicine, count(medicine) as Usage_Count
 	from prescription p join treatment t on p.treatment = t.id
 	where year(t.[date]) = year(getdate())
 		  and month(t.[date]) = month(getdate())
@@ -189,7 +193,7 @@ go
 create or alter proc pr_update_patient
 @id varchar(6),
 @name varchar(20),
-@birth date,
+@birth varchar(15),
 @gender char(1),
 @phone varchar(12),
 @email varchar(50),
@@ -223,22 +227,22 @@ begin
 	from account_adst 
 	where [admin] = 0
 end
-----Xem danh sách nha sĩ
-go 
-create or alter proc pr_select_de
-as
-begin
-	select [name], phone, email, [address], gender, department 
-	from account_de
-end
---Xem lịch hẹn bản thân nha sĩ
-go
-create or alter proc pr_select_schedule_self
-as
-begin
-	select [date], shift_id, patient, assistant, [type], department 
-	from schedule 
-end
+------Xem danh sách nha sĩ
+--go 
+--create or alter proc pr_select_de
+--as
+--begin
+--	select [name], phone, email, [address], gender, department 
+--	from account_de
+--end
+----Xem lịch hẹn bản thân nha sĩ
+--go
+--create or alter proc pr_select_schedule_self
+--as
+--begin
+--	select [date], shift_id, patient, assistant, [type], department 
+--	from schedule 
+--end
 --Thêm/cập nhật thông tin sức khỏe bệnh nhân
 go
 create or alter proc pr_create_patient_condition

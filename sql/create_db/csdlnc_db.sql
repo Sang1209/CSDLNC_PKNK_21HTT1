@@ -34,78 +34,65 @@ create table department (
 )
 
 -------------------------------------------------------------------------------------
+ALTER DATABASE csc12002_21clc10_n10a
+ADD FILEGROUP fg_schedule_date1;  
+GO  
+ALTER DATABASE csc12002_21clc10_n10a 
+ADD FILEGROUP fg_schedule_date2;  
+GO  
+ALTER DATABASE csc12002_21clc10_n10a 
+ADD FILEGROUP fg_schedule_date3;  
+GO  
+ALTER DATABASE csc12002_21clc10_n10a 
+ADD FILEGROUP fg_schedule_date4;  
+GO  
 
---ALTER DATABASE csc12002_21clc10_n10 
---ADD FILEGROUP fg_schedule_department1;  
---GO  
---ALTER DATABASE csc12002_21clc10_n10 
---ADD FILEGROUP fg_schedule_department2;  
---GO  
---ALTER DATABASE csc12002_21clc10_n10 
---ADD FILEGROUP fg_schedule_department3;  
---GO  
---ALTER DATABASE csc12002_21clc10_n10 
---ADD FILEGROUP fg_schedule_department4;  
---GO  
---ALTER DATABASE csc12002_21clc10_n10 
---ADD FILEGROUP fg_schedule_department5;  
---GO  
+ALTER DATABASE csc12002_21clc10_n10a   
+ADD FILE   
+(  
+    NAME = schedule_date1,  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date1.ndf',  
+    SIZE = 5MB,  
+    FILEGROWTH = 5MB  
+)  
+TO FILEGROUP fg_schedule_date1;  
+ALTER DATABASE csc12002_21clc10_n10a   
+ADD FILE   
+(  
+    NAME = schedule_date2,  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date2.ndf',  
+    SIZE = 5MB,  
+    FILEGROWTH = 5MB  
+)  
+TO FILEGROUP fg_schedule_date2;  
+ALTER DATABASE csc12002_21clc10_n10a   
+ADD FILE   
+(  
+    NAME = schedule_date3,  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date3.ndf',  
+    SIZE = 5MB,  
+    FILEGROWTH = 5MB  
+)  
+TO FILEGROUP fg_schedule_date3;  
+ALTER DATABASE csc12002_21clc10_n10a   
+ADD FILE   
+(  
+    NAME = schedule_date4,  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date4.ndf',  
+    SIZE = 5MB,  
+    FILEGROWTH = 5MB  
+)  
+TO FILEGROUP fg_schedule_date4;  
 
---ALTER DATABASE csc12002_21clc10_n10   
---ADD FILE   
---(  
---    NAME = schedule_department1,  
---    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_department1.ndf',  
---    SIZE = 5MB,  
---    FILEGROWTH = 5MB  
---)  
---TO FILEGROUP fg_schedule_department1;  
---ALTER DATABASE csc12002_21clc10_n10   
---ADD FILE   
---(  
---    NAME = schedule_department2,  
---    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_department2.ndf',  
---    SIZE = 5MB,  
---    FILEGROWTH = 5MB  
---)  
---TO FILEGROUP fg_schedule_department2;  
---ALTER DATABASE csc12002_21clc10_n10   
---ADD FILE   
---(  
---    NAME = schedule_department3,  
---    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_department3.ndf',  
---    SIZE = 5MB,  
---    FILEGROWTH = 5MB  
---)  
---TO FILEGROUP fg_schedule_department3;  
---ALTER DATABASE csc12002_21clc10_n10   
---ADD FILE   
---(  
---    NAME = schedule_department4,  
---    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_department4.ndf',  
---    SIZE = 5MB,  
---    FILEGROWTH = 5MB  
---)  
---TO FILEGROUP fg_schedule_department4;  
---ALTER DATABASE csc12002_21clc10_n10   
---ADD FILE   
---(  
---    NAME = schedule_department5,  
---    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_department5.ndf',  
---    SIZE = 5MB,  
---    FILEGROWTH = 5MB  
---)  
---TO FILEGROUP fg_schedule_department5;  
 
---CREATE PARTITION FUNCTION PF_schedule (smallint)  
---    AS RANGE RIGHT FOR VALUES (3,5,7,9) ;  
---GO  
+CREATE PARTITION FUNCTION PF_schedule (date)  
+    AS RANGE RIGHT FOR VALUES ('1-1-2015','1-1-2019','1-1-2022','1-1-2023');  
+GO  
 
---CREATE PARTITION SCHEME PS_schedule  
---    AS PARTITION PF_schedule  
---    ALL TO ('PRIMARY') ;  
---GO  
-
+CREATE PARTITION SCHEME PS_schedule  
+    AS PARTITION PF_schedule  
+    ALL TO ('PRIMARY') ;  
+GO  
 create table schedule (
 	date date not null,
 	shift_id smallint not null,
@@ -116,9 +103,8 @@ create table schedule (
 	department smallint,
 	accept bit not null,
 	constraint pk_schedule primary key (date,shift_id,dentist)
-)
---ON PS_schedule (department)
-go
+)ON PS_schedule (date)
+
 go
 create or alter trigger schedule_department on schedule for insert
 as
@@ -275,6 +261,39 @@ alter table prescription add foreign key (medicine) references medicine(id)
 
 alter table quantity_medicine add foreign key (medicine) references medicine(id)
 alter table quantity_medicine add foreign key (department) references department(id)
+
+CREATE INDEX quantity_medicine1
+ON prescription (medicineid,department);
+
+CREATE INDEX prescription1
+ON prescription (treatmentid,medicineid);
+
+CREATE INDEX treatment1
+ON treatment (patient)
+INCLUDE (patient,id);
+
+CREATE INDEX treatment2
+ON treatment (date);
+
+CREATE INDEX schedule1
+ON schedule (dentist,patient);
+
+CREATE INDEX schedule2
+ON schedule (date,dentist,patient);
+
+CREATE INDEX schedule3
+ON schedule (date,patient);
+
+CREATE INDEX schedule4
+ON schedule (date,dentist);
+
+CREATE INDEX schedule5
+ON schedule (date,department);
+
+CREATE INDEX schedule6
+ON schedule (department);
+
+
 
 
 
