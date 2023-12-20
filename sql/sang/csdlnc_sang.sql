@@ -1,5 +1,13 @@
 use csc12002_21clc10_n10
 go
+create or alter proc xemThuocCuaKHDT @TreatmentID int
+as
+begin tran
+	select m.id,m.name,p.quantity,p.note
+	from  prescription p join medicine m on p.medicine=m.id
+	where p.treatment=@TreatmentID
+commit tran
+go
 create or alter proc themThuocChoKHDT @TreatmentID int,@MedicineID varchar(5),@amount int,@note varchar(100)
 as 
 set tran isolation level serializable
@@ -13,7 +21,14 @@ else
 	begin
 		update quantity_medicine set Remain=Remain-@amount where Medicine=@MedicineID and department=@dep
 	end
-insert into Prescription values(@TreatmentID,@MedicineID,@amount,@note)
+if (exists(select * from prescription where treatment=@TreatmentID and medicine=@MedicineID))
+begin
+	update prescription set quantity=quantity+@amount where treatment=@TreatmentID and medicine=@MedicineID
+end
+else
+begin
+	insert into Prescription values(@TreatmentID,@MedicineID,@amount,@note)
+end
 commit tran
 go
 
@@ -105,11 +120,11 @@ commit tran
 go
 
 --select * from quantity_medicine where department=23
---exec themThuocChoKHDT 1,'10019',10,'abc'
---select * from prescription where treatment=1
+--exec themThuocChoKHDT 938,'71185',1,NULL
+--select * from prescription where treatment=938
 --exec suaThuocChoKHDT 1,'10019',15,'abc'
 --select * from prescription where treatment=1
---exec xoaThuocChoKHDT 1,'10019'
+--exec xoaThuocChoKHDT 938,'71185'
 --select * from prescription where treatment=1
 
 --exec xemKHDT 6638
@@ -119,4 +134,5 @@ go
 --exec locLichHenTheoBN 2276
 --exec locLichHenTheoBS 'DEN0000690'
 --exec locLichHenTheoPhongKham 49
+--exec xemThuocCuaKHDT 938
  

@@ -140,6 +140,7 @@ GO
 CREATE OR ALTER PROCEDURE ViewMedicineList
 AS
 BEGIN
-    SELECT * FROM medicine
+    SELECT * FROM medicine order by name
 END
 GO
+exec ViewMedicineList
