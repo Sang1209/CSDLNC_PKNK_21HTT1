@@ -93,23 +93,25 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE ViewAppointment
-    @patientID int
-AS
-BEGIN
-    SELECT * FROM schedule WHERE patient = @patientID
-END
-GO
+--CREATE OR ALTER PROCEDURE ViewAppointment
+--	@dentist char(10)
+--AS
+--BEGIN
+--	SET STATISTICS IO, TIME ON
+--    SELECT * FROM schedule WHERE datediff(d,date,getdate())<=0 and dentist = @dentist
+--	SET STATISTICS IO, TIME off
+--END
+--GO
 
-CREATE OR ALTER PROCEDURE DeleteAppointment
-    @patientID int,
-    @date date,
-    @shiftID smallint
-AS
-BEGIN
-    DELETE FROM schedule WHERE patient = @patientID AND date = @date AND shift_id = @shiftID
-END
-GO
+--CREATE OR ALTER PROCEDURE DeleteAppointment
+--    @patientID int,
+--    @date date,
+--    @shiftID smallint
+--AS
+--BEGIN
+--    DELETE FROM schedule WHERE date = @date AND shift_id = @shiftID and patient = @patientID
+--END
+--GO
 
 CREATE OR ALTER PROCEDURE AddMedicine
     @id varchar(5),
