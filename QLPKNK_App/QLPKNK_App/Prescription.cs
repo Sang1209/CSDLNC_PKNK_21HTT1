@@ -33,7 +33,6 @@ namespace QLPKNK_App
         {
             label1.Text = "Prescription of treatment id " + tId;
             hienThiDonThuocCuaKHDT();
-            hienThiDSThuoc();
         }
         private void hienThiDonThuocCuaKHDT()
         {
@@ -46,43 +45,37 @@ namespace QLPKNK_App
             }
 
         }
-        private void hienThiDSThuoc()
-        {
-            MedicineNameCB.DisplayMember= "name";
-            MedicineNameCB.ValueMember = "id";
-            ThuocBUS thuocBUS = new ThuocBUS();
-            IList<ThuocDTO> dsThuoc = thuocBUS.LayDSThuoc();
-            MedicineNameCB.Items.AddRange(dsThuoc.ToArray<ThuocDTO>());
-            if(MedicineNameCB.Items.Count > 0)
-            {
-                MedicineNameCB.SelectedIndex = 0;
-            }
-        }
+        
         private void addMedicine_Click(object sender, EventArgs e)
         {
-            DonThuocBUS donThuocBUS = new DonThuocBUS();
-            if((int)MedicineQuantity.Value==0)
+            AddEditPrescription addFrm=new AddEditPrescription(tId);
+            addFrm.FormClosing+=new FormClosingEventHandler(this.AddEditPrescription_FormClosing);
+            addFrm.ShowDialog();
+        }
+        private void AddEditPrescription_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            hienThiDonThuocCuaKHDT();
+        }
+
+        private void PrescriptionTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string mId = PrescriptionTable.Rows[e.RowIndex].Cells["MedID"].Value.ToString();
+            string mName = PrescriptionTable.Rows[e.RowIndex].Cells["MedName"].Value.ToString();
+            int quantity = Convert.ToInt32(PrescriptionTable.Rows[e.RowIndex].Cells["Quantity"].Value);
+            string note = PrescriptionTable.Rows[e.RowIndex].Cells["Note"].Value.ToString();
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                MessageBox.Show(this, "Please provide the amount of medicine you want to add!");
+               
+                AddEditPrescription editFrm=new AddEditPrescription(tId,mId, mName, quantity, note);
+                editFrm.FormClosing+= new FormClosingEventHandler(this.AddEditPrescription_FormClosing);
+                editFrm.ShowDialog();
             }
-            string mId = ((ThuocDTO)MedicineNameCB.SelectedItem).id;
-            int quantity = (int)MedicineQuantity.Value;
-            if (String.IsNullOrEmpty(MedicineNote.Text))
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
-                var confirmResult = MessageBox.Show("You have not enter any note. Do you want to continue adding this medicine?","Empty note", MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    donThuocBUS.themThuocChoKHDT(tId,mId,quantity,null);
-                    hienThiDonThuocCuaKHDT();
-                }
-            }
-            else
-            {
-                string note = MedicineNote.Text;
-                donThuocBUS.themThuocChoKHDT(tId, mId, quantity, note);
+                DonThuocBUS donThuocBUS = new DonThuocBUS();
+                donThuocBUS.xoaThuocChoKHDT(tId, mId);
                 hienThiDonThuocCuaKHDT();
             }
-            
         }
     }
 }

@@ -66,7 +66,8 @@ namespace QLPKNK_App.BUS
                         command.Parameters.Add(new SqlParameter("@TreatmentID", SqlDbType.Int, 0)).Value = tId;
                         command.Parameters.Add(new SqlParameter("@MedicineID", SqlDbType.VarChar, 5)).Value = mId;
                         command.Parameters.Add(new SqlParameter("@amount", SqlDbType.Int, 0)).Value = quantity;
-                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = note;
+                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = (object)note??DBNull.Value;
+
                         command.ExecuteNonQuery();
                     }
                 }
@@ -82,20 +83,18 @@ namespace QLPKNK_App.BUS
             }
         }
         //meh
-        public void xoaThuocChoKHDT(int tId, string mId, int quantity, string note)
+        public void xoaThuocChoKHDT(int tId, string mId)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("themThuocChoKHDT", connection))
+                    using (SqlCommand command = new SqlCommand("xoaThuocChoKHDT", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@TreatmentID", SqlDbType.Int, 0)).Value = tId;
                         command.Parameters.Add(new SqlParameter("@MedicineID", SqlDbType.VarChar, 5)).Value = mId;
-                        command.Parameters.Add(new SqlParameter("@amount", SqlDbType.Int, 0)).Value = quantity;
-                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = note;
                         command.ExecuteNonQuery();
                     }
                 }
@@ -118,13 +117,13 @@ namespace QLPKNK_App.BUS
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("themThuocChoKHDT", connection))
+                    using (SqlCommand command = new SqlCommand("suaThuocChoKHDT", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@TreatmentID", SqlDbType.Int, 0)).Value = tId;
                         command.Parameters.Add(new SqlParameter("@MedicineID", SqlDbType.VarChar, 5)).Value = mId;
                         command.Parameters.Add(new SqlParameter("@amount", SqlDbType.Int, 0)).Value = quantity;
-                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = note;
+                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = (object)note ?? DBNull.Value; ;
                         command.ExecuteNonQuery();
                     }
                 }

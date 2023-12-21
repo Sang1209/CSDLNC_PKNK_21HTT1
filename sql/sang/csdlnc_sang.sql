@@ -120,11 +120,11 @@ commit tran
 go
 
 --select * from quantity_medicine where department=23
---exec themThuocChoKHDT 938,'71185',1,NULL
+--exec themThuocChoKHDT 938,'71185',1,'abc'
 --select * from prescription where treatment=938
 --exec suaThuocChoKHDT 1,'10019',15,'abc'
 --select * from prescription where treatment=1
---exec xoaThuocChoKHDT 938,'71185'
+--exec xoaThuocChoKHDT 938,'77146'
 --select * from prescription where treatment=1
 
 --exec xemKHDT 6638

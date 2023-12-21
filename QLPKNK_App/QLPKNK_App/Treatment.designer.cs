@@ -45,6 +45,7 @@
             this.patientIDSearch = new System.Windows.Forms.NumericUpDown();
             this.searchPatient = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TreatmentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientIDSearch)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,7 @@
             this.ToothName,
             this.State,
             this.Total});
-            this.TreatmentTable.Location = new System.Drawing.Point(12, 138);
+            this.TreatmentTable.Location = new System.Drawing.Point(12, 149);
             this.TreatmentTable.Name = "TreatmentTable";
             this.TreatmentTable.Size = new System.Drawing.Size(1060, 435);
             this.TreatmentTable.TabIndex = 0;
@@ -163,7 +164,7 @@
             // 
             // patientIDSearch
             // 
-            this.patientIDSearch.Location = new System.Drawing.Point(835, 91);
+            this.patientIDSearch.Location = new System.Drawing.Point(446, 93);
             this.patientIDSearch.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -175,7 +176,7 @@
             // 
             // searchPatient
             // 
-            this.searchPatient.Location = new System.Drawing.Point(982, 88);
+            this.searchPatient.Location = new System.Drawing.Point(593, 90);
             this.searchPatient.Name = "searchPatient";
             this.searchPatient.Size = new System.Drawing.Size(75, 23);
             this.searchPatient.TabIndex = 6;
@@ -186,17 +187,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(832, 75);
+            this.label1.Location = new System.Drawing.Point(443, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Patient ID";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1042, 23);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Treatment list";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Treatment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 596);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchPatient);
             this.Controls.Add(this.patientIDSearch);
@@ -230,6 +242,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ToothName;
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditPrescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditPrescription.Designer.cs">
+      <DependentUpon>AddEditPrescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\DonThuocBUS.cs" />
     <Compile Include="BUS\KHDieuTriBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddEditPrescription.resx">
+      <DependentUpon>AddEditPrescription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prescription.resx">
       <DependentUpon>Prescription.cs</DependentUpon>
     </EmbeddedResource>

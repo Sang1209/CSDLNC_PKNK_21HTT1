@@ -21,6 +21,7 @@ namespace buhbuhlmao
         public Treatment()
         {
             InitializeComponent();
+            this.Text = "Treatement";
         }
 
         private void Form1_Load(object sender, EventArgs e)

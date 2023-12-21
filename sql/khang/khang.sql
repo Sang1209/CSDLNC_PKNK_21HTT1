@@ -142,7 +142,6 @@ GO
 CREATE OR ALTER PROCEDURE ViewMedicineList
 AS
 BEGIN
-    SELECT * FROM medicine order by name
+    SELECT * FROM medicine
 END
 GO
-exec ViewMedicineList
