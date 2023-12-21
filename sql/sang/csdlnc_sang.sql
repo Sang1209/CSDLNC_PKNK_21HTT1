@@ -74,7 +74,10 @@ go
 create or alter proc XemHoaDonCuaKH @PatientID int
 as
 begin tran
-select p.* from (select id,Patient from treatment) t join Payment p on t.id=p.Treatment
+select p.treatment,p.num,p.total,p.given,pm.name as method,p.date,p.payer,p.note 
+from (select id,Patient from treatment) t 
+join Payment p on t.id=p.Treatment 
+join payment_method pm on p.method=pm.id
 where t.Patient=@PatientID
 commit tran
 go

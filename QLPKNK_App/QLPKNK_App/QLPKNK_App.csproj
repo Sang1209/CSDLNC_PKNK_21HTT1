@@ -57,11 +57,25 @@
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\DonThuocBUS.cs" />
+    <Compile Include="BUS\HoaDonBUS.cs" />
     <Compile Include="BUS\KHDieuTriBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
     <Compile Include="DTO\DonThuocDTO.cs" />
+    <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Treatment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +92,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prescription.resx">
       <DependentUpon>Prescription.cs</DependentUpon>

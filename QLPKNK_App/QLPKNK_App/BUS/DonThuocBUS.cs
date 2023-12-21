@@ -123,7 +123,7 @@ namespace QLPKNK_App.BUS
                         command.Parameters.Add(new SqlParameter("@TreatmentID", SqlDbType.Int, 0)).Value = tId;
                         command.Parameters.Add(new SqlParameter("@MedicineID", SqlDbType.VarChar, 5)).Value = mId;
                         command.Parameters.Add(new SqlParameter("@amount", SqlDbType.Int, 0)).Value = quantity;
-                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = (object)note ?? DBNull.Value; ;
+                        command.Parameters.Add(new SqlParameter("@note", SqlDbType.VarChar, 100)).Value = (object)note ?? DBNull.Value;
                         command.ExecuteNonQuery();
                     }
                 }
