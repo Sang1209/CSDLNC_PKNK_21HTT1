@@ -84,7 +84,7 @@ go
 create or alter proc xemLichHenTrongNgay
 as
 begin tran
-	select s.date,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.address
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
@@ -94,34 +94,34 @@ go
 create or alter proc locLichHenTheoBN @PatientID int
 as
 begin tran
-	select s.date,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.address
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
 	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.patient=@PatientID and accept=1
 commit tran
 go
-create or alter proc locLichHenTheoBS @dentistUsername char(10)
+--co nen search bang like k nhi :>
+create or alter proc locLichHenTheoBS @dentistUsername varchar(10)
 as
 begin tran
-	select s.date,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.address
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.dentist=@dentistUsername and accept=1
+	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and Cast(s.dentist as varchar(10)) like '%'+@dentistUsername+'%' and accept=1
 commit tran
 go
 create or alter proc locLichHenTheoPhongKham @DepID int
 as
 begin tran
-	select s.date,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.address
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
 	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.department=@DepID and accept=1
 commit tran
 go
-
 --select * from quantity_medicine where department=23
 --exec themThuocChoKHDT 938,'71185',1,'abc'
 --select * from prescription where treatment=938
@@ -131,11 +131,11 @@ go
 --select * from prescription where treatment=1
 
 --exec xemKHDT 6638
---exec XemHoaDonCuaKH 2961
+--exec XemHoaDonCuaKH 8461
 
 --exec xemLichHenTrongNgay
 --exec locLichHenTheoBN 2276
---exec locLichHenTheoBS 'DEN0000690'
+--exec locLichHenTheoBS '487'
 --exec locLichHenTheoPhongKham 49
 --exec xemThuocCuaKHDT 938
  

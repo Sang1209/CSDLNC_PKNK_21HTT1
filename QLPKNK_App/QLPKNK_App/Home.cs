@@ -30,5 +30,11 @@ namespace QLPKNK_App
             Payment p =new Payment();
             p.ShowDialog();
         }
+
+        private void ScheduleBtn_Click(object sender, EventArgs e)
+        {
+            Schedule s=new Schedule();
+            s.ShowDialog();
+        }
     }
 }

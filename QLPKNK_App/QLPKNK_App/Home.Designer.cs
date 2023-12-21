@@ -30,7 +30,7 @@
         {
             this.treatmentBtn = new System.Windows.Forms.Button();
             this.Payment = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ScheduleBtn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,14 +54,15 @@
             this.Payment.UseVisualStyleBackColor = true;
             this.Payment.Click += new System.EventHandler(this.Payment_Click);
             // 
-            // button3
+            // ScheduleBtn
             // 
-            this.button3.Location = new System.Drawing.Point(395, 57);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ScheduleBtn.Location = new System.Drawing.Point(395, 57);
+            this.ScheduleBtn.Name = "ScheduleBtn";
+            this.ScheduleBtn.Size = new System.Drawing.Size(75, 23);
+            this.ScheduleBtn.TabIndex = 2;
+            this.ScheduleBtn.Text = "Schedule";
+            this.ScheduleBtn.UseVisualStyleBackColor = true;
+            this.ScheduleBtn.Click += new System.EventHandler(this.ScheduleBtn_Click);
             // 
             // button4
             // 
@@ -78,7 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ScheduleBtn);
             this.Controls.Add(this.Payment);
             this.Controls.Add(this.treatmentBtn);
             this.Name = "Home";
@@ -91,7 +92,7 @@
 
         private System.Windows.Forms.Button treatmentBtn;
         private System.Windows.Forms.Button Payment;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ScheduleBtn;
         private System.Windows.Forms.Button button4;
     }
 }

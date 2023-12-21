@@ -27,7 +27,7 @@ namespace QLPKNK_App
             this.tId = tId;
             hienThiDSThuoc();
             Title.Text = "Add medicine for prescription " + tId;
-            
+            updatedMedName.Hide();
         }
         public AddEditPrescription(int tId,string mid, string mName,int quantity,string note)
         {
@@ -38,7 +38,8 @@ namespace QLPKNK_App
             Title.Text = "Update medicine "+mid+":"+mName +" for prescription " + tId;
             MedicineQuantity.Value = quantity;
             MedicineNote.Text = note;
-            
+            updatedMedName.Text= mName;
+            MedicineNameCB.Hide();
         }
         private void addMedicine(object sender, EventArgs e)
         {
@@ -73,21 +74,20 @@ namespace QLPKNK_App
             {
                 MessageBox.Show(this, "Please provide the amount of medicine you want to add!");
             }
-            string mId = ((ThuocDTO)MedicineNameCB.SelectedItem).id;
             int quantity = (int)MedicineQuantity.Value;
             if (String.IsNullOrEmpty(MedicineNote.Text))
             {
                 var confirmResult = MessageBox.Show("You have not enter any note. Do you want to continue adding this medicine?", "Empty note", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    donThuocBUS.suaThuocChoKHDT(tId, mId, quantity, null);
+                    donThuocBUS.suaThuocChoKHDT(tId, mid, quantity, null);
                     this.Close();
                 }
             }
             else
             {
                 string note = MedicineNote.Text;
-                donThuocBUS.suaThuocChoKHDT(tId, mId, quantity, note);
+                donThuocBUS.suaThuocChoKHDT(tId, mid, quantity, note);
                 this.Close();
             }
             
@@ -103,15 +103,6 @@ namespace QLPKNK_App
             if (MedicineNameCB.Items.Count > 0)
             {
                 MedicineNameCB.SelectedIndex = 0;
-            }
-            if(!String.IsNullOrEmpty(mid))
-            {
-                List<ThuocDTO> buh= dsThuoc.Where(ds => ds.id.Equals(mid)).ToList();
-                foreach (ThuocDTO t in buh)
-                {
-                    MedicineNameCB.SelectedItem = t;
-                    MedicineNameCB.Enabled = false;
-                }
             }
         }
         private void MedCBkeyDown(object sender, EventArgs e)
