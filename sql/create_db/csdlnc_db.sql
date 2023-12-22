@@ -52,7 +52,7 @@ ADD FILE
 (  
     NAME = schedule_date1,  
     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date1.ndf',  
-    SIZE = 5MB,  
+    SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date1;  
@@ -61,7 +61,7 @@ ADD FILE
 (  
     NAME = schedule_date2,  
     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date2.ndf',  
-    SIZE = 5MB,  
+    SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date2;  
@@ -70,7 +70,7 @@ ADD FILE
 (  
     NAME = schedule_date3,  
     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date3.ndf',  
-    SIZE = 5MB,  
+    SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date3;  
@@ -79,7 +79,7 @@ ADD FILE
 (  
     NAME = schedule_date4,  
     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date4.ndf',  
-    SIZE = 5MB,  
+    SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date4;  
@@ -97,6 +97,9 @@ create table schedule (
 	date date not null,
 	shift_id smallint not null,
 	dentist char(10) not null,
+	den_name varchar(20),
+	pat_name varchar(20),
+	ass_name varchar(20),
 	patient int,
 	assistant char(10),
 	type int,
@@ -118,6 +121,12 @@ begin
 update schedule
 set department = (select department from account_de where username = (select dentist from inserted))
 end
+else
+begin
+update schedule
+set type = null, department = (select department from account_de where username = (select dentist from inserted))
+where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
+end
 end
 end
 go
@@ -129,6 +138,32 @@ as
 begin
 update schedule
 set department = (select department from account_de where username = (select dentist from inserted))
+where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
+end
+go
+
+go
+create or alter trigger schedule_name on schedule for insert, update
+as
+begin
+if (select assistant from inserted) is not null
+begin
+update schedule
+	set ass_name = (select name from account_de where username = (select assistant from inserted))
+	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
+end
+if (select dentist from inserted) is not null
+begin
+	update schedule
+	set den_name = (select name from account_de where username = (select dentist from inserted))
+	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
+end
+if (select patient from inserted) is not null
+begin
+	update schedule
+	set pat_name = (select name from patient_profile where id = (select patient from inserted))
+	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
+end
 end
 go
 
@@ -171,6 +206,9 @@ create table treatment (
 	dentist char(10) not null,
 	patient int not null,
 	assistant char(10),
+	den_name varchar(20),
+	pat_name varchar(20),
+	ass_name varchar(20),
 	description varchar(100),
 	date date not null,
 	note varchar(100),
@@ -181,7 +219,7 @@ create table treatment (
 )
 
 go
-create or alter trigger treatment_department on schedule for insert
+create or alter trigger treatment_department on treatment for insert
 as
 begin
 update treatment
@@ -189,6 +227,30 @@ set department = (select department from account_de where username = (select den
 end
 go
 
+go
+create or alter trigger treatment_name on treatment for insert, update
+as
+begin
+if (select assistant from inserted) is not null
+begin
+update treatment
+	set ass_name = (select name from account_de where username = (select assistant from inserted))
+	where id = (select id from inserted)
+end
+if (select dentist from inserted) is not null
+begin
+	update treatment
+	set den_name = (select name from account_de where username = (select dentist from inserted))
+	where id = (select id from inserted)
+end
+if (select patient from inserted) is not null
+begin
+	update treatment
+	set pat_name = (select name from patient_profile where id = (select patient from inserted))
+	where id = (select id from inserted)
+end
+end
+go
 
 
 
