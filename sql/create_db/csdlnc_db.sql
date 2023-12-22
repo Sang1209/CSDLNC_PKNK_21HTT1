@@ -34,20 +34,20 @@ create table department (
 )
 
 -------------------------------------------------------------------------------------
-ALTER DATABASE csc12002_21clc10_n10a
+ALTER DATABASE csc12002_21clc10_n10
 ADD FILEGROUP fg_schedule_date1;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10 
 ADD FILEGROUP fg_schedule_date2;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10 
 ADD FILEGROUP fg_schedule_date3;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10 
 ADD FILEGROUP fg_schedule_date4;  
 GO  
 
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date1,  
@@ -56,7 +56,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date1;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date2,  
@@ -65,7 +65,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date2;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date3,  
@@ -74,7 +74,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date3;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date4,  
@@ -104,6 +104,25 @@ create table schedule (
 	accept bit not null,
 	constraint pk_schedule primary key (date,shift_id,dentist)
 )ON PS_schedule (date)
+
+go
+create or alter trigger schedule_reexamdate on schedule for insert
+as
+begin
+declare @tmp int
+set @tmp = (select type from inserted)
+if @tmp is Null
+begin
+return 0
+end
+if datediff(d,(select date from inserted),(select date from treatment where id = @tmp)) >= 0
+begin
+update schedule
+set department = (select department from account_de where username = (select dentist from inserted))
+end
+end
+go
+
 
 go
 create or alter trigger schedule_department on schedule for insert
