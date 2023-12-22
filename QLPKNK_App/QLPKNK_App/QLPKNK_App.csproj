@@ -56,11 +56,11 @@
     <Compile Include="AddEditPrescription.Designer.cs">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddShcedule.cs">
+    <Compile Include="AddSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddShcedule.Designer.cs">
-      <DependentUpon>AddShcedule.cs</DependentUpon>
+    <Compile Include="AddSchedule.Designer.cs">
+      <DependentUpon>AddSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
@@ -133,8 +133,8 @@
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddShcedule.resx">
-      <DependentUpon>AddShcedule.cs</DependentUpon>
+    <EmbeddedResource Include="AddSchedule.resx">
+      <DependentUpon>AddSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

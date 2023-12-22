@@ -34,7 +34,7 @@ namespace QLPKNK_App
                 Admin_StaffDTO ad= login.checkLoginAdmin(u, p);
                 if(ad != null)
                 {
-                    Home h=new Home();
+                    Home h=new Home(ad);
                     h.ShowDialog();
                     Close();
                 }
@@ -44,7 +44,7 @@ namespace QLPKNK_App
                 Admin_StaffDTO st= login.checkLoginStaff(u, p);
                 if (st != null)
                 {
-                    Home h = new Home();
+                    Home h = new Home(st);
                     h.ShowDialog();
                     Close();
                 }
@@ -54,7 +54,7 @@ namespace QLPKNK_App
                 NhaSiDTO ns = login.checkLoginDentist(u, p);
                 if (ns != null)
                 {
-                    Home h = new Home();
+                    Home h = new Home(ns);
                     h.ShowDialog();
                     Close();
                 }

@@ -23,7 +23,7 @@ namespace QLPKNK_App.BUS
                 try
                 {
                     connection.Open();
-                    string sql = string.Format("Select name,phone,email,address,gender,admin from account_adst where cast(username)='{0}' and [password]='{1}'", username, password);
+                    string sql = string.Format("Select name,phone,email,address,gender,admin from account_adst where username='{0}' and [password]='{1}'", username, password);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         if ((int)command.ExecuteScalar() == 0) return null;

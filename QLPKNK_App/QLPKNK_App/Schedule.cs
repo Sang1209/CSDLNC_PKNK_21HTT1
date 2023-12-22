@@ -14,18 +14,23 @@ namespace QLPKNK_App
 {
     public partial class Schedule : Form
     {
+        public Admin_StaffDTO adst = null;
+        public NhaSiDTO ns= null;
         public Schedule()
         {
             InitializeComponent();
-            searchBy.Items.Add("All");
-            searchBy.Items.Add("Patient");
-            searchBy.Items.Add("Dentist");
-            searchBy.Items.Add("Department");
-            searchBy.SelectedIndex = 0;
-            searchBy.SelectedIndexChanged += new EventHandler(checkSearch);
-            searchID.Hide();
-            searchUsername.Hide();
-            filterTitle.Hide();
+        }
+        public Schedule(Admin_StaffDTO adst)
+        {
+            InitializeComponent();
+            this.adst = adst;
+            createSchedule.Hide();
+        }
+        public Schedule(NhaSiDTO ns)
+        {
+            InitializeComponent();
+            this.ns = ns;
+            createSchedule.Show();
         }
         private void checkSearch(object sender, EventArgs e)
         {
@@ -55,6 +60,15 @@ namespace QLPKNK_App
 
         private void Schedule_Load(object sender, EventArgs e)
         {
+            searchBy.Items.Add("All");
+            searchBy.Items.Add("Patient");
+            searchBy.Items.Add("Dentist");
+            searchBy.Items.Add("Department");
+            searchBy.SelectedIndex = 0;
+            searchBy.SelectedIndexChanged += new EventHandler(checkSearch);
+            searchID.Hide();
+            searchUsername.Hide();
+            filterTitle.Hide();
             scheduleTable.Rows.Clear();
             LichHenBUS lichHenBUS = new LichHenBUS();
             IList<LichHenDTO> dsLichHen = lichHenBUS.layDSLichHenTrongNgay(0,0,"");
@@ -79,8 +93,8 @@ namespace QLPKNK_App
 
         private void createSchedule_Click(object sender, EventArgs e)
         {
-            AddShcedule addSccedule = new AddShcedule();
-            addSccedule.ShowDialog();
+            AddSchedule addSchedule = new AddSchedule(ns);
+            addSchedule.ShowDialog();
         }
     }
 }

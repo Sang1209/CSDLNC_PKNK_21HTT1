@@ -1,5 +1,6 @@
 ﻿using buhbuhlmao.BUS;
 using QLPKNK_App;
+using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,14 @@ namespace buhbuhlmao
             InitializeComponent();
             this.Text = "Treatement";
         }
-
+        public Treatment(Admin_StaffDTO ad)
+        {
+            InitializeComponent();
+        }
+        public Treatment(NhaSiDTO ns)
+        {
+            InitializeComponent();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 

@@ -14,26 +14,28 @@ namespace QLPKNK_App.BUS
     public class CaBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-        IList<CaDTO> LayDSCa()
+        public CaDTO LayTTCa(int shiftID)
         {
-            List<CaDTO> dsCa = new List<CaDTO>();
+            CaDTO ca = null;
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(@"Select * from shift_period", connection))
+                    using (SqlCommand command = new SqlCommand("Select * from shift_period where id=@shiftID", connection))
                     {
+                        command.Parameters.Add(new SqlParameter("shiftID",SqlDbType.Int,0)).Value=shiftID;
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
+                            if(!Reader.HasRows) { return ca; }
                             while (Reader.Read())
                             {
-                                dsCa.Add(new CaDTO()
+                                ca = new CaDTO()
                                 {
-                                    id = Reader.GetInt32(Reader.GetOrdinal("id")),
-                                    start = TimeSpan.Parse(Reader["start"].ToString()).StripMilliseconds(),
-                                    finish = TimeSpan.Parse(Reader["finish"].ToString()).StripMilliseconds(),
-                                });
+                                   id = Convert.ToInt32(Reader.GetOrdinal("id")),
+                                   start = TimeSpan.Parse(Reader["start"].ToString()).StripMilliseconds(),
+                                   finish = TimeSpan.Parse(Reader["finish"].ToString()).StripMilliseconds(),
+                                };
                             }
                         }
                     }
@@ -48,7 +50,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
-            return dsCa;
+            return ca;
         }
     }
 }

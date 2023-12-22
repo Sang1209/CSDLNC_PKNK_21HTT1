@@ -19,10 +19,6 @@ namespace QLPKNK_App
         public Home()
         {
             InitializeComponent();
-            this.Text= "Home";
-            treatmentBtn.Click += new EventHandler((s, e) => { 
-            
-            });
         }
         public Home(Admin_StaffDTO adst)
         {
@@ -47,8 +43,17 @@ namespace QLPKNK_App
 
         private void treatmentBtn_Click(object sender, EventArgs e)
         {
-            Treatment t=new Treatment();
-            t.ShowDialog();
+            if(ns!=null)
+            {
+                Treatment t = new Treatment(ns);
+                t.Show();
+            }
+            else if(adst!=null)
+            {
+                Treatment t = new Treatment(adst);
+                t.Show();
+            }
+            
         }
 
         private void Payment_Click(object sender, EventArgs e)
@@ -59,8 +64,16 @@ namespace QLPKNK_App
 
         private void ScheduleBtn_Click(object sender, EventArgs e)
         {
-            Schedule s=new Schedule();
-            s.ShowDialog();
+            if (ns != null)
+            {
+                Schedule s = new Schedule(ns);
+                s.ShowDialog();
+            }
+            else if (adst != null)
+            {
+                Schedule s = new Schedule(adst);
+                s.ShowDialog();
+            }
         }
     }
 }
