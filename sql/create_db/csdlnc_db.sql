@@ -111,14 +111,13 @@ as
 begin
 declare @tmp int
 set @tmp = (select type from inserted)
-if @tmp is Null
+if @tmp is not Null
 begin
-return 0
-end
 if datediff(d,(select date from inserted),(select date from treatment where id = @tmp)) >= 0
 begin
 update schedule
 set department = (select department from account_de where username = (select dentist from inserted))
+end
 end
 end
 go
@@ -191,9 +190,12 @@ end
 go
 
 
+
+
 create table treatment_list (
 	id smallint not null primary key,
 	name varchar(50) not null,
+	price float not null
 )
 
 create table tooth_list (
@@ -204,8 +206,8 @@ create table tooth_list (
 create table payment (
 	treatment int not null,
 	num smallint not null,
-	total float not null,
-	given float not null,
+	change float not null,
+	need float not null,
 	method smallint not null,
 	date date not null,
 	payer varchar(20) not null,
@@ -215,11 +217,22 @@ create table payment (
 )
 
 go
-create trigger payment_no on payment for insert
+create trigger payment_no on payment after insert
 as
+begin
+declare @tmp float
+select @tmp = total from treatment where id = (select treatment from inserted) 
+if @tmp <= (select sum(need) from payment where treatment = (select treatment from inserted) )
 begin
 update payment
 set num = (select count(treatment) from payment where treatment = (select treatment from inserted))
+update patient_profile
+set paid = paid + (select need from inserted) where id = (select patient from treatment where id = (select treatment from inserted))
+end
+else
+begin
+delete payment where treatment = (select treatment from inserted) and num = (select num from inserted)
+end
 end
 go
 
@@ -242,6 +255,7 @@ create table prescription (
 create table medicine (
 	id varchar(5) not null primary key,
 	name varchar(20) not null,
+	price float not null
 )
 
 create table quantity_medicine (
@@ -251,6 +265,66 @@ create table quantity_medicine (
 	constraint pk_quantity_medicine primary key (department,medicine)
 )
 
+go
+create or alter trigger treatment_total_add_medicine on prescription for insert
+as
+begin
+declare @tmp float
+set @tmp = (select quantity from inserted) * (select price from medicine where id = (select medicine from inserted))
+update treatment
+set total = total + @tmp
+where id = (select treatment from inserted)
+update patient_profile
+set bill = bill + @tmp
+where id = (select patient from treatment where id = (select treatment from inserted))
+end
+go
+
+go
+create or alter trigger treatment_total_remove_medicine on prescription for delete
+as
+begin
+declare @tmp float
+set @tmp = (select quantity from inserted) * (select price from medicine where id = (select medicine from inserted))
+update treatment
+set total = total - @tmp
+where id = (select treatment from inserted)
+update patient_profile
+set bill = bill - @tmp
+where id = (select patient from treatment where id = (select treatment from inserted))
+end
+go
+
+go
+create or alter trigger treatment_total_update_medicine on prescription for update
+as
+begin
+declare @tmp float
+select @tmp = (select price from medicine where id = (select medicine from deleted))
+set @tmp = - (select quantity from deleted) * @tmp + (select quantity from inserted) * @tmp
+update treatment
+set total = total + @tmp
+where id = (select treatment from inserted)
+update patient_profile
+set bill = bill + @tmp
+where id = (select patient from treatment where id = (select treatment from inserted))
+end
+go
+
+go
+create or alter trigger treatment_total_treatment on treatment for insert
+as
+begin
+declare @tmp float
+select @tmp = (select price from treatment_list where id = (select method from inserted))
+update treatment
+set total = total + @tmp 
+where id = (select method from inserted)
+update patient_profile
+set bill = bill + @tmp
+where id = (select method from inserted)
+end
+go
 
 go
 alter table account_de add foreign key (department) references department(id)
@@ -282,14 +356,14 @@ alter table quantity_medicine add foreign key (medicine) references medicine(id)
 alter table quantity_medicine add foreign key (department) references department(id)
 
 CREATE INDEX quantity_medicine1
-ON prescription (medicineid,department);
+ON quantity_medicine (medicine,department);
 
 CREATE INDEX prescription1
-ON prescription (treatmentid,medicineid);
+ON prescription (treatment,medicine);
 
 CREATE INDEX treatment1
 ON treatment (patient)
-INCLUDE (patient,id);
+INCLUDE (id);
 
 CREATE INDEX treatment2
 ON treatment (date);

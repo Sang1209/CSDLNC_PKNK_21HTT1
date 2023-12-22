@@ -76,7 +76,7 @@ begin
 declare cur cursor for select id, assistant, department from treatment
 declare @assistant char(10), @id int, @department smallint
 open cur
-fetch next from cur into @id, @dentist
+fetch next from cur into @id, @assistant, @department
 while @@FETCH_STATUS=0
 begin
 	if (select department from account_de where username = @assistant) <> @department
@@ -84,7 +84,7 @@ begin
 	update treatment
 	set assistant = null where id = @id
 	end
-fetch next from cur into @id, @dentist
+fetch next from cur into @id, @assistant, @department
 end
 close cur
 deallocate cur
@@ -112,6 +112,7 @@ close cur
 deallocate cur
 end
 go
+
 
 
 
