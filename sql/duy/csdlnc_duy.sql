@@ -11,7 +11,7 @@ as
 begin tran
 declare cur cursor for select patient, date, shift_id from schedule
 open cur
-declare @patient1 varchar(12), @date1 date, @shift1 int
+declare @patient1 varchar(10), @date1 date, @shift1 int
 fetch next from cur into @patient1, @date1, @shift1
 while @@FETCH_STATUS=0
 begin
@@ -45,7 +45,7 @@ create or alter proc pr_update_schedule
 	@dentist char(10)
 as
 begin tran
-declare @patient varchar(12)
+declare @patient varchar(10)
 select @patient = patient from schedule where date = @date_old and shift_id = @shift_id_old and dentist = @dentist
 if (@patient is not null)
 begin
@@ -113,7 +113,7 @@ end
 
 declare cur cursor for select patient, date, shift_id from schedule
 open cur
-declare @patient1 varchar(12), @date1 date, @shift1 int
+declare @patient1 varchar(10), @date1 date, @shift1 int
 fetch next from cur into @patient1, @date1, @shift1
 while @@FETCH_STATUS=0
 begin
@@ -138,7 +138,7 @@ commit tran
 -----------------------------------------------------------------------------
 go
 create or alter proc pr_schedule_filter_by_dentist_reserve
-	@dentist varchar(12)
+	@dentist varchar(10)
 as
 BEGIN TRANSACTION;  
 select * from schedule where datediff(d,date,getdate())<0 and dentist = @dentist 
@@ -147,7 +147,7 @@ COMMIT TRANSACTION;
 --------------------------------------------------------------------------
 go
 create or alter proc pr_schedule_filter_by_dentist_archive
-	@dentist varchar(12),
+	@dentist varchar(10),
 	@patient int
 as
 BEGIN TRANSACTION;  
@@ -178,7 +178,7 @@ COMMIT TRANSACTION;
 -------------------------------------------------------
 go
 create or alter proc pr_schedule_filter_by_both_reserve
-	@dentist varchar(12),
+	@dentist varchar(10),
 	@date date
 as
 BEGIN TRANSACTION;  
@@ -188,7 +188,7 @@ COMMIT TRANSACTION;
 -------------------------------------------------------
 go
 create or alter proc pr_schedule_filter_by_both_archive
-	@dentist varchar(12),
+	@dentist varchar(10),
 	@date date,
 	@patient int
 as
@@ -221,9 +221,3 @@ SET STATISTICS IO, TIME off
 COMMIT TRANSACTION; 
 
 
-exec pr_get_schedule2
-	@department = 20
-
-
-exec pr_get_schedule
-	@department = 20
