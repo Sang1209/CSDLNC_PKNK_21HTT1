@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.DentistDepartment = new System.Windows.Forms.ComboBox();
-            this.ShowPassword = new System.Windows.Forms.Button();
             this.DentistName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DentistPassword = new System.Windows.Forms.TextBox();
+            this.Submit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -65,15 +65,6 @@
             this.DentistDepartment.Size = new System.Drawing.Size(263, 24);
             this.DentistDepartment.TabIndex = 1;
             this.DentistDepartment.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // ShowPassword
-            // 
-            this.ShowPassword.Location = new System.Drawing.Point(465, 64);
-            this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(78, 23);
-            this.ShowPassword.TabIndex = 21;
-            this.ShowPassword.Text = "Show";
-            this.ShowPassword.UseVisualStyleBackColor = true;
             // 
             // DentistName
             // 
@@ -187,17 +178,29 @@
             // 
             // DentistPassword
             // 
-            this.DentistPassword.Location = new System.Drawing.Point(188, 65);
+            this.DentistPassword.Location = new System.Drawing.Point(188, 64);
             this.DentistPassword.Name = "DentistPassword";
             this.DentistPassword.Size = new System.Drawing.Size(254, 22);
-            this.DentistPassword.TabIndex = 15;
-            this.DentistPassword.TextChanged += new System.EventHandler(this.DentistUsername_TextChanged);
+            this.DentistPassword.TabIndex = 30;
+            this.DentistPassword.TextChanged += new System.EventHandler(this.DentistPassword_TextChanged);
+            // 
+            // Submit
+            // 
+            this.Submit.Location = new System.Drawing.Point(188, 415);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(75, 23);
+            this.Submit.TabIndex = 31;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // AddDentist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Submit);
+            this.Controls.Add(this.DentistPassword);
             this.Controls.Add(this.DentistEmail);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.DentistAddress);
@@ -206,12 +209,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.DentistGender);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.ShowPassword);
             this.Controls.Add(this.DentistName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.DentistPassword);
             this.Controls.Add(this.DentistUsername);
             this.Controls.Add(this.DentistDepartment);
             this.Controls.Add(this.label1);
@@ -227,7 +228,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox DentistDepartment;
-        private System.Windows.Forms.Button ShowPassword;
         private System.Windows.Forms.TextBox DentistName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -242,5 +242,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox DentistPassword;
+        private System.Windows.Forms.Button Submit;
     }
 }

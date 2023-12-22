@@ -63,5 +63,39 @@ namespace QLPKNK_App
         {
 
         }
+
+        private void DentistPassword_TextChanged(object sender, EventArgs e)
+        {
+            DentistPassword.PasswordChar = '*';
+        }
+
+        private void ShowPassword_Click(object sender, EventArgs e)
+        {
+            if (DentistPassword.PasswordChar == '*')
+            {
+                DentistPassword.PasswordChar = '\0'; // '\0' đại diện cho không có ký tự nào
+            }
+            else
+            {
+                DentistPassword.PasswordChar = '*';
+            }
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            string username = DentistUsername.Text;
+            string password = DentistPassword.Text;
+            string name = DentistName.Text;
+            bool gender;
+            if (DentistGender.SelectedItem.ToString() == "Male")
+                gender = true;
+            else gender = false;
+            int department = (int)DentistDepartment.SelectedValue;
+            string phone = DentistUsername.Text;
+            string address = DentistUsername.Text;
+            string email = DentistUsername.Text;
+
+
+        }
     }
 }
