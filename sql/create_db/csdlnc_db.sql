@@ -34,20 +34,20 @@ create table department (
 )
 
 -------------------------------------------------------------------------------------
-ALTER DATABASE csc12002_21clc10_n10a
+ALTER DATABASE csc12002_21clc10_n10
 ADD FILEGROUP fg_schedule_date1;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10 
 ADD FILEGROUP fg_schedule_date2;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10
 ADD FILEGROUP fg_schedule_date3;  
 GO  
-ALTER DATABASE csc12002_21clc10_n10a 
+ALTER DATABASE csc12002_21clc10_n10
 ADD FILEGROUP fg_schedule_date4;  
 GO  
 
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10  
 ADD FILE   
 (  
     NAME = schedule_date1,  
@@ -56,7 +56,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date1;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date2,  
@@ -65,7 +65,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date2;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date3,  
@@ -74,7 +74,7 @@ ADD FILE
     FILEGROWTH = 5MB  
 )  
 TO FILEGROUP fg_schedule_date3;  
-ALTER DATABASE csc12002_21clc10_n10a   
+ALTER DATABASE csc12002_21clc10_n10   
 ADD FILE   
 (  
     NAME = schedule_date4,  

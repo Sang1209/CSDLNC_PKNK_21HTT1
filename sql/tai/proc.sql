@@ -126,25 +126,11 @@ as
 begin
 	select medicine, sum(quantity) as usage_count
 	from prescription p join treatment t on p.treatment = t.id
-	where convert(date, t.[date]) - convert(date, getdate()) = 0
+	where datediff(day, t.[date], getdate()) = 0
 	group by medicine
 	order by usage_count desc
 end
-<<<<<<< Updated upstream
 
-=======
---Thống kê thuốc theo tuần
-go
-create or alter proc pr_used_medicine_week
-as
-begin
-	select medicine, count(medicine) as Usage_Count
-	from prescription p join treatment t on p.treatment = t.id
-	where t.[date] - dateadd(week, datediff(week, 0, getdate()), 0) >= 0
-	group by medicine
-	order by usage_count desc
-end
->>>>>>> Stashed changes
 --Thống kê thuốc theo tháng
 go
 create or alter proc pr_used_medicine_month
@@ -182,7 +168,7 @@ begin
 end
 --Xem hồ sơ bệnh nhân
 go 
-create or alter proc pr_select_patient
+create or alter proc pr_view_patient
 as
 begin
 	select [name], birth, phone, email, [address], gender 
@@ -220,7 +206,7 @@ begin
 end
 ----Xem danh sách nhân viên
 go
-create or alter proc pr_select_adst
+create or alter proc pr_view_adst
 as
 begin
 	select [name], phone, email, [address], gender
@@ -253,4 +239,11 @@ begin
 	update patient_profile
 	set overall_condition = @condition
 	where id = @id
+end
+--Xem thông tin department
+go
+create or alter proc pr_view_department_list
+as
+begin
+	select id, [address] from department;
 end
