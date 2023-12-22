@@ -10,7 +10,7 @@ using static System.Windows.Forms.AxHost;
 
 namespace buhbuhlmao.BUS
 {
-    internal class KHDieuTriBUS
+    public class KHDieuTriBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public IList<KHDieuTriDTO> layDsKHDieuTriTheoBN(int patientID)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.DTO
 {
-    internal class DonThuocDTO
+    public class DonThuocDTO
     {
         public string medicineId { get; set; }
         public String medicineName { get; set; }

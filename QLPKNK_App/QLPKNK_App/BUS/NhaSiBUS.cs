@@ -3,36 +3,39 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QLPKNK_App.BUS
 {
-    public class ThuocBUS
+    public class NhaSiBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-        public IList<ThuocDTO> LayDSThuoc()
+        IList<NhaSiDTO> layDSNhaSi()
         {
-            List<ThuocDTO> dsThuoc = new List<ThuocDTO>();
+            List<NhaSiDTO> dsNhaSi = new List<NhaSiDTO>();
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ViewMedicineList", connection))
+                    using (SqlCommand command = new SqlCommand(@"Select * from account_de", connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
                             while (Reader.Read())
                             {
-                                dsThuoc.Add(new ThuocDTO()
+                                dsNhaSi.Add(new NhaSiDTO()
                                 {
-                                    id = Reader["id"].ToString(),
-                                    name= Reader["name"].ToString(),
+                                    username = Reader.GetString(0),
+                                    password = Reader.GetString(1),
+                                    name = Reader.GetString(2),
+                                    phone = Reader.GetString(3),
+                                    email = Reader.GetString(4),
+                                    address = Reader.GetString(5),
+                                    gender=Reader.GetBoolean(6),
+                                    depID=Reader.GetInt32(7),
                                 });
                             }
                         }
@@ -48,7 +51,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
-            return dsThuoc;
+            return dsNhaSi;
         }
     }
 }

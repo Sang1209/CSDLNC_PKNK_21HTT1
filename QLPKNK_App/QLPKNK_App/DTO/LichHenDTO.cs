@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.DTO
 {
-    internal class LichHenDTO
+    public class LichHenDTO
     {
         public DateTime date { get; set; }
         public int shiftId { get; set; }

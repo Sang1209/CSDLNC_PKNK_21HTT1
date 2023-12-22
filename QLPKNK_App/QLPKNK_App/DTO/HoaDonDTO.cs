@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.DTO
 {
-    internal class HoaDonDTO
+    public class HoaDonDTO
     {
         public int treatment { get; set; }
         public int times { get; set; }

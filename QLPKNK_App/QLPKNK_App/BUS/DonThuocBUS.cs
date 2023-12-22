@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.BUS
 {
-    internal class DonThuocBUS
+    public class DonThuocBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public IList<DonThuocDTO> layDsThuocCuaKHDT(int tId)

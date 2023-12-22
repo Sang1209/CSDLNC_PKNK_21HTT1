@@ -17,6 +17,9 @@ namespace QLPKNK_App
         {
             InitializeComponent();
             this.Text= "Home";
+            treatmentBtn.Click += new EventHandler((s, e) => { 
+            
+            });
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)

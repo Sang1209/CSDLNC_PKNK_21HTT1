@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.DTO
 {
-    public class ThuocDTO
+    public class BenhNhanDTO
     {
-        public string id { get; set; }
+        public int id {  get; set; }
         public string name { get; set; }
     }
 }

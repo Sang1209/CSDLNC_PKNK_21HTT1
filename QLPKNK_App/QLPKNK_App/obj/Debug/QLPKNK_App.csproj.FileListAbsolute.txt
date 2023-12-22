@@ -17,3 +17,5 @@ C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\
 C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.Home.resources
 C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.Payment.resources
 C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.Schedule.resources
+C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.AddShcedule.resources
+C:\KHTN\n3_hk1\CSDLNC\ThucHanh\Project\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.Login.resources
