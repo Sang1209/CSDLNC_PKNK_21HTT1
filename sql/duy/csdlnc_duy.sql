@@ -68,8 +68,6 @@ insert into schedule values (@date, @shift_id, @dentist ,NULL, @asisstant, NULL,
 commit tran
 -------------------------------------------------------------------------------
 go
-select username,name from account_de
-select * from schedule
 create or alter proc pr_delete_schedule
 	@date date,
 	@shift_id smallint,
