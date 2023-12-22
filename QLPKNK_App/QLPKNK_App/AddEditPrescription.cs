@@ -127,5 +127,10 @@ namespace QLPKNK_App
             }
             Controls.Add(b);
         }
+
+        private void updatedMedName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
