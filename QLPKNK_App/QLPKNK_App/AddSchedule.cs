@@ -23,7 +23,16 @@ namespace QLPKNK_App
         {
             InitializeComponent ();
             this.nhasi = nhasi;
+            AddScheduleTitle.Text = "Add free schedule";
             ShiftID.ValueChanged += new EventHandler(capNhatTG);
+        }
+        public AddSchedule(int treatmentID,int patientID,NhaSiDTO ns)
+        {
+            InitializeComponent();
+            this.nhasi=ns;
+            AddScheduleTitle.Text = "Add re-examination schedule";
+            tId.Value = treatmentID;
+            pId.Value = patientID;
         }
         private void capNhatTG(object sender, EventArgs e)
         {
@@ -60,7 +69,16 @@ namespace QLPKNK_App
             string dentist = nhasi.username;
             string assistant=((NhaSiDTO)assistantCB.SelectedItem).username;
             int depId = nhasi.depID;
-            lichHenBUS.NhaSiTaoLichHen(d, s,dentist,assistant, depId);
+            int treatmentID = (int)tId.Value;
+            int patientID=(int)pId.Value;
+            if(treatmentID!=-1)
+            {
+                lichHenBUS.taoLichTaiKham(d,s,dentist,patientID,assistant,treatmentID);
+            }
+            else
+            {
+                lichHenBUS.taoLichHen(d, s, dentist, assistant, depId);
+            }
             Close();
         }
     }

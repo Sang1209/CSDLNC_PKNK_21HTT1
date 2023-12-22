@@ -19,7 +19,8 @@ namespace QLPKNK_App
     public partial class Treatment : Form
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-
+        public NhaSiDTO ns=null;
+        public Admin_StaffDTO ad = null;
         public Treatment()
         {
             InitializeComponent();
@@ -28,16 +29,20 @@ namespace QLPKNK_App
         public Treatment(Admin_StaffDTO ad)
         {
             InitializeComponent();
+            this.ad = ad;
+            TreatmentTable.Columns["ReserveReExam"].Visible = false;
         }
         public Treatment(NhaSiDTO ns)
         {
             InitializeComponent();
+            this.ns = ns;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             BenhNhanBUS bnBUS=new BenhNhanBUS();
             IList<BenhNhanDTO> DSBN = bnBUS.layDSBenhNhan();
             patientSearch.DisplayMember = "Name";
+            patientSearch.ValueMember = "Id";
             patientSearch.Items.AddRange(DSBN.ToArray());
             patientSearch.KeyDown += new KeyEventHandler(keyDownEvt);
             if(patientSearch.Items.Count>0)
@@ -51,7 +56,14 @@ namespace QLPKNK_App
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            if(e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                int tId= Convert.ToInt32(TreatmentTable.Rows[e.RowIndex].Cells["ID"].Value);
+                int pId= Convert.ToInt32(TreatmentTable.Rows[e.RowIndex].Cells["PatientID"].Value);
+                AddSchedule addReSchedule=new AddSchedule(tId,pId,ns);
+                addReSchedule.ShowDialog();
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
                 //int tId = Convert.ToInt32(TreatmentTable.Rows[e.RowIndex].Cells["ID"].Value);
                 string str = TreatmentTable.Rows[e.RowIndex].Cells["ID"].Value.ToString();
@@ -60,6 +72,7 @@ namespace QLPKNK_App
                     p.ShowDialog();
                 }
             }
+
         }
 
         private void searchPatient_Click(object sender, EventArgs e)
@@ -74,7 +87,7 @@ namespace QLPKNK_App
             IList<KHDieuTriDTO> dsKHDT = kHDieuTriBUS.layDsKHDieuTriTheoBN(pID);
             foreach(KHDieuTriDTO khdt in dsKHDT)
             {
-                TreatmentTable.Rows.Add("",khdt.id, khdt.department, khdt.patient, khdt.dentist, khdt.assistant, khdt.description, khdt.date, khdt.note, khdt.method, khdt.tooth_name, khdt.state, khdt.total);
+                TreatmentTable.Rows.Add("","",khdt.id, khdt.department, khdt.patient,khdt.pat_name, khdt.dentist,khdt.den_name, khdt.assistant,khdt.ass_name, khdt.description, khdt.date, khdt.note, khdt.method, khdt.tooth_name, khdt.state, khdt.total);
             }
         }
     }

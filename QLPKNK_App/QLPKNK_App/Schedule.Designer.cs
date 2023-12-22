@@ -46,11 +46,15 @@
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Finish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dentist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DentistName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Assistant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AssistantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReTreatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accepted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +72,15 @@
             this.Start,
             this.Finish,
             this.Dentist,
+            this.DentistName,
             this.PatientID,
+            this.PatientName,
             this.Assistant,
+            this.AssistantName,
             this.ReTreatID,
             this.DepID,
-            this.DepAddress});
+            this.DepAddress,
+            this.Accepted});
             this.scheduleTable.Location = new System.Drawing.Point(17, 244);
             this.scheduleTable.Name = "scheduleTable";
             this.scheduleTable.Size = new System.Drawing.Size(1483, 364);
@@ -150,26 +158,42 @@
             // 
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.ToolTipText = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // Update
             // 
             this.Update.HeaderText = "Update";
             this.Update.Name = "Update";
+            this.Update.Text = "Update";
+            this.Update.ToolTipText = "Update";
+            this.Update.UseColumnTextForButtonValue = true;
             // 
             // Reserve
             // 
             this.Reserve.HeaderText = "Reserve";
             this.Reserve.Name = "Reserve";
+            this.Reserve.Text = "Reserve";
+            this.Reserve.ToolTipText = "Reserve";
+            this.Reserve.UseColumnTextForButtonValue = true;
             // 
             // Cancel
             // 
             this.Cancel.HeaderText = "Cancel";
             this.Cancel.Name = "Cancel";
+            this.Cancel.Text = "Cancel";
+            this.Cancel.ToolTipText = "Cancel";
+            this.Cancel.UseColumnTextForButtonValue = true;
             // 
             // Accept
             // 
             this.Accept.HeaderText = "Accept";
             this.Accept.Name = "Accept";
+            this.Accept.Text = "Accept";
+            this.Accept.ToolTipText = "Accept";
+            this.Accept.UseColumnTextForButtonValue = true;
             // 
             // Date
             // 
@@ -201,17 +225,35 @@
             this.Dentist.Name = "Dentist";
             this.Dentist.ReadOnly = true;
             // 
+            // DentistName
+            // 
+            this.DentistName.HeaderText = "Dentist name";
+            this.DentistName.Name = "DentistName";
+            this.DentistName.ReadOnly = true;
+            // 
             // PatientID
             // 
             this.PatientID.HeaderText = "Patient ID";
             this.PatientID.Name = "PatientID";
             this.PatientID.ReadOnly = true;
             // 
+            // PatientName
+            // 
+            this.PatientName.HeaderText = "Patient name";
+            this.PatientName.Name = "PatientName";
+            this.PatientName.ReadOnly = true;
+            // 
             // Assistant
             // 
             this.Assistant.HeaderText = "Assistant username";
             this.Assistant.Name = "Assistant";
             this.Assistant.ReadOnly = true;
+            // 
+            // AssistantName
+            // 
+            this.AssistantName.HeaderText = "Assistant name";
+            this.AssistantName.Name = "AssistantName";
+            this.AssistantName.ReadOnly = true;
             // 
             // ReTreatID
             // 
@@ -230,6 +272,12 @@
             this.DepAddress.HeaderText = "Department address";
             this.DepAddress.Name = "DepAddress";
             this.DepAddress.ReadOnly = true;
+            // 
+            // Accepted
+            // 
+            this.Accepted.HeaderText = "Accepted";
+            this.Accepted.Name = "Accepted";
+            this.Accepted.ReadOnly = true;
             // 
             // Schedule
             // 
@@ -272,10 +320,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn Finish;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dentist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DentistName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Assistant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssistantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReTreatID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Accepted;
     }
 }

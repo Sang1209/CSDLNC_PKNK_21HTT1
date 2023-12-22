@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace QLPKNK_App
 {
@@ -139,7 +140,7 @@ namespace QLPKNK_App
             IList<LichHenDTO> dsLichHen = lichHenBUS.layDSLichHenTrongNgay(s, id, username);
             foreach (LichHenDTO lh in dsLichHen)
             {
-                scheduleTable.Rows.Add(lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist, lh.patient, lh.assistant, lh.type,lh.depId,lh.DepAddress);
+                scheduleTable.Rows.Add("","","","","",lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist,lh.den_name, lh.patient,lh.pat_name, lh.assistant,lh.ass_name, lh.type, lh.depId, lh.DepAddress,lh.accept);
             }
         }
 
@@ -154,37 +155,49 @@ namespace QLPKNK_App
         {
             string dentist=scheduleTable.Rows[e.RowIndex].Cells["Dentist"].Value.ToString();
             int shiftID = Convert.ToInt32(scheduleTable.Rows[e.RowIndex].Cells["Shift"].Value);
-            DateTime date = DateTime.Parse(scheduleTable.Rows[e.RowIndex].Cells["Dentist"].Value.ToString());
+            DateTime date = DateTime.Parse(scheduleTable.Rows[e.RowIndex].Cells["Date"].Value.ToString());
             int pId= Convert.ToInt32(scheduleTable.Rows[e.RowIndex].Cells["PatientID"].Value);
+            bool accept = Convert.ToBoolean(scheduleTable.Rows[e.RowIndex].Cells["Accepted"].Value);
+            LichHenBUS lichHenBUS = new LichHenBUS();
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-
-                AddEditPrescription editFrm = new AddEditPrescription(tId, mId, mName, quantity, note);
-                editFrm.FormClosing += new FormClosingEventHandler(Schedule_Load);
-                editFrm.ShowDialog();
+                if(pId!=0)
+                {
+                    MessageBox.Show(this, "Cannot delete a schedule that already been reserved!");
+                }
+                lichHenBUS.xoaLichHen(date, shiftID, dentist);
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
-                DonThuocBUS donThuocBUS = new DonThuocBUS();
-                donThuocBUS.xoaThuocChoKHDT(tId, mId);
-                loadData();
+                UpdateScheduleForm editFrm = new UpdateScheduleForm(date,shiftID,dentist);
+                editFrm.FormClosing += new FormClosingEventHandler(Schedule_Load);
+                editFrm.ShowDialog();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
-                DonThuocBUS donThuocBUS = new DonThuocBUS();
-                donThuocBUS.xoaThuocChoKHDT(tId, mId);
+                if (pId != 0)
+                {
+                    MessageBox.Show(this, "This schedule is already reserved!");
+                }
+                lichHenBUS.datLichHen(date, shiftID, dentist, pId);
                 loadData();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
-                DonThuocBUS donThuocBUS = new DonThuocBUS();
-                donThuocBUS.xoaThuocChoKHDT(tId, mId);
+                if (!accept)
+                {
+                    MessageBox.Show(this, "This schedule is not accepted so cannot be cancelled!");
+                }
+                lichHenBUS.huyDatLichHen(date, shiftID, dentist);
                 loadData();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                DonThuocBUS donThuocBUS = new DonThuocBUS();
-                donThuocBUS.xoaThuocChoKHDT(tId, mId);
+                if(accept)
+                {
+                    MessageBox.Show(this, "This schedule is already accepted!");
+                }
+                lichHenBUS.nhanLichHen(date, shiftID, dentist);
                 loadData();
             }
         }

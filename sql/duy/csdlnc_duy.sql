@@ -5,8 +5,7 @@ create or alter proc pr_reserve_schedule
 	@date date,
 	@shift_id smallint,
 	@dentist char(10),
-	@patient int,
-	@type int
+	@patient int
 as
 begin tran
 declare cur cursor for select patient, date, shift_id from schedule
@@ -23,7 +22,7 @@ fetch next from cur into @patient1, @date1, @shift1
 end
 close cur
 deallocate cur
-update schedule set patient = @patient, type = @type where date = @date and shift_id = @shift_id and dentist = @dentist
+update schedule set patient = @patient where date = @date and shift_id = @shift_id and dentist = @dentist
 commit tran
 --------------------------------------------------------------------------------------
 go
@@ -64,7 +63,7 @@ create or alter proc pr_add_schedule
 	@depId int
 as
 begin tran
-insert into schedule values (@date, @shift_id, @dentist ,NULL, @asisstant, NULL, @depId, 0)
+insert into schedule(date,shift_id,dentist,patient,assistant,type,department,accept) values (@date, @shift_id, @dentist ,NULL, @asisstant, NULL, @depId, 0)
 commit tran
 -------------------------------------------------------------------------------
 go

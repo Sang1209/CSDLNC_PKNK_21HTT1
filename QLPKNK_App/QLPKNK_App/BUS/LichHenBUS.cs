@@ -78,12 +78,16 @@ namespace QLPKNK_App.BUS
                                     start = TimeSpan.Parse(Reader["start"].ToString()).StripMilliseconds(),
                                     finish = TimeSpan.Parse(Reader["finish"].ToString()).StripMilliseconds(),
                                     dentist = Reader["dentist"].ToString(),
+                                    den_name = Reader["den_name"].ToString(),
                                     patient = Reader.IsDBNull(Reader.GetOrdinal("patient")) ? 0 : Reader.GetInt32(Reader.GetOrdinal("patient")),
+                                    pat_name = Reader.IsDBNull(Reader.GetOrdinal("pat_name")) ? "" : Reader["pat_name"].ToString(),
                                     assistant = Reader.IsDBNull(Reader.GetOrdinal("assistant")) ? "" : Reader["assistant"].ToString(),
+                                    ass_name = Reader.IsDBNull(Reader.GetOrdinal("ass_name")) ? "" : Reader["ass_name"].ToString(),
                                     type = Reader.IsDBNull(Reader.GetOrdinal("type")) ? 0 : Reader.GetInt32(Reader.GetOrdinal("type")),
-                                    depId= Convert.ToInt32(Reader["id"]),
-                                    DepAddress = Reader["DepAddress"].ToString()
-                                });
+                                    depId = Convert.ToInt32(Reader["id"]),
+                                    DepAddress = Reader["DepAddress"].ToString(),
+                                    accept = Convert.ToBoolean(Reader["accept"])
+                                }); ;
                             }
                         }
                     }
@@ -156,7 +160,7 @@ namespace QLPKNK_App.BUS
                 }
             }
         }
-        public void datLichHen(DateTime date,int shiftId,string dentist,int patient,int type)
+        public void datLichHen(DateTime date,int shiftId,string dentist,int patient)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -170,7 +174,6 @@ namespace QLPKNK_App.BUS
                         command.Parameters.Add(new SqlParameter("@shift_id", SqlDbType.Int)).Value = shiftId;
                         command.Parameters.Add(new SqlParameter("@dentist", SqlDbType.Char, 10)).Value = dentist;
                         command.Parameters.Add(new SqlParameter("@patient", SqlDbType.Int)).Value = patient;
-                        command.Parameters.Add(new SqlParameter("@type", SqlDbType.Int)).Value = type;
                         command.ExecuteNonQuery();
                     }
                 }

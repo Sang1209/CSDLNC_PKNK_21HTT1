@@ -141,6 +141,7 @@
             // patientSearch
             // 
             this.patientSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.patientSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.patientSearch.FormattingEnabled = true;
             this.patientSearch.Location = new System.Drawing.Point(316, 91);
             this.patientSearch.Name = "patientSearch";

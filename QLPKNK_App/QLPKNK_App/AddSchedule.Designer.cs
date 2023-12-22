@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label title;
             this.date = new System.Windows.Forms.DateTimePicker();
             this.ShiftID = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,19 +41,13 @@
             this.fromTime = new System.Windows.Forms.TextBox();
             this.toTime = new System.Windows.Forms.TextBox();
             this.dentistName = new System.Windows.Forms.TextBox();
-            title = new System.Windows.Forms.Label();
+            this.AddScheduleTitle = new System.Windows.Forms.Label();
+            this.pId = new System.Windows.Forms.NumericUpDown();
+            this.tId = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ShiftID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tId)).BeginInit();
             this.SuspendLayout();
-            // 
-            // title
-            // 
-            title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title.Location = new System.Drawing.Point(12, 34);
-            title.Name = "title";
-            title.Size = new System.Drawing.Size(440, 69);
-            title.TabIndex = 13;
-            title.Text = "Add free schedule";
-            title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // date
             // 
@@ -143,6 +136,7 @@
             // assistantCB
             // 
             this.assistantCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.assistantCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.assistantCB.FormattingEnabled = true;
             this.assistantCB.Location = new System.Drawing.Point(117, 370);
             this.assistantCB.Name = "assistantCB";
@@ -183,15 +177,71 @@
             this.dentistName.Size = new System.Drawing.Size(200, 20);
             this.dentistName.TabIndex = 16;
             // 
+            // AddScheduleTitle
+            // 
+            this.AddScheduleTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddScheduleTitle.Location = new System.Drawing.Point(13, 13);
+            this.AddScheduleTitle.Name = "AddScheduleTitle";
+            this.AddScheduleTitle.Size = new System.Drawing.Size(428, 66);
+            this.AddScheduleTitle.TabIndex = 17;
+            // 
+            // pId
+            // 
+            this.pId.Location = new System.Drawing.Point(47, 524);
+            this.pId.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.pId.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.pId.Name = "pId";
+            this.pId.Size = new System.Drawing.Size(120, 20);
+            this.pId.TabIndex = 18;
+            this.pId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.pId.Visible = false;
+            // 
+            // tId
+            // 
+            this.tId.Location = new System.Drawing.Point(227, 523);
+            this.tId.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.tId.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.tId.Name = "tId";
+            this.tId.Size = new System.Drawing.Size(120, 20);
+            this.tId.TabIndex = 19;
+            this.tId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.tId.Visible = false;
+            // 
             // AddSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 612);
+            this.Controls.Add(this.tId);
+            this.Controls.Add(this.pId);
+            this.Controls.Add(this.AddScheduleTitle);
             this.Controls.Add(this.dentistName);
             this.Controls.Add(this.toTime);
             this.Controls.Add(this.fromTime);
-            this.Controls.Add(title);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.assistantCB);
             this.Controls.Add(this.label6);
@@ -206,6 +256,8 @@
             this.Text = "AddShcedule";
             this.Load += new System.EventHandler(this.AddShcedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ShiftID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,5 +278,8 @@
         private System.Windows.Forms.TextBox fromTime;
         private System.Windows.Forms.TextBox toTime;
         private System.Windows.Forms.TextBox dentistName;
+        public System.Windows.Forms.Label AddScheduleTitle;
+        private System.Windows.Forms.NumericUpDown pId;
+        private System.Windows.Forms.NumericUpDown tId;
     }
 }
