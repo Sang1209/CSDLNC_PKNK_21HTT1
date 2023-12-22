@@ -25,7 +25,7 @@ namespace QLPKNK_App.BUS
                     using (SqlCommand command = new SqlCommand("pr_view_deparment_list", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             adapter.Fill(dsDepartment);
                         }

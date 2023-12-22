@@ -3,6 +3,7 @@ using QLPKNK_App.utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -38,8 +39,8 @@ namespace QLPKNK_App.BUS
                                     phone=Reader.GetString(1),
                                     email=Reader.GetString(2),
                                     address=Reader.GetString(3),
-                                    gender=Reader.GetBoolean(4),
-                                    admin=Reader.GetBoolean(5),
+                                    gender = Convert.ToBoolean(Reader.GetOrdinal("gender")),
+                                    admin = Convert.ToBoolean(Reader.GetOrdinal("admin")),
                                 };
                             }
                         }
@@ -59,7 +60,6 @@ namespace QLPKNK_App.BUS
         }
         public NhaSiDTO checkLoginDentist(string username,string password)
         {
-            Console.WriteLine("dsad");
             NhaSiDTO nhasi = null;
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -68,11 +68,11 @@ namespace QLPKNK_App.BUS
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("Select name,phone,email,address,gender,department from account_de where [username]=@username and [password]=@password", connection))
                     {
-                        command.Parameters.Add(new SqlParameter("username", username));
-                        command.Parameters.Add(new SqlParameter("password", password));
-                        if ((int)command.ExecuteScalar() == 0) return nhasi;
+                        command.Parameters.Add(new SqlParameter("username", SqlDbType.VarChar, 10)).Value = username;
+                        command.Parameters.Add(new SqlParameter("password", SqlDbType.VarChar, 30)).Value = password;
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
+                            if(!Reader.HasRows) { return nhasi; }
                             while (Reader.Read())
                             {
                                 nhasi = new NhaSiDTO()
@@ -83,8 +83,8 @@ namespace QLPKNK_App.BUS
                                     phone = Reader.GetString(1),
                                     email = Reader.GetString(2),
                                     address = Reader.GetString(3),
-                                    gender = Reader.GetBoolean(4),
-                                    depID=Reader.GetInt32(5),
+                                    gender = Convert.ToBoolean(Reader.GetOrdinal("gender")),
+                                    depID = Convert.ToInt32(Reader.GetOrdinal("department")),
                                 };
                             }
                         }
@@ -127,8 +127,8 @@ namespace QLPKNK_App.BUS
                                     phone = Reader.GetString(1),
                                     email = Reader.GetString(2),
                                     address = Reader.GetString(3),
-                                    gender = Reader.GetBoolean(4),
-                                    admin = Reader.GetBoolean(5),
+                                    gender = Convert.ToBoolean(Reader.GetOrdinal("gender")),
+                                    admin = Convert.ToBoolean(Reader.GetOrdinal("admin")),
                                 };
                             }
                         }

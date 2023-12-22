@@ -49,7 +49,7 @@
             // 
             // treatmentBtn
             // 
-            this.treatmentBtn.Location = new System.Drawing.Point(83, 57);
+            this.treatmentBtn.Location = new System.Drawing.Point(83, 79);
             this.treatmentBtn.Name = "treatmentBtn";
             this.treatmentBtn.Size = new System.Drawing.Size(75, 23);
             this.treatmentBtn.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             // Payment
             // 
-            this.Payment.Location = new System.Drawing.Point(238, 57);
+            this.Payment.Location = new System.Drawing.Point(238, 79);
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(75, 23);
             this.Payment.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             // ScheduleBtn
             // 
-            this.ScheduleBtn.Location = new System.Drawing.Point(395, 57);
+            this.ScheduleBtn.Location = new System.Drawing.Point(395, 79);
             this.ScheduleBtn.Name = "ScheduleBtn";
             this.ScheduleBtn.Size = new System.Drawing.Size(75, 23);
             this.ScheduleBtn.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(543, 57);
+            this.button4.Location = new System.Drawing.Point(543, 79);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;

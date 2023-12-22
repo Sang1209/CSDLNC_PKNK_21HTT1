@@ -1,4 +1,5 @@
 ﻿using buhbuhlmao;
+using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace QLPKNK_App
 {
     public partial class Home : Form
     {
+        public Admin_StaffDTO adst = null;
+        public NhaSiDTO ns=null;
         public Home()
         {
             InitializeComponent();
@@ -20,6 +23,26 @@ namespace QLPKNK_App
             treatmentBtn.Click += new EventHandler((s, e) => { 
             
             });
+        }
+        public Home(Admin_StaffDTO adst)
+        {
+            InitializeComponent();
+            this.adst = adst;
+            if(adst.admin)
+            {
+                Text = "Admin home page";
+            }
+            else
+            {
+                Text = "Staff home page";
+            }
+            
+        }
+        public Home(NhaSiDTO ns)
+        {
+            InitializeComponent();
+            this.ns= ns;
+            Text = "Dentist home page";
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)
