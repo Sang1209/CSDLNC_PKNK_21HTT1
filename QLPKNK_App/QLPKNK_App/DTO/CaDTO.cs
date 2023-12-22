@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.DTO
 {
-    public class ThuocDTO
+    public class CaDTO
     {
-        public string id { get; set; }
-        public string name { get; set; }
+        public int id {  get; set; }
+        public TimeSpan start { get; set; }
+        public TimeSpan finish { get; set; }
     }
 }

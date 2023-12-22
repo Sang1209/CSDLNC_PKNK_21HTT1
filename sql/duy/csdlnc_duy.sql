@@ -1,7 +1,6 @@
 use csc12002_21clc10_n10
 go
 -----------------------------------------------------------------
-
 create or alter proc pr_reserve_schedule
 	@date date,
 	@shift_id smallint,
@@ -61,13 +60,16 @@ create or alter proc pr_add_schedule
 	@date date,
 	@shift_id smallint,
 	@dentist char(10),
-	@asisstant char(10)
+	@asisstant char(10),
+	@depId int
 as
 begin tran
-insert into schedule values (@date, @shift_id, @dentist ,NULL, @asisstant, NULL, NULL, 0)
+insert into schedule values (@date, @shift_id, @dentist ,NULL, @asisstant, NULL, @depId, 0)
 commit tran
 -------------------------------------------------------------------------------
 go
+select username,name from account_de
+select * from schedule
 create or alter proc pr_delete_schedule
 	@date date,
 	@shift_id smallint,

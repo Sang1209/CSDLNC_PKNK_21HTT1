@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using static QLPKNK_App.utils.DateTimeMod;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QLPKNK_App.BUS
 {
-    internal class LichHenBUS
+    public class LichHenBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public IList<LichHenDTO> layDSLichHenTrongNgay(int type,int id,string username)
@@ -61,14 +62,10 @@ namespace QLPKNK_App.BUS
                         if(type==1||type==3)
                         {
                             command.Parameters.Add(new SqlParameter(param, SqlDbType.Int, 0)).Value = id;
-                            Console.WriteLine(param);
-                            Console.WriteLine(id);
                         }
                         else if (type==2)
                         {
                             command.Parameters.Add(new SqlParameter(param, SqlDbType.VarChar, 10)).Value = username;
-                            Console.WriteLine(param);
-                            Console.WriteLine(username);
                         }
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
@@ -102,6 +99,31 @@ namespace QLPKNK_App.BUS
                }
             }
             return dsLichHen;
+        }
+        public void NhaSiTaoLichHen(DateTime date,int shift_id,string dentist,string assistant)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_add_schedule", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ nếu có
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

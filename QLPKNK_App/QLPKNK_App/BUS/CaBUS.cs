@@ -5,34 +5,34 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using QLPKNK_App.utils;
 
 namespace QLPKNK_App.BUS
 {
-    public class ThuocBUS
+    public class CaBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-        public IList<ThuocDTO> LayDSThuoc()
+        IList<CaDTO> LayDSCa()
         {
-            List<ThuocDTO> dsThuoc = new List<ThuocDTO>();
+            List<CaDTO> dsCa = new List<CaDTO>();
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("ViewMedicineList", connection))
+                    using (SqlCommand command = new SqlCommand(@"Select * from shift_period", connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
                             while (Reader.Read())
                             {
-                                dsThuoc.Add(new ThuocDTO()
+                                dsCa.Add(new CaDTO()
                                 {
-                                    id = Reader["id"].ToString(),
-                                    name= Reader["name"].ToString(),
+                                    id = Reader.GetInt32(Reader.GetOrdinal("id")),
+                                    start = TimeSpan.Parse(Reader["start"].ToString()).StripMilliseconds(),
+                                    finish = TimeSpan.Parse(Reader["finish"].ToString()).StripMilliseconds(),
                                 });
                             }
                         }
@@ -48,7 +48,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
-            return dsThuoc;
+            return dsCa;
         }
     }
 }

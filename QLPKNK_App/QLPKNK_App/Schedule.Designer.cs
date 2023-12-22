@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.scheduleTable = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchBy = new System.Windows.Forms.ComboBox();
-            this.FilterBtn = new System.Windows.Forms.Button();
-            this.searchUsername = new System.Windows.Forms.TextBox();
-            this.searchID = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.filterTitle = new System.Windows.Forms.Label();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +39,14 @@
             this.TreatmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchBy = new System.Windows.Forms.ComboBox();
+            this.FilterBtn = new System.Windows.Forms.Button();
+            this.searchUsername = new System.Windows.Forms.TextBox();
+            this.searchID = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.filterTitle = new System.Windows.Forms.Label();
+            this.createSchedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchID)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +69,66 @@
             this.scheduleTable.Name = "scheduleTable";
             this.scheduleTable.Size = new System.Drawing.Size(925, 364);
             this.scheduleTable.TabIndex = 0;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Shift
+            // 
+            this.Shift.HeaderText = "Shift";
+            this.Shift.Name = "Shift";
+            this.Shift.ReadOnly = true;
+            // 
+            // Start
+            // 
+            this.Start.HeaderText = "Start";
+            this.Start.Name = "Start";
+            this.Start.ReadOnly = true;
+            // 
+            // Finish
+            // 
+            this.Finish.HeaderText = "Finish";
+            this.Finish.Name = "Finish";
+            this.Finish.ReadOnly = true;
+            // 
+            // Dentist
+            // 
+            this.Dentist.HeaderText = "Dentist username";
+            this.Dentist.Name = "Dentist";
+            this.Dentist.ReadOnly = true;
+            // 
+            // PatientID
+            // 
+            this.PatientID.HeaderText = "Patient ID";
+            this.PatientID.Name = "PatientID";
+            this.PatientID.ReadOnly = true;
+            // 
+            // Assistant
+            // 
+            this.Assistant.HeaderText = "Assistant username";
+            this.Assistant.Name = "Assistant";
+            this.Assistant.ReadOnly = true;
+            // 
+            // TreatmentID
+            // 
+            this.TreatmentID.HeaderText = "Treatment ID";
+            this.TreatmentID.Name = "TreatmentID";
+            this.TreatmentID.ReadOnly = true;
+            // 
+            // DepID
+            // 
+            this.DepID.HeaderText = "Department ID";
+            this.DepID.Name = "DepID";
+            this.DepID.ReadOnly = true;
+            // 
+            // DepAddress
+            // 
+            this.DepAddress.HeaderText = "Department address";
+            this.DepAddress.Name = "DepAddress";
+            this.DepAddress.ReadOnly = true;
             // 
             // label1
             // 
@@ -136,71 +197,23 @@
             this.filterTitle.TabIndex = 7;
             this.filterTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Date
+            // createSchedule
             // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Shift
-            // 
-            this.Shift.HeaderText = "Shift";
-            this.Shift.Name = "Shift";
-            this.Shift.ReadOnly = true;
-            // 
-            // Start
-            // 
-            this.Start.HeaderText = "Start";
-            this.Start.Name = "Start";
-            this.Start.ReadOnly = true;
-            // 
-            // Finish
-            // 
-            this.Finish.HeaderText = "Finish";
-            this.Finish.Name = "Finish";
-            this.Finish.ReadOnly = true;
-            // 
-            // Dentist
-            // 
-            this.Dentist.HeaderText = "Dentist username";
-            this.Dentist.Name = "Dentist";
-            this.Dentist.ReadOnly = true;
-            // 
-            // PatientID
-            // 
-            this.PatientID.HeaderText = "Patient ID";
-            this.PatientID.Name = "PatientID";
-            this.PatientID.ReadOnly = true;
-            // 
-            // Assistant
-            // 
-            this.Assistant.HeaderText = "Assistant username";
-            this.Assistant.Name = "Assistant";
-            this.Assistant.ReadOnly = true;
-            // 
-            // TreatmentID
-            // 
-            this.TreatmentID.HeaderText = "Treatment ID";
-            this.TreatmentID.Name = "TreatmentID";
-            this.TreatmentID.ReadOnly = true;
-            // 
-            // DepID
-            // 
-            this.DepID.HeaderText = "Department ID";
-            this.DepID.Name = "DepID";
-            this.DepID.ReadOnly = true;
-            // 
-            // DepAddress
-            // 
-            this.DepAddress.HeaderText = "Department address";
-            this.DepAddress.Name = "DepAddress";
-            this.DepAddress.ReadOnly = true;
+            this.createSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createSchedule.Location = new System.Drawing.Point(766, 18);
+            this.createSchedule.Name = "createSchedule";
+            this.createSchedule.Size = new System.Drawing.Size(142, 35);
+            this.createSchedule.TabIndex = 8;
+            this.createSchedule.Text = "Create a schedule";
+            this.createSchedule.UseVisualStyleBackColor = true;
+            this.createSchedule.Click += new System.EventHandler(this.createSchedule_Click);
             // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 620);
+            this.Controls.Add(this.createSchedule);
             this.Controls.Add(this.filterTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchID);
@@ -239,5 +252,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TreatmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepAddress;
+        private System.Windows.Forms.Button createSchedule;
     }
 }

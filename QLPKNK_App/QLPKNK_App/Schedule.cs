@@ -76,5 +76,11 @@ namespace QLPKNK_App
                 scheduleTable.Rows.Add(lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist, lh.patient, lh.assistant, lh.type,lh.depId,lh.DepAddress);
             }
         }
+
+        private void createSchedule_Click(object sender, EventArgs e)
+        {
+            AddShcedule addSccedule = new AddShcedule();
+            addSccedule.ShowDialog();
+        }
     }
 }

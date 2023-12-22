@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace QLPKNK_App.BUS
 {
-    internal class HoaDonBUS
+    public class HoaDonBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public IList<HoaDonDTO> LayDSHoaDon(int patientID)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace buhbuhlmao.BUS
 {
-    internal class KHDieuTriDTO
+    public class KHDieuTriDTO
     {
         public int id { get; set; }
         public string department { get; set; }
