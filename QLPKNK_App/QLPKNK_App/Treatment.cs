@@ -1,5 +1,6 @@
 ﻿using buhbuhlmao.BUS;
 using QLPKNK_App;
+using QLPKNK_App.BUS;
 using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace buhbuhlmao
+namespace QLPKNK_App
 {
     public partial class Treatment : Form
     {
@@ -34,9 +35,20 @@ namespace buhbuhlmao
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            BenhNhanBUS bnBUS=new BenhNhanBUS();
+            IList<BenhNhanDTO> DSBN = bnBUS.layDSBenhNhan();
+            patientSearch.DisplayMember = "Name";
+            patientSearch.Items.AddRange(DSBN.ToArray());
+            patientSearch.KeyDown += new KeyEventHandler(keyDownEvt);
+            if(patientSearch.Items.Count>0)
+            {
+                patientSearch.SelectedIndex = 0;
+            }
         }
-        
+        private void keyDownEvt(object sender, EventArgs e)
+        {
+            patientSearch.DroppedDown = false;
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
@@ -52,7 +64,7 @@ namespace buhbuhlmao
 
         private void searchPatient_Click(object sender, EventArgs e)
         {
-            int pID = (int)patientIDSearch.Value;
+            int pID = ((BenhNhanDTO)patientSearch.SelectedItem).id;
             TreatmentTable.Rows.Clear();
             HienThiKHDT(pID);
         }

@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.searchPatient = new System.Windows.Forms.Button();
-            this.patientIDSearch = new System.Windows.Forms.NumericUpDown();
             this.PaymentTable = new System.Windows.Forms.DataGridView();
             this.TreatmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Times = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +40,7 @@
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Payer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.patientIDSearch)).BeginInit();
+            this.patientSearch = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PaymentTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +59,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(313, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Patient ID";
+            this.label2.Text = "Patient name";
             // 
             // searchPatient
             // 
@@ -73,18 +72,6 @@
             this.searchPatient.Text = "Search";
             this.searchPatient.UseVisualStyleBackColor = true;
             this.searchPatient.Click += new System.EventHandler(this.searchPatient_Click);
-            // 
-            // patientIDSearch
-            // 
-            this.patientIDSearch.Location = new System.Drawing.Point(316, 91);
-            this.patientIDSearch.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.patientIDSearch.Name = "patientIDSearch";
-            this.patientIDSearch.Size = new System.Drawing.Size(120, 20);
-            this.patientIDSearch.TabIndex = 8;
             // 
             // PaymentTable
             // 
@@ -151,19 +138,28 @@
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
             // 
+            // patientSearch
+            // 
+            this.patientSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.patientSearch.FormattingEnabled = true;
+            this.patientSearch.Location = new System.Drawing.Point(316, 91);
+            this.patientSearch.Name = "patientSearch";
+            this.patientSearch.Size = new System.Drawing.Size(121, 21);
+            this.patientSearch.TabIndex = 12;
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 627);
+            this.Controls.Add(this.patientSearch);
             this.Controls.Add(this.PaymentTable);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchPatient);
-            this.Controls.Add(this.patientIDSearch);
             this.Controls.Add(this.label1);
             this.Name = "Payment";
             this.Text = "Payment";
-            ((System.ComponentModel.ISupportInitialize)(this.patientIDSearch)).EndInit();
+            this.Load += new System.EventHandler(this.Payment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PaymentTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,7 +171,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button searchPatient;
-        private System.Windows.Forms.NumericUpDown patientIDSearch;
         private System.Windows.Forms.DataGridView PaymentTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn TreatmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Times;
@@ -185,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.ComboBox patientSearch;
     }
 }

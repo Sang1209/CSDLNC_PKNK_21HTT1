@@ -88,11 +88,10 @@ go
 create or alter proc pr_accept_schedule
 	@date date,
 	@shift_id smallint,
-	@dentist char(10),
-	@accept bit
+	@dentist char(10)
 as
 begin tran
-update schedule set accept = @accept where date = @date and shift_id = @shift_id and dentist = @dentist
+update schedule set accept = 1 where date = @date and shift_id = @shift_id and dentist = @dentist
 commit tran
 -------------------------------------------------------------------------
 go
@@ -162,7 +161,8 @@ create or alter proc pr_schedule_filter_by_date_reserve
 	@department smallint
 as
 BEGIN TRANSACTION;  
-select * from schedule where date = @date and department = @department
+select * from schedule 
+where date = @date and department = @department
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 -------------------------------------------------------

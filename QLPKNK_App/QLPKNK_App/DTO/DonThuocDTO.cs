@@ -12,13 +12,6 @@ namespace QLPKNK_App.DTO
         public String medicineName { get; set; }
         public int quantity { get; set; }
         public String note { get; set; }
-        public DonThuocDTO() { }
-        public DonThuocDTO(string medicineId, string medicineName, int quantity, string note)
-        {
-            this.medicineId = medicineId;
-            this.medicineName = medicineName;
-            this.quantity = quantity;
-            this.note = note;
-        }
+        public int state { get; set; }
     }
 }

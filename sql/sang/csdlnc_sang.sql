@@ -3,8 +3,8 @@ go
 create or alter proc xemThuocCuaKHDT @TreatmentID int
 as
 begin tran
-	select m.id,m.name,p.quantity,p.note
-	from  prescription p join medicine m on p.medicine=m.id
+	select m.id,m.name,p.quantity,p.note,t.state
+	from  prescription p join medicine m on p.medicine=m.id join treatment t on p.treatment=t.id
 	where p.treatment=@TreatmentID
 commit tran
 go
@@ -88,7 +88,7 @@ begin tran
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and accept=1
+	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE)
 commit tran
 go
 create or alter proc locLichHenTheoBN @PatientID int
@@ -98,7 +98,7 @@ begin tran
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.patient=@PatientID and accept=1
+	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.patient=@PatientID
 commit tran
 go
 --co nen search bang like k nhi :>
@@ -109,7 +109,7 @@ begin tran
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and Cast(s.dentist as varchar(10)) like '%'+@dentistUsername+'%' and accept=1
+	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and Cast(s.dentist as varchar(10)) like '%'+@dentistUsername+'%'
 commit tran
 go
 create or alter proc locLichHenTheoPhongKham @DepID int
@@ -119,7 +119,7 @@ begin tran
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.department=@DepID and accept=1
+	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.department=@DepID
 commit tran
 go
 --select * from quantity_medicine where department=23
@@ -132,10 +132,14 @@ go
 
 --exec xemKHDT 6638
 --exec XemHoaDonCuaKH 8461
-
+--select * from account_de
+--exec pr_add_schedule '2023-12-22',2,'DEN0000000','DEN0000003',5
+--select * from schedule where CAST(date AS DATE) = CAST(GETDATE() AS DATE)
+--select * from account_adst
+--select * from account_de
 --exec xemLichHenTrongNgay
 --exec locLichHenTheoBN 2276
---exec locLichHenTheoBS '487'
+--exec locLichHenTheoBS 'DEN0000000'
 --exec locLichHenTheoPhongKham 49
 --exec xemThuocCuaKHDT 938
  

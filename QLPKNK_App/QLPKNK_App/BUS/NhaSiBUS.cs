@@ -38,7 +38,6 @@ namespace QLPKNK_App.BUS
                                     gender=Convert.ToBoolean(Reader.GetOrdinal("gender")),
                                     depID=Convert.ToInt32(Reader.GetOrdinal("department")),
                                 });
-                                Console.WriteLine("dasd");
                             }
                         }
                     }

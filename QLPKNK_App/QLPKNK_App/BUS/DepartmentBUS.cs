@@ -8,26 +8,35 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using QLPKNK_App.utils;
 
 namespace QLPKNK_App.BUS
 {
     internal class DepartmentBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-        public DataTable LayDSDepartment()
+        public IList<DepartmentDTO> LayDSDepartment()
         {
-            DataTable dsDepartment = new DataTable();
+            List<DepartmentDTO> dsDepartment = new List<DepartmentDTO>();
+
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("pr_view_deparment_list", connection))
+                    using (SqlCommand command = new SqlCommand("pr_view_department_list", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        using (SqlDataReader Reader = command.ExecuteReader())
                         {
-                            adapter.Fill(dsDepartment);
+                            while (Reader.Read())
+                            {
+                                dsDepartment.Add( new DepartmentDTO()
+                                {
+                                    id = Convert.ToInt32(Reader["id"]),
+                                    address = Reader.IsDBNull(Reader.GetOrdinal("address")) ? "" : Reader["address"].ToString(),
+                                });
+                            }
                         }
                     }
                 }

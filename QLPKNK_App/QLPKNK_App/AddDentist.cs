@@ -47,11 +47,7 @@ namespace QLPKNK_App
         private void LoadComboBoxData()
         {
             DepartmentBUS departmentBUS = new DepartmentBUS();
-            DataTable dsDepartment = departmentBUS.LayDSDepartment();
-
-            DentistDepartment.DataSource = dsDepartment;
-            DentistDepartment.DisplayMember = "address";
-            DentistDepartment.ValueMember = "id";
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

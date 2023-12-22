@@ -51,5 +51,17 @@ namespace QLPKNK_App
         {
             assistantCB.DroppedDown=false;
         }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            LichHenBUS lichHenBUS = new LichHenBUS();
+            DateTime d = date.Value;
+            int s = Convert.ToInt32(ShiftID.Value);
+            string dentist = nhasi.username;
+            string assistant=((NhaSiDTO)assistantCB.SelectedItem).username;
+            int depId = nhasi.depID;
+            lichHenBUS.NhaSiTaoLichHen(d, s,dentist,assistant, depId);
+            Close();
+        }
     }
 }

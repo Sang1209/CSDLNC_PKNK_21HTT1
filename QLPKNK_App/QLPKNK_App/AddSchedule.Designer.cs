@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label title;
             this.date = new System.Windows.Forms.DateTimePicker();
             this.ShiftID = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,18 +42,19 @@
             this.fromTime = new System.Windows.Forms.TextBox();
             this.toTime = new System.Windows.Forms.TextBox();
             this.dentistName = new System.Windows.Forms.TextBox();
-            label7 = new System.Windows.Forms.Label();
+            title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ShiftID)).BeginInit();
             this.SuspendLayout();
             // 
-            // label7
+            // title
             // 
-            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.Location = new System.Drawing.Point(12, 34);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(440, 69);
-            label7.TabIndex = 13;
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title.Location = new System.Drawing.Point(12, 34);
+            title.Name = "title";
+            title.Size = new System.Drawing.Size(440, 69);
+            title.TabIndex = 13;
+            title.Text = "Add free schedule";
+            title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // date
             // 
@@ -156,6 +157,7 @@
             this.AddBtn.TabIndex = 12;
             this.AddBtn.Text = "Add schedule";
             this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // fromTime
             // 
@@ -180,7 +182,6 @@
             this.dentistName.ReadOnly = true;
             this.dentistName.Size = new System.Drawing.Size(200, 20);
             this.dentistName.TabIndex = 16;
-            this.dentistName.TextChanged += new System.EventHandler(this.dentistName_TextChanged);
             // 
             // AddSchedule
             // 
@@ -190,7 +191,7 @@
             this.Controls.Add(this.dentistName);
             this.Controls.Add(this.toTime);
             this.Controls.Add(this.fromTime);
-            this.Controls.Add(label7);
+            this.Controls.Add(title);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.assistantCB);
             this.Controls.Add(this.label6);

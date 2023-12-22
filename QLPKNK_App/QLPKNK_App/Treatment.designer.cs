@@ -1,4 +1,4 @@
-﻿namespace buhbuhlmao
+﻿namespace QLPKNK_App
 {
     partial class Treatment
     {
@@ -42,12 +42,11 @@
             this.ToothName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientIDSearch = new System.Windows.Forms.NumericUpDown();
             this.searchPatient = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.patientSearch = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TreatmentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientIDSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // TreatmentTable
@@ -162,18 +161,6 @@
             this.Total.ReadOnly = true;
             this.Total.Width = 80;
             // 
-            // patientIDSearch
-            // 
-            this.patientIDSearch.Location = new System.Drawing.Point(446, 93);
-            this.patientIDSearch.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.patientIDSearch.Name = "patientIDSearch";
-            this.patientIDSearch.Size = new System.Drawing.Size(120, 20);
-            this.patientIDSearch.TabIndex = 5;
-            // 
             // searchPatient
             // 
             this.searchPatient.Location = new System.Drawing.Point(593, 90);
@@ -189,9 +176,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(443, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Patient ID";
+            this.label1.Text = "Patient name";
             // 
             // label2
             // 
@@ -203,21 +190,29 @@
             this.label2.Text = "Treatment list";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // patientSearch
+            // 
+            this.patientSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.patientSearch.FormattingEnabled = true;
+            this.patientSearch.Location = new System.Drawing.Point(446, 93);
+            this.patientSearch.Name = "patientSearch";
+            this.patientSearch.Size = new System.Drawing.Size(121, 21);
+            this.patientSearch.TabIndex = 9;
+            // 
             // Treatment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 596);
+            this.Controls.Add(this.patientSearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchPatient);
-            this.Controls.Add(this.patientIDSearch);
             this.Controls.Add(this.TreatmentTable);
             this.Name = "Treatment";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TreatmentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientIDSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,7 +221,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView TreatmentTable;
-        private System.Windows.Forms.NumericUpDown patientIDSearch;
         private System.Windows.Forms.Button searchPatient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewButtonColumn ViewPrescription;
@@ -243,6 +237,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox patientSearch;
     }
 }
 

@@ -8,7 +8,7 @@ namespace QLPKNK_App.DTO
 {
     internal class DepartmentDTO
     {
-        public int id;
-        public string address;
+        public int id { get; set; }
+        public string address { get; set; } 
     }
 }
