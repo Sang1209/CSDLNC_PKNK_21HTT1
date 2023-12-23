@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLPKNK_App.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace QLPKNK_App
 {
-    public partial class AddMedicine : Form
+    public partial class ID : Form
     {
-        public AddMedicine()
+        public ID()
         {
             InitializeComponent();
         }
@@ -34,8 +35,22 @@ namespace QLPKNK_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string id = textBox1.Text;
+            string name = textBox2.Text;
+            float price = float.Parse(textBox3.Text); 
+                                                           
 
+            ThuocDTO thuoc = new ThuocDTO()
+            {
+                id = id,
+                name = name,
+                price = price,
+            };
+
+            ThuocBUS thuocBUS = new ThuocBUS();
+            thuocBUS.ThemThuoc(thuoc);
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
