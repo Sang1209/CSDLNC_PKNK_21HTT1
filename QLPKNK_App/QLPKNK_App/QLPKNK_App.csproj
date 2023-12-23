@@ -91,6 +91,7 @@
     <Compile Include="Department.Designer.cs">
       <DependentUpon>Department.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />
     <Compile Include="DTO\Admin_StaffDTO.cs" />
     <Compile Include="DTO\BenhNhanDTO.cs" />
@@ -107,6 +108,12 @@
     </Compile>
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientProfile.Designer.cs">
+      <DependentUpon>PatientProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -182,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Department.resx">
       <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientProfile.resx">
+      <DependentUpon>PatientProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

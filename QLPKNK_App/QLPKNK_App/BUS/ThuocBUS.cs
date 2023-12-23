@@ -34,6 +34,7 @@ namespace QLPKNK_App.BUS
                                 {
                                     id = Reader["id"].ToString(),
                                     name= Reader["name"].ToString(),
+                                    
                                 });
                             }
                         }
