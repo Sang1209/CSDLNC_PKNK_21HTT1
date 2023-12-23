@@ -56,11 +56,11 @@
     <Compile Include="AddEditPrescription.Designer.cs">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddShcedule.cs">
+    <Compile Include="AddSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddShcedule.Designer.cs">
-      <DependentUpon>AddShcedule.cs</DependentUpon>
+    <Compile Include="AddSchedule.Designer.cs">
+      <DependentUpon>AddSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
@@ -126,6 +126,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateScheduleForm.Designer.cs">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="utils\DateTimeMod.cs" />
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
@@ -133,8 +139,8 @@
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddShcedule.resx">
-      <DependentUpon>AddShcedule.cs</DependentUpon>
+    <EmbeddedResource Include="AddSchedule.resx">
+      <DependentUpon>AddSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -163,6 +169,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateScheduleForm.resx">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

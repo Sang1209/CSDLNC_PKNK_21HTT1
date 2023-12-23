@@ -41,7 +41,7 @@ namespace QLPKNK_App
             IList<DonThuocDTO> dsThuoc = dtBus.layDsThuocCuaKHDT(tId);
             foreach (DonThuocDTO dt in dsThuoc)
             {
-                PrescriptionTable.Rows.Add( dt.medicineId, dt.medicineName, dt.quantity, dt.note);
+                PrescriptionTable.Rows.Add( dt.medicineId, dt.medicineName, dt.quantity, dt.note,dt.state);
             }
 
         }
@@ -63,6 +63,12 @@ namespace QLPKNK_App
             string mName = PrescriptionTable.Rows[e.RowIndex].Cells["MedName"].Value.ToString();
             int quantity = Convert.ToInt32(PrescriptionTable.Rows[e.RowIndex].Cells["Quantity"].Value);
             string note = PrescriptionTable.Rows[e.RowIndex].Cells["Note"].Value.ToString();
+            int state= Convert.ToInt32(PrescriptionTable.Rows[e.RowIndex].Cells["State"].Value);
+            if(state!=0)
+            {
+                MessageBox.Show(this, "This prescription cannot be modified!");
+                return;
+            }
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
                

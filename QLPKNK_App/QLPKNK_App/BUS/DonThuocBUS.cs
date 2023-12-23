@@ -30,13 +30,14 @@ namespace QLPKNK_App.BUS
                         {
                             while (Reader.Read())
                             {
-                                dsThuoc.Add(new DonThuocDTO
-                                (
-                                    Reader["id"].ToString(),
-                                    Reader["name"].ToString(),
-                                    Convert.ToInt32(Reader["quantity"]),
-                                    Reader["note"].ToString()
-                                ));
+                                dsThuoc.Add(new DonThuocDTO()
+                                {
+                                    medicineId = Reader["id"].ToString(),
+                                    medicineName = Reader["name"].ToString(),
+                                    quantity = Convert.ToInt32(Reader["quantity"]),
+                                    note = Reader["note"].ToString(),
+                                    state = Convert.ToInt32(Reader["state"])
+                                }); ;
                             }
                         }
                     }

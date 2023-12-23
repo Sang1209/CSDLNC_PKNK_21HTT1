@@ -34,8 +34,8 @@ namespace QLPKNK_App.BUS
                                 {
                                     treatment = Convert.ToInt32(Reader["treatment"]),
                                     times= Convert.ToInt32(Reader["num"]),
-                                    total= Convert.ToDouble(Reader["total"]),
-                                    given=Convert.ToDouble(Reader["given"]),
+                                    total= Convert.ToDouble(Reader["change"]),
+                                    given=Convert.ToDouble(Reader["need"]),
                                     method= Reader["method"].ToString(),
                                     date = DateTime.Parse(Reader["date"].ToString()),
                                     payer= Reader["payer"].ToString(),

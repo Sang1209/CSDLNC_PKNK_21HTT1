@@ -12,8 +12,11 @@ namespace buhbuhlmao.BUS
         public int id { get; set; }
         public string department { get; set; }
         public string dentist { get; set; }
+        public string den_name { get; set; }
         public int patient { get; set; }
+        public string pat_name { get; set; }
         public string assistant { get; set; }
+        public string ass_name { get; set; }
         public string description { get; set; }
         public DateTime date { get; set; }
         public string note { get; set; }

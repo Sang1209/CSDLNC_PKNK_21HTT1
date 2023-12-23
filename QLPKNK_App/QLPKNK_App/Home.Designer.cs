@@ -45,11 +45,12 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // treatmentBtn
             // 
-            this.treatmentBtn.Location = new System.Drawing.Point(83, 57);
+            this.treatmentBtn.Location = new System.Drawing.Point(83, 79);
             this.treatmentBtn.Name = "treatmentBtn";
             this.treatmentBtn.Size = new System.Drawing.Size(75, 23);
             this.treatmentBtn.TabIndex = 0;
@@ -59,7 +60,7 @@
             // 
             // Payment
             // 
-            this.Payment.Location = new System.Drawing.Point(238, 57);
+            this.Payment.Location = new System.Drawing.Point(238, 79);
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(75, 23);
             this.Payment.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             // ScheduleBtn
             // 
-            this.ScheduleBtn.Location = new System.Drawing.Point(395, 57);
+            this.ScheduleBtn.Location = new System.Drawing.Point(395, 79);
             this.ScheduleBtn.Name = "ScheduleBtn";
             this.ScheduleBtn.Size = new System.Drawing.Size(75, 23);
             this.ScheduleBtn.TabIndex = 2;
@@ -79,7 +80,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(543, 57);
+            this.button4.Location = new System.Drawing.Point(543, 79);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
@@ -203,11 +204,22 @@
             this.button14.Text = "button14";
             this.button14.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(216, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(295, 47);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Home page";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -250,5 +262,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label1;
     }
 }

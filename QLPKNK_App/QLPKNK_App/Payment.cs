@@ -21,7 +21,7 @@ namespace QLPKNK_App
 
         private void searchPatient_Click(object sender, EventArgs e)
         {
-            int pID = (int)patientIDSearch.Value;
+            int pID = ((BenhNhanDTO)patientSearch.SelectedItem).id;
             PaymentTable.Rows.Clear();
             HienThiHoaDonKH(pID);
         }
@@ -34,6 +34,23 @@ namespace QLPKNK_App
                 PaymentTable.Rows.Add(d.treatment,d.times,d.total,d.given,d.method,d.date.ToShortDateString(), d.payer, d.note);
             }
 
+        }
+
+        private void Payment_Load(object sender, EventArgs e)
+        {
+            BenhNhanBUS bnBUS = new BenhNhanBUS();
+            IList<BenhNhanDTO> DSBN = bnBUS.layDSBenhNhan();
+            patientSearch.DisplayMember = "Name";
+            patientSearch.Items.AddRange(DSBN.ToArray());
+            patientSearch.KeyDown += new KeyEventHandler(keyDownEvt);
+            if (patientSearch.Items.Count > 0)
+            {
+                patientSearch.SelectedIndex = 0;
+            }
+        }
+        private void keyDownEvt(object sender, EventArgs e)
+        {
+            patientSearch.DroppedDown = false;
         }
     }
 }

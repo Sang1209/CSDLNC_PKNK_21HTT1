@@ -32,11 +32,15 @@ namespace QLPKNK_App
             if(r == 0)
             {
                 Admin_StaffDTO ad= login.checkLoginAdmin(u, p);
-                if(ad != null)
+                if (ad != null)
                 {
-                    Home h=new Home();
+                    Home h = new Home(ad);
                     h.ShowDialog();
-                    Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(this, "Wrong username or password!");
                 }
             }
             else if (r == 1)
@@ -44,9 +48,13 @@ namespace QLPKNK_App
                 Admin_StaffDTO st= login.checkLoginStaff(u, p);
                 if (st != null)
                 {
-                    Home h = new Home();
+                    Home h = new Home(st);
                     h.ShowDialog();
-                    Close();
+                    this.Close();
+                }
+                else
+                {
+                        MessageBox.Show(this, "Wrong username or password!");
                 }
             }
             else if(r==2)
@@ -54,9 +62,13 @@ namespace QLPKNK_App
                 NhaSiDTO ns = login.checkLoginDentist(u, p);
                 if (ns != null)
                 {
-                    Home h = new Home();
+                    Home h = new Home(ns);
                     h.ShowDialog();
-                    Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(this, "Wrong username or password!");
                 }
             }
         }

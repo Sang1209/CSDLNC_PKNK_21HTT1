@@ -35,6 +35,7 @@
             this.MedName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateMedicine = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteMedicine = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PrescriptionTable)).BeginInit();
@@ -48,11 +49,12 @@
             this.MedName,
             this.Quantity,
             this.Note,
+            this.State,
             this.UpdateMedicine,
             this.DeleteMedicine});
             this.PrescriptionTable.Location = new System.Drawing.Point(28, 163);
             this.PrescriptionTable.Name = "PrescriptionTable";
-            this.PrescriptionTable.Size = new System.Drawing.Size(666, 435);
+            this.PrescriptionTable.Size = new System.Drawing.Size(762, 435);
             this.PrescriptionTable.TabIndex = 1;
             this.PrescriptionTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PrescriptionTable_CellContentClick);
             // 
@@ -100,6 +102,12 @@
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
             // 
+            // State
+            // 
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            // 
             // UpdateMedicine
             // 
             this.UpdateMedicine.HeaderText = "Update Medicine";
@@ -122,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 625);
+            this.ClientSize = new System.Drawing.Size(815, 625);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addMedicine);
             this.Controls.Add(this.PrescriptionTable);
@@ -143,6 +151,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MedName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewButtonColumn UpdateMedicine;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteMedicine;
     }

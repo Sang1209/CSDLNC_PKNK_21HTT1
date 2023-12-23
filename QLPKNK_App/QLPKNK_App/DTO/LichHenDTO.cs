@@ -13,10 +13,14 @@ namespace QLPKNK_App.DTO
         public TimeSpan start { get; set; }
         public TimeSpan finish { get; set; }
         public string dentist { get; set; }
+        public string den_name { get; set; }
         public int patient { get; set; }
+        public string pat_name { get; set; }
         public string assistant { get; set; }
+        public string ass_name { get; set; }
         public int type { get; set; }
         public int depId { get; set; }
         public string DepAddress { get; set; }
+        public bool accept { get; set; }
     }
 }
