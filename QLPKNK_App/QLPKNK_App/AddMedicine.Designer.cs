@@ -1,6 +1,6 @@
 ﻿namespace QLPKNK_App
 {
-    partial class AddMedicine
+    partial class ID
     {
         /// <summary>
         /// Required designer variable.
@@ -101,7 +101,7 @@
             this.label3.Text = "Price";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // AddMedicine
+            // ID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,8 +113,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "AddMedicine";
-            this.Text = "AddMedicine";
+            this.Name = "ID";
+            this.Text = "ID";
             this.ResumeLayout(false);
             this.PerformLayout();
 
