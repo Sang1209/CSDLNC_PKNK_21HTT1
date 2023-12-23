@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
+    <Compile Include="BUS\HoSoBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
     <Compile Include="BUS\DonThuocBUS.cs" />
     <Compile Include="BUS\HoaDonBUS.cs" />
@@ -106,6 +107,12 @@
     </Compile>
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdatePatient.Designer.cs">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
     </Compile>
     <Compile Include="PatientProfile.cs">
       <SubType>Form</SubType>
@@ -206,6 +213,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdatePatient.resx">
+      <DependentUpon>UpdatePatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
