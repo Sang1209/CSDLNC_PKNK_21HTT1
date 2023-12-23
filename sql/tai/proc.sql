@@ -240,10 +240,3 @@ begin
 	set overall_condition = @condition
 	where id = @id
 end
---Xem thông tin department
-go
-create or alter proc pr_view_department_list
-as
-begin
-	select id, [address] from department;
-end

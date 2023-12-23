@@ -47,9 +47,10 @@ namespace QLPKNK_App
         private void LoadComboBoxData()
         {
             DepartmentBUS departmentBUS = new DepartmentBUS();
-            DataTable dsDepartment = departmentBUS.LayDSDepartment();
+            List<DepartmentDTO> dsDepartment = departmentBUS.layDSDepartment();
 
             DentistDepartment.DataSource = dsDepartment;
+            DentistDepartment.DisplayMember = "address";
             DentistDepartment.DisplayMember = "address";
             DentistDepartment.ValueMember = "id";
         }
@@ -92,10 +93,11 @@ namespace QLPKNK_App
             else gender = false;
             int department = (int)DentistDepartment.SelectedValue;
             string phone = DentistUsername.Text;
-            string address = DentistUsername.Text;
             string email = DentistUsername.Text;
+            string address = DentistUsername.Text;
 
-
+            NhaSiBUS nhaSiBUS = new NhaSiBUS();
+            nhaSiBUS.themNhaSi(username, password, name, gender, department, phone, email, address);
         }
     }
 }

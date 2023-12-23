@@ -14,20 +14,26 @@ namespace QLPKNK_App.BUS
     internal class DepartmentBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
-        public DataTable LayDSDepartment()
+        public List<DepartmentDTO> layDSDepartment()
         {
-            DataTable dsDepartment = new DataTable();
+            List<DepartmentDTO> dsDepartment = new List<DepartmentDTO>();
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("pr_view_deparment_list", connection))
+                    using (SqlCommand command = new SqlCommand(@"Select * from department", connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        using (SqlDataReader Reader = command.ExecuteReader())
                         {
-                            adapter.Fill(dsDepartment);
+                            while (Reader.Read())
+                            {
+                                dsDepartment.Add(new DepartmentDTO()
+                                {
+                                    id = Reader.GetInt32(0),
+                                    address = Reader.GetString(1),
+                                });
+                            }
                         }
                     }
                 }
