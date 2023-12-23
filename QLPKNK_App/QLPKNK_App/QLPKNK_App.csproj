@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditDepartment.Designer.cs">
+      <DependentUpon>AddEditDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
+    <Compile Include="Department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department.Designer.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+    </Compile>
     <Compile Include="DTO\DepartmentDTO.cs" />
     <Compile Include="DTO\Admin_StaffDTO.cs" />
     <Compile Include="DTO\BenhNhanDTO.cs" />
@@ -142,11 +154,17 @@
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddEditDepartment.resx">
+      <DependentUpon>AddEditDepartment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSchedule.resx">
       <DependentUpon>AddSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department.resx">
+      <DependentUpon>Department.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

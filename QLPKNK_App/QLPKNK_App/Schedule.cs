@@ -192,6 +192,7 @@ namespace QLPKNK_App
                     MessageBox.Show(this, "Cannot delete a schedule that already been reserved!");
                 }
                 lichHenBUS.xoaLichHen(date, shiftID, dentist);
+                loadData();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
