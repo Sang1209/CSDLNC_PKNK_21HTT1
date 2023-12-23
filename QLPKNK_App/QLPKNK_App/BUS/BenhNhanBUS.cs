@@ -65,16 +65,38 @@ namespace QLPKNK_App.BUS
                         {
                             while (Reader.Read())
                             {
-                                dsHoSo.Add(new HoSoDTO()
+                                HoSoDTO hoSo = new HoSoDTO();
+
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("id")))
                                 {
-                                    id = Reader.GetInt32(Reader.GetOrdinal("id")),
-                                    name = Reader.GetString(Reader.GetOrdinal("name")),
-                                    birth = Reader.GetDateTime(Reader.GetOrdinal("birth")),
-                                    phone = Reader.GetString(Reader.GetOrdinal("phone")),
-                                    email = Reader.GetString(Reader.GetOrdinal("email")),
-                                    address = Reader.GetString(Reader.GetOrdinal("address")),
-                                    gender = Reader.GetBoolean(Reader.GetOrdinal("gender")),
-                                });
+                                    hoSo.id = Reader.GetInt32(Reader.GetOrdinal("id"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("name")))
+                                {
+                                    hoSo.name = Reader.GetString(Reader.GetOrdinal("name"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("birth")))
+                                {
+                                    hoSo.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("phone")))
+                                {
+                                    hoSo.phone = Reader.GetString(Reader.GetOrdinal("phone"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("email")))
+                                {
+                                    hoSo.email = Reader.GetString(Reader.GetOrdinal("email"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("address")))
+                                {
+                                    hoSo.address = Reader.GetString(Reader.GetOrdinal("address"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("gender")))
+                                {
+                                    hoSo.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
+                                }
+
+                                dsHoSo.Add(hoSo);
                             }
                         }
                     }
