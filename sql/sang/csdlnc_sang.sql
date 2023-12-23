@@ -94,7 +94,7 @@ go
 create or alter proc locLichHenTheoBN @PatientID int
 as
 begin tran
-	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
@@ -105,7 +105,7 @@ go
 create or alter proc locLichHenTheoBS @dentistUsername varchar(10)
 as
 begin tran
-	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
@@ -115,7 +115,7 @@ go
 create or alter proc locLichHenTheoPhongKham @DepID int
 as
 begin tran
-	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.patient,s.assistant,s.type,d.id,d.address as DepAddress,s.accept
+	select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id

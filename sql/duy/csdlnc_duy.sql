@@ -132,7 +132,11 @@ create or alter proc pr_show_re_exam_schedule
 	@last_treatment int
 as
 begin tran
-select * from schedule where type = @last_treatment
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where type = @last_treatment
 commit tran
 -----------------------------------------------------------------------------
 go
@@ -140,7 +144,11 @@ create or alter proc pr_schedule_filter_by_dentist_reserve
 	@dentist varchar(10)
 as
 BEGIN TRANSACTION;  
-select * from schedule where datediff(d,date,getdate())<0 and dentist = @dentist 
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where datediff(d,date,getdate())<0 and dentist = @dentist 
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 --------------------------------------------------------------------------
@@ -150,7 +158,11 @@ create or alter proc pr_schedule_filter_by_dentist_archive
 	@patient int
 as
 BEGIN TRANSACTION;  
-select * from schedule where dentist = @dentist and @patient = @patient
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where dentist = @dentist and @patient = @patient
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 ----------------------------------------------------------------------------
@@ -160,7 +172,10 @@ create or alter proc pr_schedule_filter_by_date_reserve
 	@department smallint
 as
 BEGIN TRANSACTION;  
-select * from schedule 
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
 where date = @date and department = @department
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
@@ -171,7 +186,11 @@ create or alter proc pr_schedule_filter_by_date_archive
 	@patient int
 as
 BEGIN TRANSACTION;  
-select * from schedule where date = @date and patient = @patient
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where date = @date and patient = @patient
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 -------------------------------------------------------
@@ -181,7 +200,11 @@ create or alter proc pr_schedule_filter_by_both_reserve
 	@date date
 as
 BEGIN TRANSACTION;  
-select * from schedule where dentist = @dentist and date = @date
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where dentist = @dentist and date = @date
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 -------------------------------------------------------
@@ -192,7 +215,11 @@ create or alter proc pr_schedule_filter_by_both_archive
 	@patient int
 as
 BEGIN TRANSACTION; 
-select * from schedule where date = @date and dentist = @dentist and patient = @patient
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where date = @date and dentist = @dentist and patient = @patient
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 ----------------------------------------------------
@@ -214,7 +241,11 @@ create or alter proc pr_get_schedule
 as
 BEGIN TRANSACTION;  
 SET STATISTICS IO, TIME ON
-select * from schedule where datediff(d,date,getdate())<=0 and department = @department
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+	 where datediff(d,date,getdate())<=0 and department = @department
 order by date asc, shift_id asc
 SET STATISTICS IO, TIME off
 COMMIT TRANSACTION; 
