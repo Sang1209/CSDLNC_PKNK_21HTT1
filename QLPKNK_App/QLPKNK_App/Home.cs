@@ -39,6 +39,7 @@ namespace QLPKNK_App
             InitializeComponent();
             this.ns= ns;
             Text = "Dentist home page";
+            button4.Hide();
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)
