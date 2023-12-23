@@ -34,6 +34,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.depBtn = new System.Windows.Forms.Button();
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treatmentBtn
@@ -95,11 +96,22 @@
             this.depBtn.UseVisualStyleBackColor = true;
             this.depBtn.Click += new System.EventHandler(this.depBtn_Click);
             // 
+            // logoutBtn
+            // 
+            this.logoutBtn.Location = new System.Drawing.Point(83, 27);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(75, 23);
+            this.logoutBtn.TabIndex = 19;
+            this.logoutBtn.Text = "Logout";
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.depBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
@@ -120,5 +132,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button depBtn;
+        private System.Windows.Forms.Button logoutBtn;
     }
 }

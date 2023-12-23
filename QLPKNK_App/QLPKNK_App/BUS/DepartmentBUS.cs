@@ -44,6 +44,7 @@ namespace QLPKNK_App.BUS
                 catch (Exception ex)
                 {
                     // Xử lý các ngoại lệ nếu có
+                    MessageBox.Show("Error");
                     Console.WriteLine(ex.Message);
                 }
                 finally
@@ -121,6 +122,7 @@ namespace QLPKNK_App.BUS
                 catch (Exception ex)
                 {
                     // Xử lý các ngoại lệ nếu có
+                    MessageBox.Show("Error");
                     Console.WriteLine(ex.Message);
                 }
                 finally
