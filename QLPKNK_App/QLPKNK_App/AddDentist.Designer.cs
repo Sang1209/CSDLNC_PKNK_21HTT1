@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.DentistDepartment = new System.Windows.Forms.ComboBox();
             this.DentistName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,30 +44,23 @@
             this.label6 = new System.Windows.Forms.Label();
             this.DentistPassword = new System.Windows.Forms.TextBox();
             this.Submit = new System.Windows.Forms.Button();
+            this.DentistDepartment = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.DentistDepartment)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 226);
+            this.label1.Location = new System.Drawing.Point(82, 224);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Department";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // DentistDepartment
-            // 
-            this.DentistDepartment.FormattingEnabled = true;
-            this.DentistDepartment.Location = new System.Drawing.Point(188, 223);
-            this.DentistDepartment.Name = "DentistDepartment";
-            this.DentistDepartment.Size = new System.Drawing.Size(263, 24);
-            this.DentistDepartment.TabIndex = 1;
-            this.DentistDepartment.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // DentistName
             // 
-            this.DentistName.Location = new System.Drawing.Point(188, 121);
+            this.DentistName.Location = new System.Drawing.Point(188, 119);
             this.DentistName.Name = "DentistName";
             this.DentistName.Size = new System.Drawing.Size(254, 22);
             this.DentistName.TabIndex = 20;
@@ -76,7 +68,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 124);
+            this.label4.Location = new System.Drawing.Point(82, 122);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 18;
@@ -85,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(82, 68);
+            this.label3.Location = new System.Drawing.Point(82, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 17;
@@ -94,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 15);
+            this.label2.Location = new System.Drawing.Point(82, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 16;
@@ -102,7 +94,7 @@
             // 
             // DentistUsername
             // 
-            this.DentistUsername.Location = new System.Drawing.Point(188, 12);
+            this.DentistUsername.Location = new System.Drawing.Point(188, 10);
             this.DentistUsername.Name = "DentistUsername";
             this.DentistUsername.Size = new System.Drawing.Size(254, 22);
             this.DentistUsername.TabIndex = 15;
@@ -114,7 +106,7 @@
             this.DentistGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.DentistGender.Location = new System.Drawing.Point(188, 172);
+            this.DentistGender.Location = new System.Drawing.Point(188, 170);
             this.DentistGender.Name = "DentistGender";
             this.DentistGender.Size = new System.Drawing.Size(121, 24);
             this.DentistGender.TabIndex = 23;
@@ -122,7 +114,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(82, 175);
+            this.label5.Location = new System.Drawing.Point(82, 173);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 16);
             this.label5.TabIndex = 22;
@@ -130,7 +122,7 @@
             // 
             // DentistEmail
             // 
-            this.DentistEmail.Location = new System.Drawing.Point(190, 381);
+            this.DentistEmail.Location = new System.Drawing.Point(190, 379);
             this.DentistEmail.Name = "DentistEmail";
             this.DentistEmail.Size = new System.Drawing.Size(254, 22);
             this.DentistEmail.TabIndex = 29;
@@ -138,7 +130,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(85, 384);
+            this.label8.Location = new System.Drawing.Point(85, 382);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 16);
             this.label8.TabIndex = 28;
@@ -146,14 +138,14 @@
             // 
             // DentistAddress
             // 
-            this.DentistAddress.Location = new System.Drawing.Point(190, 330);
+            this.DentistAddress.Location = new System.Drawing.Point(190, 328);
             this.DentistAddress.Name = "DentistAddress";
             this.DentistAddress.Size = new System.Drawing.Size(254, 22);
             this.DentistAddress.TabIndex = 27;
             // 
             // DentistPhone
             // 
-            this.DentistPhone.Location = new System.Drawing.Point(190, 276);
+            this.DentistPhone.Location = new System.Drawing.Point(190, 274);
             this.DentistPhone.Name = "DentistPhone";
             this.DentistPhone.Size = new System.Drawing.Size(156, 22);
             this.DentistPhone.TabIndex = 26;
@@ -161,7 +153,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(85, 333);
+            this.label7.Location = new System.Drawing.Point(85, 331);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 16);
             this.label7.TabIndex = 25;
@@ -170,7 +162,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(85, 279);
+            this.label6.Location = new System.Drawing.Point(85, 277);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 16);
             this.label6.TabIndex = 24;
@@ -178,7 +170,7 @@
             // 
             // DentistPassword
             // 
-            this.DentistPassword.Location = new System.Drawing.Point(188, 64);
+            this.DentistPassword.Location = new System.Drawing.Point(188, 62);
             this.DentistPassword.Name = "DentistPassword";
             this.DentistPassword.Size = new System.Drawing.Size(254, 22);
             this.DentistPassword.TabIndex = 30;
@@ -186,7 +178,7 @@
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(188, 415);
+            this.Submit.Location = new System.Drawing.Point(188, 413);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(75, 23);
             this.Submit.TabIndex = 31;
@@ -194,11 +186,29 @@
             this.Submit.UseVisualStyleBackColor = true;
             this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
+            // DentistDepartment
+            // 
+            this.DentistDepartment.Location = new System.Drawing.Point(190, 222);
+            this.DentistDepartment.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DentistDepartment.Name = "DentistDepartment";
+            this.DentistDepartment.Size = new System.Drawing.Size(120, 22);
+            this.DentistDepartment.TabIndex = 32;
+            this.DentistDepartment.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // AddDentist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DentistDepartment);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.DentistPassword);
             this.Controls.Add(this.DentistEmail);
@@ -214,11 +224,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DentistUsername);
-            this.Controls.Add(this.DentistDepartment);
             this.Controls.Add(this.label1);
             this.Name = "AddDentist";
             this.Text = "Add Dentist Account";
             this.Load += new System.EventHandler(this.AddDentist_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DentistDepartment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,7 +237,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox DentistDepartment;
         private System.Windows.Forms.TextBox DentistName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -243,5 +252,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox DentistPassword;
         private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.NumericUpDown DentistDepartment;
     }
 }

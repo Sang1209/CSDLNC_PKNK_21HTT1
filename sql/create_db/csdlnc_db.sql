@@ -116,10 +116,11 @@ declare @tmp int
 set @tmp = (select type from inserted)
 if @tmp is not Null
 begin
-if datediff(d,(select date from inserted),(select date from treatment where id = @tmp)) >= 0
+if datediff(d,(select date from inserted),(select date from treatment where id = @tmp)) < 0
 begin
 update schedule
 set department = (select department from account_de where username = (select dentist from inserted))
+where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 else
 begin
@@ -131,37 +132,26 @@ end
 end
 go
 
-
-go
-create or alter trigger schedule_department on schedule for insert
-as
-begin
-update schedule
-set department = (select department from account_de where username = (select dentist from inserted))
-where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
-end
-go
-
 go
 create or alter trigger schedule_name on schedule for insert, update
 as
 begin
 if (select assistant from inserted) is not null
 begin
-update schedule
-	set ass_name = (select name from account_de where username = (select assistant from inserted))
+	update schedule
+	set ass_name = (select top 1 name from account_de where username = (select assistant from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 if (select dentist from inserted) is not null
 begin
 	update schedule
-	set den_name = (select name from account_de where username = (select dentist from inserted))
+	set den_name = (select top 1 name from account_de where username = (select dentist from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 if (select patient from inserted) is not null
 begin
 	update schedule
-	set pat_name = (select name from patient_profile where id = (select patient from inserted))
+	set pat_name = (select top 1 name from patient_profile where id = (select patient from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 end
@@ -227,28 +217,29 @@ set department = (select department from account_de where username = (select den
 end
 go
 
+
 go
-create or alter trigger treatment_name on treatment for insert, update
+create or alter trigger treatment_name on treatment for insert
 as
 begin
-if (select assistant from inserted) is not null
-begin
-update treatment
-	set ass_name = (select name from account_de where username = (select assistant from inserted))
-	where id = (select id from inserted)
-end
-if (select dentist from inserted) is not null
-begin
+--if ((select assistant from inserted) is not null)
+--begin
 	update treatment
-	set den_name = (select name from account_de where username = (select dentist from inserted))
+	set ass_name = 'o'
 	where id = (select id from inserted)
-end
-if (select patient from inserted) is not null
-begin
-	update treatment
-	set pat_name = (select name from patient_profile where id = (select patient from inserted))
-	where id = (select id from inserted)
-end
+--end
+--if ((select dentist from inserted) is not null)
+--begin
+--	update treatment
+--	set den_name = (select top 1 name from account_de where username = (select dentist from inserted))
+--	where id = (select id from inserted)
+--end
+--if ((select patient from inserted) is not null)
+--begin
+--	update treatment
+--	set pat_name = (select top 1 name from patient_profile where id = (select patient from inserted))
+--	where id = (select id from inserted)
+--end
 end
 go
 

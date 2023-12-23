@@ -132,5 +132,10 @@ namespace QLPKNK_App
         {
 
         }
+
+        private void Title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

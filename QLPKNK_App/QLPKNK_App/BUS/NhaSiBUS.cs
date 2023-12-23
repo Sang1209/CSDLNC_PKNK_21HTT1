@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,35 @@ namespace QLPKNK_App.BUS
                 }
             }
             return dsNhaSi;
+        }
+
+        public void themNhaSi(string username, string password, string name, bool gender, int department, string phone, string email, string address)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("add_account_de", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@gender", gender);
+                        command.Parameters.AddWithValue("@department", department);
+                        command.Parameters.AddWithValue("@phone", phone);
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@address", address);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ nếu có
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }
