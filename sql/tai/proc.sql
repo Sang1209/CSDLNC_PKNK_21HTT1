@@ -240,3 +240,36 @@ begin
 	set overall_condition = @condition
 	where id = @id
 end
+
+go
+create or alter proc layDSDiUng
+as
+begin tran
+select c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
+commit tran
+go
+create or alter proc layDSDiUngTheoBN @pID int
+as
+begin tran
+select c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
+where c.patient=@pID
+commit tran
+go
+create or alter proc themDiUng @pID int,@mID int
+as
+begin tran
+	insert into contraindicated values (@pID,@mID)
+commit tran
+go
+create or alter proc xoaDiUng @pID int,@mID int
+as
+begin tran
+delete from contraindicated where patient=@pID and medicine=@mID
+commit tran
+go
+create or alter proc capNhatDiUng @pID int,@mID_old int,@mID_new int
+as
+begin tran
+update contraindicated set medicine=@mID_new where patient=@pID and medicine=@mID_old
+commit tran
+go

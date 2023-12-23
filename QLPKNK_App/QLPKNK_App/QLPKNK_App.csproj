@@ -77,6 +77,7 @@
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
+    <Compile Include="BUS\DiUngBUS.cs" />
     <Compile Include="BUS\DonThuocBUS.cs" />
     <Compile Include="BUS\HoaDonBUS.cs" />
     <Compile Include="BUS\KHDieuTriBUS.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="DTO\Admin_StaffDTO.cs" />
     <Compile Include="DTO\BenhNhanDTO.cs" />
     <Compile Include="DTO\CaDTO.cs" />
+    <Compile Include="DTO\DiUngDTO.cs" />
     <Compile Include="DTO\DonThuocDTO.cs" />
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
@@ -151,6 +153,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateContradicated.Designer.cs">
+      <DependentUpon>UpdateContradicated.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +166,12 @@
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="utils\DateTimeMod.cs" />
+    <Compile Include="ViewContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewContradicated.Designer.cs">
+      <DependentUpon>ViewContradicated.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,8 +220,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateContradicated.resx">
+      <DependentUpon>UpdateContradicated.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewContradicated.resx">
+      <DependentUpon>ViewContradicated.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

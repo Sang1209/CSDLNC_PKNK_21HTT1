@@ -51,7 +51,7 @@ ALTER DATABASE csc12002_21clc10_n10a
 ADD FILE   
 (  
     NAME = schedule_date1,  
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date1.ndf',  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date1a.ndf',  
     SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
@@ -60,7 +60,7 @@ ALTER DATABASE csc12002_21clc10_n10a
 ADD FILE   
 (  
     NAME = schedule_date2,  
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date2.ndf',  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date2a.ndf',  
     SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
@@ -69,7 +69,7 @@ ALTER DATABASE csc12002_21clc10_n10a
 ADD FILE   
 (  
     NAME = schedule_date3,  
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date3.ndf',  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date3a.ndf',  
     SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
@@ -78,7 +78,7 @@ ALTER DATABASE csc12002_21clc10_n10a
 ADD FILE   
 (  
     NAME = schedule_date4,  
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date4.ndf',  
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\schedule_date4a.ndf',  
     SIZE = 50MB,  
     FILEGROWTH = 5MB  
 )  
@@ -143,7 +143,7 @@ end
 go
 
 go
-create or alter trigger schedule_name on schedule for insert, update
+create or alter trigger schedule_name on schedule for insert
 as
 begin
 if (select assistant from inserted) is not null
@@ -167,7 +167,7 @@ end
 end
 go
 
-
+	
 ----------------------------------------------------------------------------------------
 
 
@@ -228,7 +228,7 @@ end
 go
 
 go
-create or alter trigger treatment_name on treatment for insert, update
+create or alter trigger treatment_name on treatment for insert
 as
 begin
 if (select assistant from inserted) is not null
