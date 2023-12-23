@@ -1,5 +1,5 @@
 ﻿use [csc12002_21clc10_n10]
-
+select * from account_de where username = 'tai'
 -- Thêm tài khoản nhân viên, quản trị viên
 go
 create or alter proc add_account_adst

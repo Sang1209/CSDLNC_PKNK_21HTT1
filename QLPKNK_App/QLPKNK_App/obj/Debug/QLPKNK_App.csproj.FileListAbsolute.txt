@@ -41,3 +41,6 @@ C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_
 C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.AddSchedule.resources
 C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.Treatment.resources
 C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.UpdateScheduleForm.resources
+C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.AddAdmin_Staff.resources
+C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.ViewAccount.resources
+C:\Users\ACER\Desktop\CSDLNC_PKNK_21HTT1\QLPKNK_App\QLPKNK_App\obj\Debug\QLPKNK_App.ViewPatientProfile.resources

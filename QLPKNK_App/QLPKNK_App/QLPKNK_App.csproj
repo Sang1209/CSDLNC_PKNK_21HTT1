@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
+    <Compile Include="BUS\Admin_StaffBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
     <Compile Include="BUS\DonThuocBUS.cs" />
     <Compile Include="BUS\HoaDonBUS.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
+    <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />
     <Compile Include="DTO\Admin_StaffDTO.cs" />
     <Compile Include="DTO\BenhNhanDTO.cs" />
@@ -88,11 +90,23 @@
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="AddAdmin_Staff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AddAdmin_Staff.Designer.cs">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPatientProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPatientProfile.Designer.cs">
+      <DependentUpon>ViewPatientProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAccount.Designer.cs">
+      <DependentUpon>ViewAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -139,6 +153,9 @@
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="utils\DateTimeMod.cs" />
+    <EmbeddedResource Include="AddAdmin_Staff.resx">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,9 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddSchedule.resx">
       <DependentUpon>AddSchedule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -180,6 +194,12 @@
     </Compile>
     <EmbeddedResource Include="UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAccount.resx">
+      <DependentUpon>ViewAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPatientProfile.resx">
+      <DependentUpon>ViewPatientProfile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
