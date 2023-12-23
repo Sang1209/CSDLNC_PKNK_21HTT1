@@ -307,11 +307,11 @@ select * from schedule where datediff(d,date,getdate())<=0
 --exec locLichHenTrongNgay_pat_dep
 --exec locLichHenTrongNgay_pat_dep_den
 
-exec xemLichHenTheoNgay '2023-12-23'
-exec locLichHenTheoNgay_den 'DEN0000825','2023-12-23'
-exec locLichHenTheoNgay_dep
-exec locLichHenTheoNgay_dep_den
-exec locLichHenTheoNgay_pat
-exec locLichHenTheoNgay_pat_den
-exec locLichHenTheoNgay_pat_dep
-exec locLichHenTheoNgay_pat_dep_den
+--exec xemLichHenTheoNgay '2023-12-23'
+--exec locLichHenTheoNgay_den 'DEN0000825','2023-12-23'
+--exec locLichHenTheoNgay_dep
+--exec locLichHenTheoNgay_dep_den
+--exec locLichHenTheoNgay_pat
+--exec locLichHenTheoNgay_pat_den
+--exec locLichHenTheoNgay_pat_dep
+--exec locLichHenTheoNgay_pat_dep_den
