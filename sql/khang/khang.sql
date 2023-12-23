@@ -1,26 +1,37 @@
-﻿CREATE OR ALTER PROCEDURE AddClinic
-    @id smallint,
-    @address varchar(50)
+﻿use csc12002_21clc10_n10
+GO
+CREATE OR ALTER PROCEDURE AddMedicine
+    @id varchar(5),
+    @name varchar(20),
+    @price float
 AS
 BEGIN
-    INSERT INTO department (id, address) VALUES (@id, @address)
+    INSERT INTO medicine (id, name, price) VALUES (@id, @name, @price)
 END
 GO
 
-CREATE OR ALTER PROCEDURE DeleteClinic
-    @id smallint
+CREATE OR ALTER PROCEDURE DeleteMedicine
+    @id varchar(5)
 AS
 BEGIN
-    DELETE FROM department WHERE id = @id
+    DELETE FROM medicine WHERE id = @id
 END
 GO
 
-CREATE OR ALTER PROCEDURE UpdateClinic
-    @id smallint,
-    @newAddress varchar(50)
+CREATE OR ALTER PROCEDURE UpdateMedicine
+    @id varchar(5),
+    @newName varchar(20),
+    @newPrice float
 AS
 BEGIN
-    UPDATE department SET address = @newAddress WHERE id = @id
+    UPDATE medicine SET name = @newName, price = @newPrice WHERE id = @id
+END
+GO
+
+CREATE OR ALTER PROCEDURE ViewMedicineList
+AS
+BEGIN
+    SELECT * FROM medicine
 END
 GO
 
@@ -34,12 +45,11 @@ CREATE OR ALTER PROCEDURE AddPatient
     @gender bit,
     @bill float,
     @paid float,
-    @condition varchar(100),
     @contraindicatedNote varchar(100)
 AS
 BEGIN
-    INSERT INTO patient_profile (id, name, birth, phone, email, address, gender, bill, paid, overall_condition, contraindicated_note)
-    VALUES (@id, @name, @birth, @phone, @email, @address, @gender, @bill, @paid, @condition, @contraindicatedNote)
+    INSERT INTO patient_profile (id, name, birth, phone, email, address, gender, bill, paid, contraindicated_note)
+    VALUES (@id, @name, @birth, @phone, @email, @address, @gender, @bill, @paid, @contraindicatedNote)
 END
 GO
 
@@ -53,14 +63,13 @@ CREATE OR ALTER PROCEDURE UpdatePatient
     @newGender bit,
     @newBill float,
     @newPaid float,
-    @newCondition varchar(100),
     @newContraindicatedNote varchar(100)
 AS
 BEGIN
     UPDATE patient_profile
     SET name = @newName, birth = @newBirth, phone = @newPhone, email = @newEmail, 
         address = @newAddress, gender = @newGender, bill = @newBill, paid = @newPaid, 
-        overall_condition = @newCondition, contraindicated_note = @newContraindicatedNote
+        contraindicated_note = @newContraindicatedNote
     WHERE id = @id
 END
 GO
@@ -93,55 +102,23 @@ BEGIN
 END
 GO
 
---CREATE OR ALTER PROCEDURE ViewAppointment
---	@dentist char(10)
---AS
---BEGIN
---	SET STATISTICS IO, TIME ON
---    SELECT * FROM schedule WHERE datediff(d,date,getdate())<=0 and dentist = @dentist
---	SET STATISTICS IO, TIME off
---END
---GO
-
---CREATE OR ALTER PROCEDURE DeleteAppointment
---    @patientID int,
---    @date date,
---    @shiftID smallint
---AS
---BEGIN
---    DELETE FROM schedule WHERE date = @date AND shift_id = @shiftID and patient = @patientID
---END
---GO
-
-CREATE OR ALTER PROCEDURE AddMedicine
-    @id varchar(5),
-    @name varchar(20)
+CREATE OR ALTER PROCEDURE ViewAppointment
+    @patientID int
 AS
 BEGIN
-    INSERT INTO medicine (id, name) VALUES (@id, @name)
+    SELECT *
+    FROM schedule
+    WHERE patient = @patientID
 END
 GO
 
-CREATE OR ALTER PROCEDURE DeleteMedicine
-    @id varchar(5)
+CREATE OR ALTER PROCEDURE DeleteAppointment
+    @patientID int,
+    @date date,
+    @shiftID smallint
 AS
 BEGIN
-    DELETE FROM medicine WHERE id = @id
-END
-GO
-
-CREATE OR ALTER PROCEDURE UpdateMedicine
-    @id varchar(5),
-    @newName varchar(20)
-AS
-BEGIN
-    UPDATE medicine SET name = @newName WHERE id = @id
-END
-GO
-
-CREATE OR ALTER PROCEDURE ViewMedicineList
-AS
-BEGIN
-    SELECT * FROM medicine
+    DELETE FROM schedule
+    WHERE date = @date AND shift_id = @shiftID AND patient = @patientID
 END
 GO
