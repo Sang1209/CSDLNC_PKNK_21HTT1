@@ -22,11 +22,9 @@ namespace QLPKNK_App
 {
     public partial class AddDentist : Form
     {
-        readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public AddDentist()
         {
             InitializeComponent();
-            LoadComboBoxData();
         }
 
         private void AddDentist_Load(object sender, EventArgs e)
@@ -44,21 +42,6 @@ namespace QLPKNK_App
 
         }
 
-        private void LoadComboBoxData()
-        {
-            DepartmentBUS departmentBUS = new DepartmentBUS();
-<<<<<<< HEAD
-            List<DepartmentDTO> dsDepartment = departmentBUS.layDSDepartment();
-
-            DentistDepartment.DataSource = dsDepartment;
-            DentistDepartment.DisplayMember = "address";
-            DentistDepartment.DisplayMember = "address";
-            DentistDepartment.ValueMember = "id";
-=======
-            
->>>>>>> d0f334d51b6366f197e82077589d6db50757cd6e
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -71,19 +54,6 @@ namespace QLPKNK_App
 
         private void DentistPassword_TextChanged(object sender, EventArgs e)
         {
-            DentistPassword.PasswordChar = '*';
-        }
-
-        private void ShowPassword_Click(object sender, EventArgs e)
-        {
-            if (DentistPassword.PasswordChar == '*')
-            {
-                DentistPassword.PasswordChar = '\0'; // '\0' đại diện cho không có ký tự nào
-            }
-            else
-            {
-                DentistPassword.PasswordChar = '*';
-            }
         }
 
         private void Submit_Click(object sender, EventArgs e)
@@ -95,7 +65,7 @@ namespace QLPKNK_App
             if (DentistGender.SelectedItem.ToString() == "Male")
                 gender = true;
             else gender = false;
-            int department = (int)DentistDepartment.SelectedValue;
+            int department = (int)DentistDepartment.Value;
             string phone = DentistUsername.Text;
             string email = DentistUsername.Text;
             string address = DentistUsername.Text;
@@ -103,5 +73,6 @@ namespace QLPKNK_App
             NhaSiBUS nhaSiBUS = new NhaSiBUS();
             nhaSiBUS.themNhaSi(username, password, name, gender, department, phone, email, address);
         }
+
     }
 }
