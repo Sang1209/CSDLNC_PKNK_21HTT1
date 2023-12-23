@@ -192,9 +192,16 @@ namespace QLPKNK_App
                     MessageBox.Show(this, "Cannot delete a schedule that already been reserved!");
                 }
                 lichHenBUS.xoaLichHen(date, shiftID, dentist);
+                loadData();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
+                DateTime curdate = DateTime.Now;
+                if(date<=curdate.AddMinutes(30))
+                {
+                    MessageBox.Show(this, "This schedule cannot be updated anymore!");
+                    return;
+                }
                 UpdateScheduleForm editFrm = new UpdateScheduleForm(date,shiftID,dentist);
                 editFrm.FormClosing += new FormClosingEventHandler(Schedule_Load);
                 editFrm.ShowDialog();
@@ -204,6 +211,13 @@ namespace QLPKNK_App
                 if (pId != 0)
                 {
                     MessageBox.Show(this, "This schedule is already reserved!");
+                    return;
+                }
+                DateTime curdate = DateTime.Now;
+                if (date <= curdate.AddMinutes(10))
+                {
+                    MessageBox.Show(this, "This schedule cannot be reserve anymore!");
+                    return;
                 }
                 lichHenBUS.datLichHen(date, shiftID, dentist, pId);
                 loadData();
@@ -213,6 +227,13 @@ namespace QLPKNK_App
                 if (!accept)
                 {
                     MessageBox.Show(this, "This schedule is not accepted so cannot be cancelled!");
+                    return;
+                }
+                DateTime curdate = DateTime.Now;
+                if (date <= curdate.AddMinutes(30))
+                {
+                    MessageBox.Show(this, "This schedule cannot be cancel anymore!");
+                    return;
                 }
                 lichHenBUS.huyDatLichHen(date, shiftID, dentist);
                 loadData();

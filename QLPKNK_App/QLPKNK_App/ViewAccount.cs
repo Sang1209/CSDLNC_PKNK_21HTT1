@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLPKNK_App
 {
-    public partial class Form1 : Form
+    public partial class ViewAccount : Form
     {
-        public Form1()
+        public ViewAccount()
         {
             InitializeComponent();
         }

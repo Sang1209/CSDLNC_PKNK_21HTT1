@@ -43,7 +43,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DentistPassword = new System.Windows.Forms.TextBox();
-            this.Submit = new System.Windows.Forms.Button();
+            this.SubmitButton = new System.Windows.Forms.Button();
             this.DentistDepartment = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DentistDepartment)).BeginInit();
             this.SuspendLayout();
@@ -176,15 +176,15 @@
             this.DentistPassword.TabIndex = 30;
             this.DentistPassword.TextChanged += new System.EventHandler(this.DentistPassword_TextChanged);
             // 
-            // Submit
+            // SubmitButton
             // 
-            this.Submit.Location = new System.Drawing.Point(188, 413);
-            this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(75, 23);
-            this.Submit.TabIndex = 31;
-            this.Submit.Text = "Submit";
-            this.Submit.UseVisualStyleBackColor = true;
-            this.Submit.Click += new System.EventHandler(this.Submit_Click);
+            this.SubmitButton.Location = new System.Drawing.Point(188, 413);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(75, 23);
+            this.SubmitButton.TabIndex = 31;
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.UseVisualStyleBackColor = true;
+            this.SubmitButton.Click += new System.EventHandler(this.Submit_Click);
             // 
             // DentistDepartment
             // 
@@ -209,7 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DentistDepartment);
-            this.Controls.Add(this.Submit);
+            this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.DentistPassword);
             this.Controls.Add(this.DentistEmail);
             this.Controls.Add(this.label8);
@@ -251,7 +251,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox DentistPassword;
-        private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.NumericUpDown DentistDepartment;
     }
 }

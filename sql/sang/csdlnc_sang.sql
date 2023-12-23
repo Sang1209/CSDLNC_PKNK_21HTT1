@@ -299,6 +299,7 @@ commit tran
  go
 
 select * from schedule where datediff(d,date,getdate())<=0 
+--exec xemLichHenTrongNgay
 --exec locLichHenTrongNgay_den 'DEN0000825'
 --exec locLichHenTrongNgay_dep 61
 --exec locLichHenTrongNgay_dep_den 61,'DEN0000825'

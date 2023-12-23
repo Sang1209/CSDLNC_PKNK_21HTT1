@@ -431,7 +431,9 @@
         private System.Windows.Forms.Button createSchedule;
         private System.Windows.Forms.ComboBox DentistCB;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         private System.Windows.Forms.DataGridViewButtonColumn Update;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         private System.Windows.Forms.DataGridViewButtonColumn Reserve;
         private System.Windows.Forms.DataGridViewButtonColumn Cancel;
         private System.Windows.Forms.DataGridViewButtonColumn Accept;
