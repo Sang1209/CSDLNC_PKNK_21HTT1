@@ -122,6 +122,159 @@ begin tran
 	where CAST(s.date AS DATE) = CAST(GETDATE() AS DATE) and s.department=@DepID
 commit tran
 go
+----------------------------------------------------------------------------------------
+
+
+create or alter proc locLichHenTrongNgay_den @dentist char(10)
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.dentist=@dentist
+commit tran
+go
+create or alter proc locLichHenTrongNgay_dep @depID int
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and d.id=@depID
+commit tran
+go
+create or alter proc locLichHenTrongNgay_dep_den @depID int, @dentist char(10)
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.dentist=@dentist and s.department = @depID
+commit tran
+go
+create or alter proc locLichHenTrongNgay_pat @patientID int
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.patient = @patientID
+commit tran
+go
+create or alter proc locLichHenTrongNgay_pat_den @patientID int, @dentist char(10)
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.patient=@patientID and s.dentist=@dentist
+commit tran
+go
+create or alter proc locLichHenTrongNgay_pat_dep @patientID int,@depID int
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.patient=@patientID and s.department=@depID
+commit tran
+go
+create or alter proc locLichHenTrongNgay_pat_dep_den @patientID int,@depID int, @dentist char(10)
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where datediff(d,date,getdate())<=0 and datediff(d,date,getdate())>=-7 and s.patient=@patientID  and s.dentist=@dentist and s.department = @depID
+commit tran
+go
+----------------------------------------------------------------------------
+create or alter proc xemLichHenTheoNgay @date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where date=@date
+commit tran
+go
+create or alter proc locLichHenTheoNgay_den @dentist char(10),@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.dentist=@dentist
+commit tran
+go
+create or alter proc locLichHenTheoNgay_dep @depID int,@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and d.id=@depID
+commit tran
+go
+create or alter proc locLichHenTheoNgay_dep_den @depID int, @dentist char(10),@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.dentist=@dentist and s.department = @depID
+commit tran
+go
+create or alter proc locLichHenTheoNgay_pat @patientID int,@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.patient = @patientID
+commit tran
+go
+create or alter proc locLichHenTheoNgay_pat_den @patientID int, @dentist char(10),@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.patient=@patientID and s.dentist=@dentist
+commit tran
+go
+create or alter proc locLichHenTheoNgay_pat_dep @patientID int,@depID int,@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.patient=@patientID and s.department=@depID
+commit tran
+go
+create or alter proc locLichHenTheoNgay_pat_dep_den @patientID int,@depID int, @dentist char(10),@date date
+as
+begin tran
+select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat_name,s.assistant,s.ass_name,s.type,d.id,d.address as DepAddress,s.accept
+	from schedule s
+	join shift_period sp on s.shift_id=sp.id
+	join department d on s.department=d.id
+where s.date=@date and s.patient=@patientID  and s.dentist=@dentist and s.department = @depID
+commit tran
 --select * from quantity_medicine where department=23
 --exec themThuocChoKHDT 938,'71185',1,'abc'
 --select * from prescription where treatment=938
@@ -143,3 +296,23 @@ go
 --exec locLichHenTheoPhongKham 49
 --exec xemThuocCuaKHDT 938
  
+ go
+
+select * from schedule where datediff(d,date,getdate())<=0 
+--exec xemLichHenTrongNgay
+--exec locLichHenTrongNgay_den 'DEN0000825'
+--exec locLichHenTrongNgay_dep 61
+--exec locLichHenTrongNgay_dep_den 61,'DEN0000825'
+--exec locLichHenTrongNgay_pat 323
+--exec locLichHenTrongNgay_pat_den
+--exec locLichHenTrongNgay_pat_dep
+--exec locLichHenTrongNgay_pat_dep_den
+
+--exec xemLichHenTheoNgay '2023-12-23'
+--exec locLichHenTheoNgay_den 'DEN0000825','2023-12-23'
+--exec locLichHenTheoNgay_dep
+--exec locLichHenTheoNgay_dep_den
+--exec locLichHenTheoNgay_pat
+--exec locLichHenTheoNgay_pat_den
+--exec locLichHenTheoNgay_pat_dep
+--exec locLichHenTheoNgay_pat_dep_den

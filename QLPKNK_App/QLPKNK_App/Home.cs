@@ -39,6 +39,8 @@ namespace QLPKNK_App
             InitializeComponent();
             this.ns= ns;
             Text = "Dentist home page";
+            button4.Hide();
+            depBtn.Hide();
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)
@@ -59,7 +61,7 @@ namespace QLPKNK_App
         private void Payment_Click(object sender, EventArgs e)
         {
             Payment p =new Payment();
-            p.ShowDialog();
+            p.Show();
         }
 
         private void ScheduleBtn_Click(object sender, EventArgs e)
@@ -67,13 +69,26 @@ namespace QLPKNK_App
             if (ns != null)
             {
                 Schedule s = new Schedule(ns);
-                s.ShowDialog();
+                s.Show();
             }
             else if (adst != null)
             {
                 Schedule s = new Schedule(adst);
-                s.ShowDialog();
+                s.Show();
             }
+        }
+
+        private void depBtn_Click(object sender, EventArgs e)
+        {
+            Department d=new Department();
+            d.Show();
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            Login l=new Login();
+            l.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
 namespace buhbuhlmao.BUS
@@ -54,6 +55,7 @@ namespace buhbuhlmao.BUS
                 catch (Exception ex)
                 {
                     // Xử lý các ngoại lệ nếu có
+                    MessageBox.Show("Error");
                     Console.WriteLine(ex.Message);
                 }
                 finally
