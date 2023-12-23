@@ -204,7 +204,7 @@ select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat
 	from schedule s
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
-	 where dentist = @dentist and date = @date
+	 where date = @date and dentist = @dentist 
 order by date asc, shift_id asc
 COMMIT TRANSACTION;
 -------------------------------------------------------

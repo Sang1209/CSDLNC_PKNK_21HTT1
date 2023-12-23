@@ -275,7 +275,7 @@ as
 begin
 declare @tmp float
 select @tmp = total from treatment where id = (select treatment from inserted) 
-if @tmp <= (select sum(need) from payment where treatment = (select treatment from inserted) )
+if @tmp - (select sum(need) from payment where treatment = (select treatment from inserted) ) <= 0 
 begin
 update payment
 set num = (select count(treatment) from payment where treatment = (select treatment from inserted))
