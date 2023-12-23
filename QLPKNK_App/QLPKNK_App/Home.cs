@@ -90,5 +90,11 @@ namespace QLPKNK_App
             l.ShowDialog();
             this.Close();
         }
+
+        private void ContraBtn_Click(object sender, EventArgs e)
+        {
+            ViewContradicated v=new ViewContradicated();
+            v.ShowDialog();
+        }
     }
 }
