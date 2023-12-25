@@ -113,17 +113,38 @@ namespace QLPKNK_App.BUS
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand(@"Select name, birth, phone, email, address, gender from patient_profile where id = @id", connection))
+                    using (SqlCommand command = new SqlCommand(@"select name, birth, phone, email, address, gender from patient_profile where id = @id", connection))
                     {
-                        command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.Add(new SqlParameter("id", SqlDbType.Int)).Value = id;
                         using (SqlDataReader Reader = command.ExecuteReader())
                         {
-                            hs.name = Reader.GetString(Reader.GetOrdinal("name"));
-                            hs.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
-                            hs.phone = Reader.GetString(Reader.GetOrdinal("phone"));
-                            hs.email = Reader.GetString(Reader.GetOrdinal("email"));
-                            hs.address = Reader.GetString(Reader.GetOrdinal("address"));
-                            hs.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
+                            while (Reader.Read())
+                            {
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("name")))
+                                {
+                                    hs.name = Reader.GetString(Reader.GetOrdinal("name"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("birth")))
+                                {
+                                    hs.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("phone")))
+                                {
+                                    hs.phone = Reader.GetString(Reader.GetOrdinal("phone"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("email")))
+                                {
+                                    hs.email = Reader.GetString(Reader.GetOrdinal("email"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("address")))
+                                {
+                                    hs.address = Reader.GetString(Reader.GetOrdinal("address"));
+                                }
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("gender")))
+                                {
+                                    hs.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
+                                }
+                            }
                         }
                     }
                 }
