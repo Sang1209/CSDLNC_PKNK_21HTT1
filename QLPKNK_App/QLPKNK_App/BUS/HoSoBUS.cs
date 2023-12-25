@@ -33,35 +33,17 @@ namespace QLPKNK_App.BUS
                             {
                                 HoSoDTO hoSo = new HoSoDTO();
 
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("id")))
-                                {
-                                    hoSo.id = Reader.GetInt32(Reader.GetOrdinal("id"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("name")))
-                                {
-                                    hoSo.name = Reader.GetString(Reader.GetOrdinal("name"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("birth")))
-                                {
-                                    hoSo.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("phone")))
-                                {
-                                    hoSo.phone = Reader.GetString(Reader.GetOrdinal("phone"));
-                                }
+                                hoSo.id = Reader.GetInt32(Reader.GetOrdinal("id"));                               
+                                hoSo.name = Reader.GetString(Reader.GetOrdinal("name"));                             
+                                hoSo.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));                                
+                                hoSo.phone = Reader.GetString(Reader.GetOrdinal("phone"));                               
                                 if (!Reader.IsDBNull(Reader.GetOrdinal("email")))
                                 {
                                     hoSo.email = Reader.GetString(Reader.GetOrdinal("email"));
                                 }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("address")))
-                                {
-                                    hoSo.address = Reader.GetString(Reader.GetOrdinal("address"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("gender")))
-                                {
-                                    hoSo.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
-                                }
-
+                                hoSo.address = Reader.GetString(Reader.GetOrdinal("address"));                              
+                                hoSo.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));                              
+                                -
                                 dsHoSo.Add(hoSo);
                             }
                         }
@@ -80,26 +62,36 @@ namespace QLPKNK_App.BUS
             return dsHoSo;
         }
 
-        public void capNhatHoSo(int id, string name, DateTime? birth, string phone, string email, string address, bool? gender)
+        public void capNhatHoSo(int id, string name, string birth, string phone, string email, string address, string gender)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("UpdateData", connection))
+                try
                 {
-                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("UpdateData", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@ID", id);
-                    command.Parameters.AddWithValue("@name", string.IsNullOrEmpty(name) ? (object)DBNull.Value : name);
-                    command.Parameters.AddWithValue("@birth", birth ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@phone", string.IsNullOrEmpty(phone) ? (object)DBNull.Value : phone);
-                    command.Parameters.AddWithValue("@email", string.IsNullOrEmpty(name) ? (object)DBNull.Value : name);
-                    command.Parameters.AddWithValue("@address", string.IsNullOrEmpty(address) ? (object)DBNull.Value : address);
-                    command.Parameters.AddWithValue("@gender", gender ?? (object)DBNull.Value);
-                    // Thêm các parameters cho các cột khác nếu cần
+                        command.Parameters.AddWithValue("@ID", id);
+                        command.Parameters.AddWithValue("@name", string.IsNullOrEmpty(name) ? (object)DBNull.Value : name);
+                        command.Parameters.AddWithValue("@birth", string.IsNullOrEmpty(birth) ? (object)DBNull.Value : birth);
+                        command.Parameters.AddWithValue("@phone", string.IsNullOrEmpty(phone) ? (object)DBNull.Value : phone);
+                        command.Parameters.AddWithValue("@email", string.IsNullOrEmpty(email) ? (object)DBNull.Value : email);
+                        command.Parameters.AddWithValue("@address", string.IsNullOrEmpty(address) ? (object)DBNull.Value : address);
+                        command.Parameters.AddWithValue("@gender", string.IsNullOrEmpty(gender) ? (object)DBNull.Value : gender);
+                        // Thêm các parameters cho các cột khác nếu cần
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
                 }
             }
         }
@@ -120,30 +112,16 @@ namespace QLPKNK_App.BUS
                         {
                             while (Reader.Read())
                             {
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("name")))
-                                {
-                                    hs.name = Reader.GetString(Reader.GetOrdinal("name"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("birth")))
-                                {
-                                    hs.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("phone")))
-                                {
-                                    hs.phone = Reader.GetString(Reader.GetOrdinal("phone"));
-                                }
+                                hs.name = Reader.GetString(Reader.GetOrdinal("name"));
+                                hs.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
+                                hs.phone = Reader.GetString(Reader.GetOrdinal("phone"));
                                 if (!Reader.IsDBNull(Reader.GetOrdinal("email")))
                                 {
                                     hs.email = Reader.GetString(Reader.GetOrdinal("email"));
                                 }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("address")))
-                                {
-                                    hs.address = Reader.GetString(Reader.GetOrdinal("address"));
-                                }
-                                if (!Reader.IsDBNull(Reader.GetOrdinal("gender")))
-                                {
-                                    hs.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
-                                }
+
+                                hs.address = Reader.GetString(Reader.GetOrdinal("address"));
+                                hs.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
                             }
                         }
                     }

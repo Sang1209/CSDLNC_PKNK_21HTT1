@@ -42,7 +42,7 @@
             this.PatientEmail = new System.Windows.Forms.TextBox();
             this.PatientAddress = new System.Windows.Forms.TextBox();
             this.PatientGender = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.UpdateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ProfileID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +139,7 @@
             this.PatientName.Name = "PatientName";
             this.PatientName.Size = new System.Drawing.Size(100, 22);
             this.PatientName.TabIndex = 2;
+            this.PatientName.TextChanged += new System.EventHandler(this.PatientName_TextChanged);
             // 
             // PatientBirth
             // 
@@ -147,6 +148,7 @@
             this.PatientBirth.Name = "PatientBirth";
             this.PatientBirth.Size = new System.Drawing.Size(225, 22);
             this.PatientBirth.TabIndex = 3;
+            this.PatientBirth.ValueChanged += new System.EventHandler(this.PatientBirth_ValueChanged);
             // 
             // PatientPhone
             // 
@@ -154,6 +156,7 @@
             this.PatientPhone.Name = "PatientPhone";
             this.PatientPhone.Size = new System.Drawing.Size(100, 22);
             this.PatientPhone.TabIndex = 4;
+            this.PatientPhone.TextChanged += new System.EventHandler(this.PatientPhone_TextChanged);
             // 
             // PatientEmail
             // 
@@ -161,6 +164,7 @@
             this.PatientEmail.Name = "PatientEmail";
             this.PatientEmail.Size = new System.Drawing.Size(100, 22);
             this.PatientEmail.TabIndex = 5;
+            this.PatientEmail.TextChanged += new System.EventHandler(this.PatientEmail_TextChanged);
             // 
             // PatientAddress
             // 
@@ -168,6 +172,7 @@
             this.PatientAddress.Name = "PatientAddress";
             this.PatientAddress.Size = new System.Drawing.Size(225, 22);
             this.PatientAddress.TabIndex = 6;
+            this.PatientAddress.TextChanged += new System.EventHandler(this.PatientAddress_TextChanged);
             // 
             // PatientGender
             // 
@@ -179,20 +184,24 @@
             this.PatientGender.Name = "PatientGender";
             this.PatientGender.Size = new System.Drawing.Size(121, 24);
             this.PatientGender.TabIndex = 7;
+            this.PatientGender.SelectedIndexChanged += new System.EventHandler(this.PatientGender_SelectedIndexChanged);
             // 
-            // textBox1
+            // UpdateButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(449, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 8;
+            this.UpdateButton.Location = new System.Drawing.Point(154, 398);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateButton.TabIndex = 8;
+            this.UpdateButton.Text = "Update";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // UpdatePatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.PatientGender);
             this.Controls.Add(this.PatientAddress);
             this.Controls.Add(this.PatientEmail);
@@ -232,6 +241,6 @@
         private System.Windows.Forms.TextBox PatientEmail;
         private System.Windows.Forms.TextBox PatientAddress;
         private System.Windows.Forms.ComboBox PatientGender;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }
