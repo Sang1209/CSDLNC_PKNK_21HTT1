@@ -1,4 +1,5 @@
 ﻿using QLPKNK_App.BUS;
+using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

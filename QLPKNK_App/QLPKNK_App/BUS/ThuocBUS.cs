@@ -12,12 +12,6 @@ using System.Windows.Forms;
 
 namespace QLPKNK_App.BUS
 {
-    public class ThuocDTO
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-        public float price { get; set; }
-    }
     public class ThuocBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
