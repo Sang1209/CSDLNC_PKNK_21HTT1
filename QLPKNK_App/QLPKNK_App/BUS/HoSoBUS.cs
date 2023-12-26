@@ -43,7 +43,6 @@ namespace QLPKNK_App.BUS
                                 }
                                 hoSo.address = Reader.GetString(Reader.GetOrdinal("address"));                              
                                 hoSo.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));                              
-                                -
                                 dsHoSo.Add(hoSo);
                             }
                         }
@@ -69,7 +68,7 @@ namespace QLPKNK_App.BUS
                 try
                 {
                     connection.Open();
-                    using (SqlCommand command = new SqlCommand("UpdateData", connection))
+                    using (SqlCommand command = new SqlCommand("pr_update_patient", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 

@@ -55,9 +55,9 @@ namespace QLPKNK_App
             // Kiểm tra xem cột được bấm có phải là cột chứa nút không
             if (e.ColumnIndex == PatientList.Columns[""].Index && e.RowIndex >= 0)
             {
-                int id = (int)PatientList.Rows[e.RowIndex].Cells[0].Value;
+                int id = (int)PatientList.Rows[e.RowIndex].Cells[1].Value;
                 UpdatePatient openForm = new UpdatePatient(id);
-                openForm.Show();
+                openForm.ShowDialog();
             }
         }
     }

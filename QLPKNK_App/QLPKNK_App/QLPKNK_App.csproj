@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
+    <Compile Include="BUS\DiUngBUS.cs" />
     <Compile Include="BUS\HoSoBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
     <Compile Include="BUS\DonThuocBUS.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Department.Designer.cs">
       <DependentUpon>Department.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\DiUngDTO.cs" />
     <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />
     <Compile Include="DTO\Admin_StaffDTO.cs" />
@@ -165,6 +167,12 @@
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="utils\DateTimeMod.cs" />
+    <Compile Include="ViewContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewContradicated.Designer.cs">
+      <DependentUpon>ViewContradicated.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewContradicated.resx">
+      <DependentUpon>ViewContradicated.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
