@@ -14,6 +14,7 @@ namespace QLPKNK_App
 {
     public partial class PatientProfile : Form
     {
+        List<HoSoDTO> rowsChanged = new List<HoSoDTO>();
         public PatientProfile()
         {
             InitializeComponent();
@@ -28,15 +29,36 @@ namespace QLPKNK_App
         private void LoadPatientList()
         {
 
-            BenhNhanBUS bnBUS = new BenhNhanBUS();
-            IList<HoSoDTO> bnList = bnBUS.LayDsHoSo();
+            HoSoBUS hsBUS = new HoSoBUS();
+            IList<HoSoDTO> hsList = hsBUS.LayDsHoSo();
 
-            PatientList.DataSource = bnList;
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "";
+            buttonColumn.Text = "Update";
+            buttonColumn.UseColumnTextForButtonValue = true;
+            PatientList.Columns.Add(buttonColumn);
+            PatientList.CellContentClick += PatientList_CellContentClick;
+
+            PatientList.DataSource = hsList;
+
+            foreach (DataGridViewColumn column in PatientList.Columns)
+            {
+                if (column.Name == "id")
+                {
+                    column.ReadOnly = true;
+                }
+            }
         }
 
         private void PatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Kiểm tra xem cột được bấm có phải là cột chứa nút không
+            if (e.ColumnIndex == PatientList.Columns[""].Index && e.RowIndex >= 0)
+            {
+                int id = (int)PatientList.Rows[e.RowIndex].Cells[1].Value;
+                UpdatePatient openForm = new UpdatePatient(id);
+                openForm.ShowDialog();
+            }
         }
     }
 }

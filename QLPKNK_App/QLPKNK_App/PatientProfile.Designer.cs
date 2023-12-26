@@ -35,7 +35,7 @@
             // PatientList
             // 
             this.PatientList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PatientList.Location = new System.Drawing.Point(12, 90);
+            this.PatientList.Location = new System.Drawing.Point(12, 46);
             this.PatientList.Name = "PatientList";
             this.PatientList.RowHeadersWidth = 51;
             this.PatientList.RowTemplate.Height = 24;
@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PatientList);
             this.Name = "PatientProfile";
-            this.Text = "Form2";
+            this.Text = "Patient Profile";
             this.Load += new System.EventHandler(this.PatientProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PatientList)).EndInit();
             this.ResumeLayout(false);

@@ -15,6 +15,39 @@ namespace QLPKNK_App.BUS
     public class ThuocBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
+
+        public void ThemThuoc(ThuocDTO thuoc)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("AddMedicine", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                       
+                        command.Parameters.AddWithValue("@id", thuoc.id);
+                        command.Parameters.AddWithValue("@name", thuoc.name);
+                        command.Parameters.AddWithValue("@price", thuoc.price);
+
+          
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+           
+                    MessageBox.Show("Error");
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         public IList<ThuocDTO> LayDSThuoc()
         {
             List<ThuocDTO> dsThuoc = new List<ThuocDTO>();
@@ -34,7 +67,8 @@ namespace QLPKNK_App.BUS
                                 {
                                     id = Reader["id"].ToString(),
                                     name= Reader["name"].ToString(),
-                                    
+                                    price = Convert.ToSingle(Reader["price"]),
+
                                 });
                             }
                         }
@@ -42,7 +76,7 @@ namespace QLPKNK_App.BUS
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý các ngoại lệ nếu có
+              
                     MessageBox.Show("Error");
                     Console.WriteLine(ex.Message);
                 }

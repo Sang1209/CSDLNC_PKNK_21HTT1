@@ -10,5 +10,6 @@ namespace QLPKNK_App.DTO
     {
         public string id { get; set; }
         public string name { get; set; }
+        public float price { get; set; }
     }
 }
