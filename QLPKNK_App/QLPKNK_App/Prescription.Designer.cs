@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.PrescriptionTable = new System.Windows.Forms.DataGridView();
-            this.addMedicine = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.MedID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +36,8 @@
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateMedicine = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteMedicine = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addMedicine = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PrescriptionTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,25 +57,6 @@
             this.PrescriptionTable.Size = new System.Drawing.Size(762, 435);
             this.PrescriptionTable.TabIndex = 1;
             this.PrescriptionTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PrescriptionTable_CellContentClick);
-            // 
-            // addMedicine
-            // 
-            this.addMedicine.Location = new System.Drawing.Point(307, 108);
-            this.addMedicine.Name = "addMedicine";
-            this.addMedicine.Size = new System.Drawing.Size(107, 23);
-            this.addMedicine.TabIndex = 2;
-            this.addMedicine.Text = "Add medicine";
-            this.addMedicine.UseVisualStyleBackColor = true;
-            this.addMedicine.Click += new System.EventHandler(this.addMedicine_Click);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(671, 30);
-            this.label1.TabIndex = 3;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MedID
             // 
@@ -125,6 +106,25 @@
             this.DeleteMedicine.Text = "Delete";
             this.DeleteMedicine.ToolTipText = "Delete";
             this.DeleteMedicine.UseColumnTextForButtonValue = true;
+            // 
+            // addMedicine
+            // 
+            this.addMedicine.Location = new System.Drawing.Point(360, 109);
+            this.addMedicine.Name = "addMedicine";
+            this.addMedicine.Size = new System.Drawing.Size(107, 23);
+            this.addMedicine.TabIndex = 2;
+            this.addMedicine.Text = "Add medicine";
+            this.addMedicine.UseVisualStyleBackColor = true;
+            this.addMedicine.Click += new System.EventHandler(this.addMedicine_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(671, 30);
+            this.label1.TabIndex = 3;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Prescription
             // 

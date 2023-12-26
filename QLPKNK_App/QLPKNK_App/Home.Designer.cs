@@ -70,7 +70,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(543, 79);
+            this.button4.Location = new System.Drawing.Point(238, 151);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
@@ -109,7 +109,7 @@
             // 
             // ContraBtn
             // 
-            this.ContraBtn.Location = new System.Drawing.Point(238, 150);
+            this.ContraBtn.Location = new System.Drawing.Point(548, 79);
             this.ContraBtn.Name = "ContraBtn";
             this.ContraBtn.Size = new System.Drawing.Size(75, 23);
             this.ContraBtn.TabIndex = 20;

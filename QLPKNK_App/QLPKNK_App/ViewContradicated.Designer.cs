@@ -38,13 +38,14 @@
             this.MedicineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.addBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.contraTable)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 54);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(708, 52);
             this.label1.TabIndex = 0;
@@ -128,11 +129,21 @@
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(623, 64);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(75, 23);
+            this.addBtn.TabIndex = 4;
+            this.addBtn.Text = "Add contradicated";
+            this.addBtn.UseVisualStyleBackColor = true;
+            // 
             // ViewContradicated
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 601);
+            this.Controls.Add(this.addBtn);
             this.Controls.Add(this.contraTable);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.patient);
@@ -158,5 +169,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MedicineName;
         private System.Windows.Forms.DataGridViewButtonColumn Update;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button addBtn;
     }
 }
