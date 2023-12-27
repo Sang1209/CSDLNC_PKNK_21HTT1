@@ -72,5 +72,10 @@ namespace QLPKNK_App
                 }
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

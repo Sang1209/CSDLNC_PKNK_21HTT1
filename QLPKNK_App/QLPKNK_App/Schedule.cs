@@ -141,7 +141,7 @@ namespace QLPKNK_App
             }
             foreach (LichHenDTO lh in dsLichHen)
             {
-                scheduleTable.Rows.Add("", "", "", "", "", lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist, lh.den_name, lh.patient, lh.pat_name, lh.assistant, lh.ass_name, lh.type, lh.depId, lh.DepAddress, lh.accept);
+                scheduleTable.Rows.Add(lh.accept, "", "", "", "", "", lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist, lh.den_name, lh.patient, lh.pat_name, lh.assistant, lh.ass_name, lh.type, lh.depId, lh.DepAddress);
             }
         }
         private void FilterBtn_Click(object sender, EventArgs e)
@@ -166,7 +166,7 @@ namespace QLPKNK_App
             }
             foreach (LichHenDTO lh in dsLichHen)
             {
-                scheduleTable.Rows.Add("","","","","",lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist,lh.den_name, lh.patient,lh.pat_name, lh.assistant,lh.ass_name, lh.type, lh.depId, lh.DepAddress,lh.accept);
+                scheduleTable.Rows.Add(lh.accept,"","","","","",lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist,lh.den_name, lh.patient,lh.pat_name, lh.assistant,lh.ass_name, lh.type, lh.depId, lh.DepAddress);
             }
         }
 
@@ -185,7 +185,7 @@ namespace QLPKNK_App
             int pId= Convert.ToInt32(scheduleTable.Rows[e.RowIndex].Cells["PatientID"].Value);
             bool accept = Convert.ToBoolean(scheduleTable.Rows[e.RowIndex].Cells["Accepted"].Value);
             LichHenBUS lichHenBUS = new LichHenBUS();
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
             {
                 if(pId!=0)
                 {
@@ -194,7 +194,7 @@ namespace QLPKNK_App
                 lichHenBUS.xoaLichHen(date, shiftID, dentist);
                 loadData();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
                 DateTime curdate = DateTime.Now;
                 if(date<=curdate.AddMinutes(30))
@@ -206,7 +206,7 @@ namespace QLPKNK_App
                 editFrm.FormClosing += new FormClosingEventHandler(Schedule_Load);
                 editFrm.ShowDialog();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
                 if (pId != 0)
                 {
@@ -222,7 +222,7 @@ namespace QLPKNK_App
                 lichHenBUS.datLichHen(date, shiftID, dentist, pId);
                 loadData();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
                 if (!accept)
                 {
@@ -238,7 +238,7 @@ namespace QLPKNK_App
                 lichHenBUS.huyDatLichHen(date, shiftID, dentist);
                 loadData();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 if(accept)
                 {

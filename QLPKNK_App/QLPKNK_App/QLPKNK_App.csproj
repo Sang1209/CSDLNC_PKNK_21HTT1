@@ -110,6 +110,12 @@
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateContradicated.Designer.cs">
+      <DependentUpon>UpdateContradicated.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateContradicated.resx">
+      <DependentUpon>UpdateContradicated.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdatePatient.resx">
       <DependentUpon>UpdatePatient.cs</DependentUpon>
     </EmbeddedResource>

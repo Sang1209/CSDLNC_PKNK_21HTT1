@@ -85,7 +85,7 @@
             this.contraTable.Name = "contraTable";
             this.contraTable.Size = new System.Drawing.Size(655, 311);
             this.contraTable.TabIndex = 3;
-            this.contraTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contraTable_CellContentClick);
+            //this.contraTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contraTable_CellContentClick);
             // 
             // PatientID
             // 

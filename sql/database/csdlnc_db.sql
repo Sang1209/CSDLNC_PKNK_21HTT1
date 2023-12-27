@@ -439,7 +439,7 @@ ON schedule (date,department);
 CREATE INDEX schedule6
 ON schedule (department);
 
-
+go
 create or alter proc fix1
 as
 begin
@@ -486,7 +486,7 @@ fetch next from cur into @date, @shift_id, @dentist
 while @@FETCH_STATUS=0
 	begin
 	update schedule
-	set department = (select department from account_de where username = @dentist) where date = @date and shift_id = @shift_id and dentist = @dentist
+	set department = (select distinct(department) from account_de where username = @dentist) where date = @date and shift_id = @shift_id and dentist = @dentist
 	fetch next from cur into @date, @shift_id, @dentist
 	end
 close cur
@@ -504,7 +504,7 @@ fetch next from cur into @id, @dentist
 while @@FETCH_STATUS=0
 	begin
 	update treatment
-	set department = (select department from account_de where username = @dentist) where id = @id
+	set department = (select distinct(department) from account_de where username = @dentist) where id = @id
 	fetch next from cur into @id, @dentist
 	end
 close cur
@@ -521,7 +521,7 @@ open cur
 fetch next from cur into @id, @assistant, @department
 while @@FETCH_STATUS=0
 begin
-	if (select department from account_de where username = @assistant) <> @department
+	if (select distinct(department) from account_de where username = @assistant) <> @department
 	begin
 	update treatment
 	set assistant = null where id = @id
@@ -543,7 +543,7 @@ open cur
 fetch next from cur into @date, @shift_id, @dentist, @assistant, @department
 while @@FETCH_STATUS=0
 	begin
-	if (select department from account_de where username = @assistant) <> @department
+	if (select distinct(department) from account_de where username = @assistant) <> @department
 	begin
 	update schedule
 	set assistant = null where date = @date and shift_id = @shift_id and dentist = @dentist
@@ -553,7 +553,6 @@ end
 close cur
 deallocate cur
 end
-go
 
 
 

@@ -96,5 +96,10 @@ namespace QLPKNK_App
             ViewContradicated v=new ViewContradicated();
             v.ShowDialog();
         }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

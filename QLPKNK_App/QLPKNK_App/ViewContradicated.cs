@@ -47,7 +47,7 @@ namespace QLPKNK_App
             }
         }
 
-        private void contraTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      /*  private void contraTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DiUngBUS diUngBUS = new DiUngBUS();
             int pId = Convert.ToInt32(contraTable.Rows[e.RowIndex].Cells["PatientID"].Value);
@@ -63,6 +63,6 @@ namespace QLPKNK_App
                 diUngBUS.xoaDiUng(pId, mId);
                 refreshData();
             }
-        }
+        }*/
     }
 }
