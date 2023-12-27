@@ -6,15 +6,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLPKNK_App
 {
-    public partial class ID : Form
+    public partial class AddMedicine : Form
     {
-        public ID()
+        public AddMedicine()
         {
             InitializeComponent();
         }
@@ -38,18 +39,10 @@ namespace QLPKNK_App
         {
             string id = textBox1.Text;
             string name = textBox2.Text;
-            float price = float.Parse(textBox3.Text); 
-                                                           
-
-            ThuocDTO thuoc = new ThuocDTO()
-            {
-                id = id,
-                name = name,
-                price = price,
-            };
+            float price = float.Parse(textBox3.Text);
 
             ThuocBUS thuocBUS = new ThuocBUS();
-            thuocBUS.ThemThuoc(thuoc);
+            thuocBUS.ThemThuoc(id,name,price);
         }
 
 
@@ -66,6 +59,12 @@ namespace QLPKNK_App
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ThuocBUS thuocBUS = new ThuocBUS();
+            thuocBUS.LayDSThuoc();
         }
     } 
 }

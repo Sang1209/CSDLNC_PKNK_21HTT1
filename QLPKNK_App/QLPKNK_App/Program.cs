@@ -17,7 +17,11 @@ namespace QLPKNK_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< Updated upstream
             Application.Run(new Login());
+=======
+            Application.Run(new Home());
+>>>>>>> Stashed changes
         }
     }
 }

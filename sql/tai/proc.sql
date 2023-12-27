@@ -245,7 +245,7 @@ go
 create or alter proc layDSDiUng
 as
 begin tran
-select c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
+select top 100 c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
 commit tran
 go
 create or alter proc layDSDiUngTheoBN @pID int
