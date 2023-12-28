@@ -186,23 +186,14 @@ create or alter proc pr_update_patient
 @address varchar(50)
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update patient_profile set'
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @birth IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @birth + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	set @Query = @Query + ' where id' + ' = ''' + @id + ''''
-
-    exec sp_executesql @Query
+    update patient_profile
+	set [name] = @name,
+		birth = @birth,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		[address] = @address
+	where id = @id
 end
 ----Xem danh sách nhân viên
 go
