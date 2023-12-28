@@ -98,16 +98,16 @@ namespace QLPKNK_App
             v.ShowDialog();
         }
 
-<<<<<<< Updated upstream
+
         private void Home_Load(object sender, EventArgs e)
         {
+        }
 
-=======
+
         private void button1_Click(object sender, EventArgs e)
         {
             AddMedicine m = new AddMedicine();
             m.Show();
->>>>>>> Stashed changes
         }
     }
 }

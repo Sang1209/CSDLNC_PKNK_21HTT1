@@ -61,7 +61,7 @@ namespace QLPKNK_App.BUS
             return dsHoSo;
         }
 
-        public void capNhatHoSo(int id, string name, string birth, string phone, string email, string address, string gender)
+        public void capNhatHoSo(int id, string name, DateTime birth, string phone, string email, string address, bool gender)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -73,12 +73,12 @@ namespace QLPKNK_App.BUS
                         command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@ID", id);
-                        command.Parameters.AddWithValue("@name", string.IsNullOrEmpty(name) ? (object)DBNull.Value : name);
-                        command.Parameters.AddWithValue("@birth", string.IsNullOrEmpty(birth) ? (object)DBNull.Value : birth);
-                        command.Parameters.AddWithValue("@phone", string.IsNullOrEmpty(phone) ? (object)DBNull.Value : phone);
-                        command.Parameters.AddWithValue("@email", string.IsNullOrEmpty(email) ? (object)DBNull.Value : email);
-                        command.Parameters.AddWithValue("@address", string.IsNullOrEmpty(address) ? (object)DBNull.Value : address);
-                        command.Parameters.AddWithValue("@gender", string.IsNullOrEmpty(gender) ? (object)DBNull.Value : gender);
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@birth", birth);
+                        command.Parameters.AddWithValue("@phone", phone);
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@address", address);
+                        command.Parameters.AddWithValue("@gender", gender);
                         // Thêm các parameters cho các cột khác nếu cần
 
                         command.ExecuteNonQuery();
