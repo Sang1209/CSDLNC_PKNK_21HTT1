@@ -177,10 +177,10 @@ end
 --Sửa hồ sơ bệnh nhân
 go
 create or alter proc pr_update_patient
-@id varchar(6),
+@id int,
 @name varchar(20),
-@birth varchar(15),
-@gender char(1),
+@birth date,
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
 @address varchar(50)

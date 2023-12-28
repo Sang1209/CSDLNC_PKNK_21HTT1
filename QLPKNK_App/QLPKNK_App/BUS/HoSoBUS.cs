@@ -19,7 +19,7 @@ namespace QLPKNK_App.BUS
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
         public IList<HoSoDTO> LayDsHoSo()
         {
-            List<HoSoDTO> dsHoSo = new List<HoSoDTO>();
+            IList<HoSoDTO> dsHoSo = new List<HoSoDTO>();
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
@@ -136,6 +136,50 @@ namespace QLPKNK_App.BUS
                 }
                 return hs;
             }
+        }
+        public IList<HoSoDTO> TimHoSo(string name)
+        {
+            IList<HoSoDTO> dsHoSo = new List<HoSoDTO>();
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(@"Select id, name, birth, phone, email, address, gender from patient_profile where name = @name", connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("name", SqlDbType.VarChar)).Value = name;
+                        using (SqlDataReader Reader = command.ExecuteReader())
+                        {
+                            while (Reader.Read())
+                            {
+                                HoSoDTO hoSo = new HoSoDTO();
+
+                                hoSo.id = Reader.GetInt32(Reader.GetOrdinal("id"));
+                                hoSo.name = Reader.GetString(Reader.GetOrdinal("name"));
+                                hoSo.birth = Reader.GetDateTime(Reader.GetOrdinal("birth"));
+                                hoSo.phone = Reader.GetString(Reader.GetOrdinal("phone"));
+                                if (!Reader.IsDBNull(Reader.GetOrdinal("email")))
+                                {
+                                    hoSo.email = Reader.GetString(Reader.GetOrdinal("email"));
+                                }
+                                hoSo.address = Reader.GetString(Reader.GetOrdinal("address"));
+                                hoSo.gender = Reader.GetBoolean(Reader.GetOrdinal("gender"));
+                                dsHoSo.Add(hoSo);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ nếu có
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return dsHoSo;
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QLPKNK_App.BUS;
 using QLPKNK_App.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLPKNK_App
 {
@@ -79,6 +80,11 @@ namespace QLPKNK_App
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(PatientName.Text) || string.IsNullOrWhiteSpace(PatientPhone.Text) || string.IsNullOrWhiteSpace(PatientAddress.Text))
+            {
+                MessageBox.Show("Please input all necessary information");
+                return;
+            }
             int id = (int)ProfileID.Value;
             string name = PatientName.Text;
             string phone = PatientPhone.Text;
