@@ -10,7 +10,7 @@ namespace QLPKNK_App.DTO
     {
         public int patient { get; set; }
         public string pName { get; set; }
-        public int medicine { get; set; }
+        public string medicine { get; set; }
         public string medName { get; set; }
     }
 }

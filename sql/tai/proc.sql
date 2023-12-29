@@ -246,21 +246,23 @@ select c.patient,p.name as pName,c.medicine,m.name as medName from contraindicat
 where c.patient=@pID
 commit tran
 go
-create or alter proc themDiUng @pID int,@mID int
+create or alter proc themDiUng @pID int,@mID varchar(5)
 as
 begin tran
 	insert into contraindicated values (@pID,@mID)
 commit tran
 go
-create or alter proc xoaDiUng @pID int,@mID int
+create or alter proc xoaDiUng @pID int,@mID varchar(5)
 as
 begin tran
 delete from contraindicated where patient=@pID and medicine=@mID
 commit tran
 go
-create or alter proc capNhatDiUng @pID int,@mID_old int,@mID_new int
+create or alter proc capNhatDiUng @pID int,@mID_old varchar(5),@mID_new varchar(5)
 as
 begin tran
 update contraindicated set medicine=@mID_new where patient=@pID and medicine=@mID_old
 commit tran
 go
+
+
