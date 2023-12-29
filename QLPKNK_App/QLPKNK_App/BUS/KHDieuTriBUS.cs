@@ -1,15 +1,19 @@
-﻿using System;
+﻿using QLPKNK_App.DTO;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
-namespace buhbuhlmao.BUS
+namespace QLPKNK_App.BUS
 {
     public class KHDieuTriBUS
     {
@@ -55,7 +59,7 @@ namespace buhbuhlmao.BUS
                 catch (Exception ex)
                 {
                     // Xử lý các ngoại lệ nếu có
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Error khdtBUS");
                     Console.WriteLine(ex.Message);
                 }
                 finally
@@ -65,5 +69,76 @@ namespace buhbuhlmao.BUS
             }
             return dsKHDT;
         }
+
+        public IList<KHDieuTriDTO> layDSDieuTri()
+        {
+            List<KHDieuTriDTO> dsKHDieuTri = new List<KHDieuTriDTO>();
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(@"Select id from treatment", connection))
+                    {
+                        using (SqlDataReader Reader = command.ExecuteReader())
+                        {
+                            while (Reader.Read())
+                            {
+                                dsKHDieuTri.Add(new KHDieuTriDTO()
+                                {
+                                    id = Reader.GetInt32(Reader.GetOrdinal("id")),
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ nếu có
+                    MessageBox.Show("Error khdtBUS");
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return dsKHDieuTri;
+        }
+
+        public void themDieuTri(int patient, int department, string dentist, string assistant, string description, string note, int method, int tooth)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("addTreatment", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@patient", patient);
+                        command.Parameters.AddWithValue("@department", department);
+                        command.Parameters.AddWithValue("@dentist", dentist);
+                        command.Parameters.AddWithValue("@assistant", assistant);
+                        command.Parameters.AddWithValue("@description", description);
+                        command.Parameters.AddWithValue("@note", note);
+                        command.Parameters.AddWithValue("@method", method);
+                        command.Parameters.AddWithValue("@tooth", tooth);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
-}
+ }
+

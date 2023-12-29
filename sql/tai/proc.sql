@@ -257,7 +257,6 @@ as
 begin tran
 update contraindicated set medicine=@mID_new where patient=@pID and medicine=@mID_old
 commit tran
-go
 
 go
 create or alter proc addTreatment
@@ -275,7 +274,7 @@ begin
 
 	if exists (select 1 from treatment)
 	begin
-		set @id = (select MAX(id) from patient_profile) + 1
+		set @id = (select MAX(id) from treatment) + 1
 	end
 	else
 	begin
@@ -283,8 +282,9 @@ begin
 	end
 	set @den_name = (select name from account_de where username = @dentist)
 	set @pat_name = (select name from patient_profile where id = @patient)
-	if (@assistant <> null)
+	if (@assistant <> 0)
 	set @ass_name = (select name from account_de where username = @assistant)
+	else
 	set @date = getdate()
 
 	insert into treatment(id, department, dentist, patient, assistant, den_name, pat_name, ass_name, 
@@ -292,5 +292,3 @@ begin
 	values (@id, @department, @dentist, @patient, @assistant, @den_name, @pat_name, @ass_name, @description, 
 			@date, @note, @method, @tooth, 0, 0)
 end
-
-

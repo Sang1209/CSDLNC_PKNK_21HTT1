@@ -68,6 +68,12 @@
     <Compile Include="AddEditDepartment.Designer.cs">
       <DependentUpon>AddEditDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMedDep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMedDep.Designer.cs">
+      <DependentUpon>AddMedDep.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,7 @@
     <Compile Include="BUS\Admin_StaffBUS.cs" />
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
+    <Compile Include="BUS\CachTraBUS.cs" />
     <Compile Include="BUS\DiUngBUS.cs" />
     <Compile Include="BUS\HoSoBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
@@ -99,7 +106,9 @@
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\MedUseBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
+    <Compile Include="BUS\PTDieuTriBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
+    <Compile Include="BUS\ToothBUS.cs" />
     <Compile Include="Department.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +116,7 @@
       <DependentUpon>Department.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\SLThuoc.cs" />
+    <Compile Include="DTO\CachTraDTO.cs" />
     <Compile Include="DTO\DiUngDTO.cs" />
     <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />
@@ -117,8 +127,10 @@
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
     <Compile Include="DTO\LichHenDTO.cs" />
+    <Compile Include="DTO\MedDepDTO.cs" />
     <Compile Include="DTO\MedUseDTO.cs" />
     <Compile Include="DTO\NhaSiDTO.cs" />
+    <Compile Include="DTO\PTDieuTriDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
     <Compile Include="AddDentist.cs">
       <SubType>Form</SubType>
@@ -138,11 +150,18 @@
     <Compile Include="AddTreatment.Designer.cs">
       <DependentUpon>AddTreatment.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\ToothDTO.cs" />
     <Compile Include="UpdateAdmin_Staff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdateAdmin_Staff.Designer.cs">
       <DependentUpon>UpdateAdmin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDepMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDepMedicine.Designer.cs">
+      <DependentUpon>ViewDepMedicine.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewMedUsage.cs">
       <SubType>Form</SubType>
@@ -191,6 +210,12 @@
     </Compile>
     <Compile Include="Medicine.Designer.cs">
       <DependentUpon>Medicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPayment.Designer.cs">
+      <DependentUpon>AddPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateContradicated.cs">
       <SubType>Form</SubType>
@@ -273,6 +298,9 @@
     <EmbeddedResource Include="AddEditDepartment.resx">
       <DependentUpon>AddEditDepartment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMedDep.resx">
+      <DependentUpon>AddMedDep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Department.resx">
       <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPayment.resx">
+      <DependentUpon>AddPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditMedicine.resx">
       <DependentUpon>EditMedicine.cs</DependentUpon>
@@ -350,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewDentist.resx">
       <DependentUpon>ViewDentist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDepMedicine.resx">
+      <DependentUpon>ViewDepMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewMedUsage.resx">
       <DependentUpon>ViewMedUsage.cs</DependentUpon>

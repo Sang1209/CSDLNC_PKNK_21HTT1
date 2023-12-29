@@ -249,14 +249,28 @@ select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat
 order by date asc, shift_id asc
 SET STATISTICS IO, TIME off
 COMMIT TRANSACTION; 
-
+go
+create or alter proc view_medicine_department @depID smallint
+as
+begin tran
+select medicine,m.name,remain
+from quantity_medicine q join medicine m on q.medicine=m.id
+where department=@depID
+commit tran
+go
+create or alter proc getMedToAdd @depID smallint
+as
+begin tran
+select id,name from medicine where id not in(select medicine from quantity_medicine where department=@depID)
+commit tran
 go
 create or alter proc add_medicine_to_department
 	@MEDICINE char(5),
-	@department smallint
+	@department smallint,
+	@quantity int
 as
 begin tran
-insert into quantity_medicine values (@MEDICINE, @department, 0)
+insert into quantity_medicine values (@MEDICINE, @department, @quantity)
 commit tran
 
 go 
@@ -266,5 +280,5 @@ create or alter proc update_medicine_to_department
 	@quantity int
 as
 begin tran
-update quantity_medicine set remain = remain + @quantity where medicine = @medicine and department = @department
+update quantity_medicine set remain = @quantity where medicine = @medicine and department = @department
 commit tran
