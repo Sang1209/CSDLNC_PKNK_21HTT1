@@ -250,4 +250,21 @@ order by date asc, shift_id asc
 SET STATISTICS IO, TIME off
 COMMIT TRANSACTION; 
 
+go
+create or alter proc add_medicine_to_department
+	@MEDICINE char(5),
+	@department smallint
+as
+begin tran
+insert into quantity_medicine values (@MEDICINE, @department, 0)
+commit tran
 
+go 
+create or alter proc update_medicine_to_department
+	@medicine char(5),
+	@department smallint,
+	@quantity int
+as
+begin tran
+update quantity_medicine set remain = remain + @quantity where medicine = @medicine and department = @department
+commit tran
