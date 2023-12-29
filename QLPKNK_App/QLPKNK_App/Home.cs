@@ -1,4 +1,5 @@
 ﻿using buhbuhlmao;
+using QLPKNK_App.BUS;
 using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
@@ -95,6 +96,18 @@ namespace QLPKNK_App
         {
             ViewContradicated v=new ViewContradicated();
             v.ShowDialog();
+        }
+
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddMedicine m = new AddMedicine();
+            m.Show();
         }
     }
 }

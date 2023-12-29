@@ -177,32 +177,23 @@ end
 --Sửa hồ sơ bệnh nhân
 go
 create or alter proc pr_update_patient
-@id varchar(6),
+@id int,
 @name varchar(20),
-@birth varchar(15),
-@gender char(1),
+@birth date,
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
 @address varchar(50)
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update patient_profile set'
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @birth IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @birth + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	set @Query = @Query + ' where id' + ' = ''' + @id + ''''
-
-    exec sp_executesql @Query
+    update patient_profile
+	set [name] = @name,
+		birth = @birth,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		[address] = @address
+	where id = @id
 end
 ----Xem danh sách nhân viên
 go
@@ -245,7 +236,7 @@ go
 create or alter proc layDSDiUng
 as
 begin tran
-select c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
+select top 100 c.patient,p.name as pName,c.medicine,m.name as medName from contraindicated c join (select id,name from patient_profile) p on p.id=c.patient join medicine m on c.medicine=m.id
 commit tran
 go
 create or alter proc layDSDiUngTheoBN @pID int

@@ -48,16 +48,17 @@
             this.MedicineNameCB.Location = new System.Drawing.Point(76, 126);
             this.MedicineNameCB.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineNameCB.Name = "MedicineNameCB";
-            this.MedicineNameCB.Size = new System.Drawing.Size(273, 21);
+            this.MedicineNameCB.Size = new System.Drawing.Size(363, 24);
             this.MedicineNameCB.Sorted = true;
             this.MedicineNameCB.TabIndex = 5;
+            this.MedicineNameCB.SelectedIndexChanged += new System.EventHandler(this.MedicineNameCB_SelectedIndexChanged);
             // 
             // MedicineQuantity
             // 
             this.MedicineQuantity.Location = new System.Drawing.Point(76, 220);
             this.MedicineQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineQuantity.Name = "MedicineQuantity";
-            this.MedicineQuantity.Size = new System.Drawing.Size(273, 20);
+            this.MedicineQuantity.Size = new System.Drawing.Size(364, 22);
             this.MedicineQuantity.TabIndex = 6;
             this.MedicineQuantity.Value = new decimal(new int[] {
             1,
@@ -71,15 +72,16 @@
             this.MedicineNote.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineNote.Multiline = true;
             this.MedicineNote.Name = "MedicineNote";
-            this.MedicineNote.Size = new System.Drawing.Size(273, 60);
+            this.MedicineNote.Size = new System.Drawing.Size(363, 73);
             this.MedicineNote.TabIndex = 7;
             // 
             // Title
             // 
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.Location = new System.Drawing.Point(12, 13);
+            this.Title.Location = new System.Drawing.Point(16, 16);
+            this.Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(417, 64);
+            this.Title.Size = new System.Drawing.Size(556, 79);
             this.Title.TabIndex = 9;
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Title.Click += new System.EventHandler(this.Title_Click);
@@ -88,9 +90,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 90);
+            this.label2.Location = new System.Drawing.Point(97, 111);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Medicine";
             // 
@@ -98,9 +101,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(73, 179);
+            this.label3.Location = new System.Drawing.Point(97, 220);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 16);
+            this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Quantity";
             // 
@@ -108,9 +112,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(73, 276);
+            this.label4.Location = new System.Drawing.Point(97, 340);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 16);
+            this.label4.Size = new System.Drawing.Size(44, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "Note";
             // 
@@ -119,15 +124,15 @@
             this.updatedMedName.Location = new System.Drawing.Point(76, 127);
             this.updatedMedName.Margin = new System.Windows.Forms.Padding(4);
             this.updatedMedName.Name = "updatedMedName";
-            this.updatedMedName.Size = new System.Drawing.Size(273, 20);
+            this.updatedMedName.Size = new System.Drawing.Size(363, 22);
             this.updatedMedName.TabIndex = 13;
             this.updatedMedName.TextChanged += new System.EventHandler(this.updatedMedName_TextChanged);
             // 
             // AddEditPrescription
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 443);
+            this.ClientSize = new System.Drawing.Size(588, 545);
             this.Controls.Add(this.updatedMedName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
