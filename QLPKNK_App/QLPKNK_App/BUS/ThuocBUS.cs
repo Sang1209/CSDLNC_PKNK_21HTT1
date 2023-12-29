@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -107,6 +108,33 @@ namespace QLPKNK_App.BUS
                 catch (Exception ex)
                 {
 
+                    MessageBox.Show("Error");
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public void SuaThuoc(string id, string name, float price)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("UpdateMedicine", connection))
+                    {
+                        command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = id;
+                        command.Parameters.Add(new SqlParameter("@newName", SqlDbType.VarChar)).Value = name;
+                        command.Parameters.Add(new SqlParameter("@newPrice", SqlDbType.VarChar)).Value = price;
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý các ngoại lệ nếu có
                     MessageBox.Show("Error");
                     Console.WriteLine(ex.Message);
                 }

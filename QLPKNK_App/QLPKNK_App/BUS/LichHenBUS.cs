@@ -287,6 +287,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void xoaLichHen(DateTime date,int shiftId,string dentist)
         {
@@ -315,6 +316,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void datLichHen(DateTime date,int shiftId,string dentist,int patient)
         {
@@ -344,6 +346,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void huyDatLichHen(DateTime date,int shiftId,string dentist)
         {
@@ -372,6 +375,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void capNhatLichHen(DateTime d_old,DateTime d_new,int shiftId_old,int shiftId_new,string dentist)
         {
@@ -402,6 +406,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void nhanLichHen(DateTime date,int shiftId,string dentist)
         {
@@ -430,6 +435,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void taoLichTaiKham(DateTime date,int shiftId,string dentist,int patient,string assistant,int lastTreatment)
         {
@@ -461,6 +467,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
     }
 }

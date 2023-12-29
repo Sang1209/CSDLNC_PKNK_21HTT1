@@ -48,6 +48,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+
             return dsBenhNhan;
         }
     }

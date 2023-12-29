@@ -36,55 +36,49 @@ end
 go
 create or alter proc update_account_adst
 @username varchar(12),
+@password varchar(30),
 @name varchar(20),
-@gender char(1),
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
-@address varchar(50)
+@address varchar(50),
+@admin bit
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update account_adst set '
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	if @Query = @Query + ' where username' + ' = ''' + @username + ''''
-
-    exec sp_executesql @Query
+    update account_adst
+	set username = @username,
+		password = @password,
+		name = @name,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		address = @address,
+		admin = @admin
+	where username = @username
 end
 --Sửa tài khoản nha sĩ
 go
 create or alter proc update_account_de
-@username varchar(12),
+@username varchar(10),
+@password varchar(30),
 @name varchar(20),
-@gender char(1),
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
-@address varchar(50)
+@address varchar(50),
+@department smallint
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update account_de set '
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	set @Query = @Query + ' where username' + ' = ''' + @username + ''''
-
-    exec sp_executesql @Query
+    update account_de
+	set username = @username,
+		password = @password,
+		name = @name,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		address = @address,
+		department = @department
+	where username = @username
 end
 --Đổi mật khẩu nhân viên, quản trị viên
 go
@@ -124,10 +118,10 @@ go
 create or alter proc pr_used_medicine_day
 as
 begin
-	select medicine, sum(quantity) as usage_count
-	from prescription p join treatment t on p.treatment = t.id
+	select medicine,m.name, sum(quantity) as usage_count
+	from prescription p join treatment t on p.treatment = t.id join medicine m on m.id=p.medicine
 	where datediff(day, t.[date], getdate()) = 0
-	group by medicine
+	group by medicine,m.name
 	order by usage_count desc
 end
 
@@ -136,11 +130,11 @@ go
 create or alter proc pr_used_medicine_month
 as
 begin
-	select medicine, count(medicine) as Usage_Count
-	from prescription p join treatment t on p.treatment = t.id
+	select medicine,m.name, sum(quantity) as usage_count
+	from prescription p join treatment t on p.treatment = t.id join medicine m on m.id=p.medicine
 	where year(t.[date]) = year(getdate())
 		  and month(t.[date]) = month(getdate())
-	group by medicine
+	group by medicine,m.name
 	order by usage_count desc
 end
 --Thêm hồ sơ bệnh nhân
@@ -264,5 +258,39 @@ begin tran
 update contraindicated set medicine=@mID_new where patient=@pID and medicine=@mID_old
 commit tran
 go
+
+go
+create or alter proc addTreatment
+@department smallint,
+@dentist char(10),
+@patient int,
+@assistant char(10),
+@description varchar(100),
+@note varchar(100),
+@method smallint,
+@tooth smallint
+as
+begin
+	declare @id int, @den_name varchar(20), @pat_name varchar(20), @ass_name varchar(20), @date date
+
+	if exists (select 1 from treatment)
+	begin
+		set @id = (select MAX(id) from patient_profile) + 1
+	end
+	else
+	begin
+		set @id = 1
+	end
+	set @den_name = (select name from account_de where username = @dentist)
+	set @pat_name = (select name from patient_profile where id = @patient)
+	if (@assistant <> null)
+	set @ass_name = (select name from account_de where username = @assistant)
+	set @date = getdate()
+
+	insert into treatment(id, department, dentist, patient, assistant, den_name, pat_name, ass_name, 
+						  description, date, note, method, tooth, state, total)
+	values (@id, @department, @dentist, @patient, @assistant, @den_name, @pat_name, @ass_name, @description, 
+			@date, @note, @method, @tooth, 0, 0)
+end
 
 

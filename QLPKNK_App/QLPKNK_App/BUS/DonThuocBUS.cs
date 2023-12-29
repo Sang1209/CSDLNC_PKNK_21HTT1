@@ -85,6 +85,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         //meh
         public void xoaThuocChoKHDT(int tId, string mId)
@@ -113,6 +114,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         //meh
         public void suaThuocChoKHDT(int tId, string mId, int quantity, string note)
@@ -143,6 +145,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
     }
 }

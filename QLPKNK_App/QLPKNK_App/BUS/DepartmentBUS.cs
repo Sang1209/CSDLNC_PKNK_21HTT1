@@ -31,12 +31,12 @@ namespace QLPKNK_App.BUS
                         {
                             while (Reader.Read())
                             {
-                                dsDepartment.Add(new DepartmentDTO()
-                                {
-                                    id = Convert.ToInt32(Reader["id"]),
-                                    address = Reader["address"].ToString()
+                                DepartmentDTO dep = new DepartmentDTO();
 
-                                }) ;
+                                dep.id = Reader.GetInt16(Reader.GetOrdinal("id"));
+                                dep.address = Reader.GetString(Reader.GetOrdinal("address"));
+
+                                dsDepartment.Add(dep);
                             }
                         }
                     }
@@ -78,6 +78,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void themCoSo(int id, string address)
         {
@@ -104,6 +105,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void capNhatCoSo(int id,string address)
         {
@@ -130,6 +132,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
     }
 }

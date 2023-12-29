@@ -66,9 +66,9 @@ namespace QLPKNK_App
                 gender = true;
             else gender = false;
             int department = (int)DentistDepartment.Value;
-            string phone = DentistUsername.Text;
-            string email = DentistUsername.Text;
-            string address = DentistUsername.Text;
+            string phone = DentistPhone.Text;
+            string email = DentistEmail.Text;
+            string address = DentistAddress.Text;
 
             NhaSiBUS nhaSiBUS = new NhaSiBUS();
             nhaSiBUS.themNhaSi(username, password, name, gender, department, phone, email, address);

@@ -142,6 +142,7 @@ namespace QLPKNK_App
                 if(pId!=0)
                 {
                     MessageBox.Show(this, "Cannot delete a schedule that already been reserved!");
+                    return;
                 }
                 lichHenBUS.xoaLichHen(date, shiftID, dentist);
                 loadData();
@@ -171,8 +172,9 @@ namespace QLPKNK_App
                     MessageBox.Show(this, "This schedule cannot be reserve anymore!");
                     return;
                 }
-                lichHenBUS.datLichHen(date, shiftID, dentist, pId);
-                loadData();
+                reserveSchedule datLH=new reserveSchedule(date,shiftID,dentist);
+                datLH.FormClosing +=new FormClosingEventHandler(refreshData);
+                datLH.ShowDialog();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
@@ -195,10 +197,16 @@ namespace QLPKNK_App
                 if(accept)
                 {
                     MessageBox.Show(this, "This schedule is already accepted!");
+                    return;
                 }
                 lichHenBUS.nhanLichHen(date, shiftID, dentist);
                 loadData();
             }
+        }
+
+        private void DatLH_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void enableDate_CheckedChanged(object sender, EventArgs e)
