@@ -106,6 +106,7 @@
     <Compile Include="Department.Designer.cs">
       <DependentUpon>Department.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\SLThuoc.cs" />
     <Compile Include="DTO\DiUngDTO.cs" />
     <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />

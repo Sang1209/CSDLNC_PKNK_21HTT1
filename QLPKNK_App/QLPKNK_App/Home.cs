@@ -108,7 +108,7 @@ namespace QLPKNK_App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddMedicine m = new AddMedicine();
+            Medicine m = new Medicine();
             m.Show();
         }
 
