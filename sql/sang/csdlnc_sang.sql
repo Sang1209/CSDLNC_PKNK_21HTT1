@@ -244,6 +244,7 @@ select s.date,s.shift_id,sp.start,sp.finish,s.dentist,s.den_name,s.patient,s.pat
 	join shift_period sp on s.shift_id=sp.id
 	join department d on s.department=d.id
 where s.date=@date and s.patient = @patientID
+
 commit tran
 go
 create or alter proc locLichHenTheoNgay_pat_den @patientID int, @dentist char(10),@date date
@@ -298,7 +299,7 @@ commit tran
  
  go
 
-select * from schedule where datediff(d,date,getdate())<=0 
+--select * from schedule where datediff(d,date,getdate())<=0 
 --exec xemLichHenTrongNgay
 --exec locLichHenTrongNgay_den 'DEN0000825'
 --exec locLichHenTrongNgay_dep 61
