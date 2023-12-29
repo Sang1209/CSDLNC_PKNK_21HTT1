@@ -110,6 +110,12 @@
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddContradicated.Designer.cs">
+      <DependentUpon>AddContradicated.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateContradicated.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     <Compile Include="ViewContradicated.Designer.cs">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddContradicated.resx">
+      <DependentUpon>AddContradicated.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDentist.resx">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </EmbeddedResource>

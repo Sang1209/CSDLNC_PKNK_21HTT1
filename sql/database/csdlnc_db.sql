@@ -139,19 +139,19 @@ begin
 if (select assistant from inserted) is not null
 begin
 	update schedule
-	set ass_name = (select top 1 name from account_de where username = (select assistant from inserted))
+	set ass_name = (select distinct( name) from account_de where username = (select assistant from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 if (select dentist from inserted) is not null
 begin
 	update schedule
-	set den_name = (select top 1 name from account_de where username = (select dentist from inserted))
+	set den_name = (select distinct(name) from account_de where username = (select dentist from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 if (select patient from inserted) is not null
 begin
 	update schedule
-	set pat_name = (select top 1 name from patient_profile where id = (select patient from inserted))
+	set pat_name = (select distinct(name) from patient_profile where id = (select patient from inserted))
 	where date = (select date from inserted) and shift_id = (select shift_id from inserted) and dentist = (select dentist from inserted)
 end
 end
@@ -222,24 +222,24 @@ go
 create or alter trigger treatment_name on treatment for insert
 as
 begin
---if ((select assistant from inserted) is not null)
---begin
+if ((select assistant from inserted) is not null)
+begin
 	update treatment
-	set ass_name = 'o'
+	set ass_name =  (select distinct(name) from account_de where username = (select assistant from inserted))
 	where id = (select id from inserted)
---end
---if ((select dentist from inserted) is not null)
---begin
---	update treatment
---	set den_name = (select top 1 name from account_de where username = (select dentist from inserted))
---	where id = (select id from inserted)
---end
---if ((select patient from inserted) is not null)
---begin
---	update treatment
---	set pat_name = (select top 1 name from patient_profile where id = (select patient from inserted))
---	where id = (select id from inserted)
---end
+end
+if ((select dentist from inserted) is not null)
+begin
+	update treatment
+	set den_name = (select distinct(name) from account_de where username = (select dentist from inserted))
+	where id = (select id from inserted)
+end
+if ((select patient from inserted) is not null)
+begin
+	update treatment
+	set pat_name = (select distinct(name) from patient_profile where id = (select patient from inserted))
+	where id = (select id from inserted)
+end
 end
 go
 

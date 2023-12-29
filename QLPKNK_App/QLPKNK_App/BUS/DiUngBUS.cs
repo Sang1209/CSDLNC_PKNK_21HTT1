@@ -94,7 +94,7 @@ namespace QLPKNK_App.BUS
             }
             return dsDiUng;
         }
-        public void themDiUng(int pId,int mId)
+        public void themDiUng(int pId,string mId)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -104,7 +104,7 @@ namespace QLPKNK_App.BUS
                     using (SqlCommand command = new SqlCommand("themDiUng", connection))
                     {
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int)).Value = pId;
-                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Int)).Value = mId;
+                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Char)).Value = mId;
                         command.ExecuteNonQuery();
                         
                     }
@@ -121,7 +121,7 @@ namespace QLPKNK_App.BUS
                 }
             }
         }
-        public void capNhatDiUng(int pId,int mId_old,int mId_new)
+        public void capNhatDiUng(int pId,string mId_old,string mId_new)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -131,8 +131,8 @@ namespace QLPKNK_App.BUS
                     using (SqlCommand command = new SqlCommand("capNhatDiUng", connection))
                     {
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int)).Value = pId;
-                        command.Parameters.Add(new SqlParameter("@mID_old", SqlDbType.Int)).Value = mId_old;
-                        command.Parameters.Add(new SqlParameter("@mID_new", SqlDbType.Int)).Value = mId_new;
+                        command.Parameters.Add(new SqlParameter("@mID_old", SqlDbType.Char)).Value = mId_old;
+                        command.Parameters.Add(new SqlParameter("@mID_new", SqlDbType.Char)).Value = mId_new;
                         command.ExecuteNonQuery();
 
                     }
@@ -149,17 +149,18 @@ namespace QLPKNK_App.BUS
                 }
             }
         }
-        public void xoaDiUng(int pId,int mId)
+        public void xoaDiUng(int pID,string mID)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
                 {
                     connection.Open();
+                    Console.WriteLine(pID);
                     using (SqlCommand command = new SqlCommand("xoaDiUng", connection))
                     {
-                        command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int)).Value = pId;
-                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Int)).Value = mId;
+                        command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int,0)).Value = pID;
+                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Char)).Value = mID;
                         command.ExecuteNonQuery();
 
                     }

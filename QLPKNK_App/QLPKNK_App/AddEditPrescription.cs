@@ -137,5 +137,10 @@ namespace QLPKNK_App
         {
 
         }
+
+        private void MedicineNameCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

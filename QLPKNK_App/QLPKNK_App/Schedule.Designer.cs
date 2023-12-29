@@ -29,22 +29,6 @@
         private void InitializeComponent()
         {
             this.scheduleTable = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchBy = new System.Windows.Forms.ComboBox();
-            this.FilterBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.createSchedule = new System.Windows.Forms.Button();
-            this.DentistCB = new System.Windows.Forms.ComboBox();
-            this.PatientCB = new System.Windows.Forms.ComboBox();
-            this.DepartmentCB = new System.Windows.Forms.ComboBox();
-            this.DatePicker = new System.Windows.Forms.DateTimePicker();
-            this.dentistLabel = new System.Windows.Forms.Label();
-            this.PatientLabel = new System.Windows.Forms.Label();
-            this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.DateLabel = new System.Windows.Forms.Label();
-            this.treatmentID = new System.Windows.Forms.NumericUpDown();
-            this.TreatmentLabel = new System.Windows.Forms.Label();
-            this.enableDate = new System.Windows.Forms.CheckBox();
             this.Accepted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -64,6 +48,22 @@
             this.ReTreatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchBy = new System.Windows.Forms.ComboBox();
+            this.FilterBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.createSchedule = new System.Windows.Forms.Button();
+            this.DentistCB = new System.Windows.Forms.ComboBox();
+            this.PatientCB = new System.Windows.Forms.ComboBox();
+            this.DepartmentCB = new System.Windows.Forms.ComboBox();
+            this.DatePicker = new System.Windows.Forms.DateTimePicker();
+            this.dentistLabel = new System.Windows.Forms.Label();
+            this.PatientLabel = new System.Windows.Forms.Label();
+            this.DepartmentLabel = new System.Windows.Forms.Label();
+            this.DateLabel = new System.Windows.Forms.Label();
+            this.treatmentID = new System.Windows.Forms.NumericUpDown();
+            this.TreatmentLabel = new System.Windows.Forms.Label();
+            this.enableDate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treatmentID)).BeginInit();
             this.SuspendLayout();
@@ -92,195 +92,12 @@
             this.DepID,
             this.DepAddress});
             this.scheduleTable.Location = new System.Drawing.Point(23, 300);
-            this.scheduleTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scheduleTable.Margin = new System.Windows.Forms.Padding(4);
             this.scheduleTable.Name = "scheduleTable";
             this.scheduleTable.RowHeadersWidth = 51;
             this.scheduleTable.Size = new System.Drawing.Size(1977, 448);
             this.scheduleTable.TabIndex = 0;
             this.scheduleTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.scheduleTable_CellContentClick);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1984, 43);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Schedule list";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // searchBy
-            // 
-            this.searchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchBy.FormattingEnabled = true;
-            this.searchBy.Location = new System.Drawing.Point(889, 89);
-            this.searchBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.searchBy.Name = "searchBy";
-            this.searchBy.Size = new System.Drawing.Size(236, 24);
-            this.searchBy.TabIndex = 2;
-            // 
-            // FilterBtn
-            // 
-            this.FilterBtn.Location = new System.Drawing.Point(941, 229);
-            this.FilterBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.FilterBtn.Name = "FilterBtn";
-            this.FilterBtn.Size = new System.Drawing.Size(136, 37);
-            this.FilterBtn.TabIndex = 3;
-            this.FilterBtn.Text = "Filter";
-            this.FilterBtn.UseVisualStyleBackColor = true;
-            this.FilterBtn.Click += new System.EventHandler(this.FilterBtn_Click);
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(712, 86);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 28);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Filter by";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // createSchedule
-            // 
-            this.createSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createSchedule.Location = new System.Drawing.Point(1811, 26);
-            this.createSchedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.createSchedule.Name = "createSchedule";
-            this.createSchedule.Size = new System.Drawing.Size(189, 43);
-            this.createSchedule.TabIndex = 8;
-            this.createSchedule.Text = "Create a schedule";
-            this.createSchedule.UseVisualStyleBackColor = true;
-            this.createSchedule.Click += new System.EventHandler(this.createSchedule_Click);
-            // 
-            // DentistCB
-            // 
-            this.DentistCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.DentistCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.DentistCB.FormattingEnabled = true;
-            this.DentistCB.Location = new System.Drawing.Point(200, 164);
-            this.DentistCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DentistCB.Name = "DentistCB";
-            this.DentistCB.Size = new System.Drawing.Size(235, 24);
-            this.DentistCB.TabIndex = 9;
-            // 
-            // PatientCB
-            // 
-            this.PatientCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.PatientCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.PatientCB.FormattingEnabled = true;
-            this.PatientCB.Location = new System.Drawing.Point(549, 167);
-            this.PatientCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.PatientCB.Name = "PatientCB";
-            this.PatientCB.Size = new System.Drawing.Size(228, 24);
-            this.PatientCB.TabIndex = 10;
-            // 
-            // DepartmentCB
-            // 
-            this.DepartmentCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.DepartmentCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.DepartmentCB.FormattingEnabled = true;
-            this.DepartmentCB.Location = new System.Drawing.Point(897, 164);
-            this.DepartmentCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DepartmentCB.Name = "DepartmentCB";
-            this.DepartmentCB.Size = new System.Drawing.Size(219, 24);
-            this.DepartmentCB.TabIndex = 11;
-            // 
-            // DatePicker
-            // 
-            this.DatePicker.Enabled = false;
-            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DatePicker.Location = new System.Drawing.Point(1255, 164);
-            this.DatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.DatePicker.Name = "DatePicker";
-            this.DatePicker.Size = new System.Drawing.Size(265, 22);
-            this.DatePicker.TabIndex = 12;
-            // 
-            // dentistLabel
-            // 
-            this.dentistLabel.AutoSize = true;
-            this.dentistLabel.Location = new System.Drawing.Point(200, 140);
-            this.dentistLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.dentistLabel.Name = "dentistLabel";
-            this.dentistLabel.Size = new System.Drawing.Size(48, 16);
-            this.dentistLabel.TabIndex = 13;
-            this.dentistLabel.Text = "Dentist";
-            // 
-            // PatientLabel
-            // 
-            this.PatientLabel.AutoSize = true;
-            this.PatientLabel.Location = new System.Drawing.Point(545, 140);
-            this.PatientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PatientLabel.Name = "PatientLabel";
-            this.PatientLabel.Size = new System.Drawing.Size(48, 16);
-            this.PatientLabel.TabIndex = 14;
-            this.PatientLabel.Text = "Patient";
-            // 
-            // DepartmentLabel
-            // 
-            this.DepartmentLabel.AutoSize = true;
-            this.DepartmentLabel.Location = new System.Drawing.Point(897, 140);
-            this.DepartmentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(77, 16);
-            this.DepartmentLabel.TabIndex = 15;
-            this.DepartmentLabel.Text = "Department";
-            // 
-            // DateLabel
-            // 
-            this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(1255, 140);
-            this.DateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(36, 16);
-            this.DateLabel.TabIndex = 16;
-            this.DateLabel.Text = "Date";
-            // 
-            // treatmentID
-            // 
-            this.treatmentID.Location = new System.Drawing.Point(1617, 164);
-            this.treatmentID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.treatmentID.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.treatmentID.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.treatmentID.Name = "treatmentID";
-            this.treatmentID.Size = new System.Drawing.Size(207, 22);
-            this.treatmentID.TabIndex = 17;
-            this.treatmentID.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            // 
-            // TreatmentLabel
-            // 
-            this.TreatmentLabel.AutoSize = true;
-            this.TreatmentLabel.Location = new System.Drawing.Point(1613, 140);
-            this.TreatmentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.TreatmentLabel.Name = "TreatmentLabel";
-            this.TreatmentLabel.Size = new System.Drawing.Size(68, 16);
-            this.TreatmentLabel.TabIndex = 18;
-            this.TreatmentLabel.Text = "Treatment";
-            // 
-            // enableDate
-            // 
-            this.enableDate.AutoSize = true;
-            this.enableDate.Location = new System.Drawing.Point(1304, 140);
-            this.enableDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.enableDate.Name = "enableDate";
-            this.enableDate.Size = new System.Drawing.Size(153, 20);
-            this.enableDate.TabIndex = 19;
-            this.enableDate.Text = "Check to find by date";
-            this.enableDate.UseVisualStyleBackColor = true;
-            this.enableDate.CheckedChanged += new System.EventHandler(this.enableDate_CheckedChanged);
             // 
             // Accepted
             // 
@@ -445,6 +262,190 @@
             this.DepAddress.ReadOnly = true;
             this.DepAddress.Width = 125;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1984, 43);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Schedule list";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchBy
+            // 
+            this.searchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchBy.FormattingEnabled = true;
+            this.searchBy.Location = new System.Drawing.Point(889, 89);
+            this.searchBy.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBy.Name = "searchBy";
+            this.searchBy.Size = new System.Drawing.Size(236, 24);
+            this.searchBy.TabIndex = 2;
+            // 
+            // FilterBtn
+            // 
+            this.FilterBtn.Location = new System.Drawing.Point(941, 229);
+            this.FilterBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.FilterBtn.Name = "FilterBtn";
+            this.FilterBtn.Size = new System.Drawing.Size(136, 37);
+            this.FilterBtn.TabIndex = 3;
+            this.FilterBtn.Text = "Filter";
+            this.FilterBtn.UseVisualStyleBackColor = true;
+            this.FilterBtn.Click += new System.EventHandler(this.FilterBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(712, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 28);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Filter by";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // createSchedule
+            // 
+            this.createSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createSchedule.Location = new System.Drawing.Point(1811, 26);
+            this.createSchedule.Margin = new System.Windows.Forms.Padding(4);
+            this.createSchedule.Name = "createSchedule";
+            this.createSchedule.Size = new System.Drawing.Size(189, 43);
+            this.createSchedule.TabIndex = 8;
+            this.createSchedule.Text = "Create a schedule";
+            this.createSchedule.UseVisualStyleBackColor = true;
+            this.createSchedule.Click += new System.EventHandler(this.createSchedule_Click);
+            // 
+            // DentistCB
+            // 
+            this.DentistCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.DentistCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DentistCB.FormattingEnabled = true;
+            this.DentistCB.Location = new System.Drawing.Point(200, 164);
+            this.DentistCB.Margin = new System.Windows.Forms.Padding(4);
+            this.DentistCB.Name = "DentistCB";
+            this.DentistCB.Size = new System.Drawing.Size(235, 24);
+            this.DentistCB.TabIndex = 9;
+            // 
+            // PatientCB
+            // 
+            this.PatientCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PatientCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PatientCB.FormattingEnabled = true;
+            this.PatientCB.Location = new System.Drawing.Point(549, 167);
+            this.PatientCB.Margin = new System.Windows.Forms.Padding(4);
+            this.PatientCB.Name = "PatientCB";
+            this.PatientCB.Size = new System.Drawing.Size(228, 24);
+            this.PatientCB.TabIndex = 10;
+            this.PatientCB.SelectedIndexChanged += new System.EventHandler(this.PatientCB_SelectedIndexChanged);
+            // 
+            // DepartmentCB
+            // 
+            this.DepartmentCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.DepartmentCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DepartmentCB.FormattingEnabled = true;
+            this.DepartmentCB.Location = new System.Drawing.Point(897, 164);
+            this.DepartmentCB.Margin = new System.Windows.Forms.Padding(4);
+            this.DepartmentCB.Name = "DepartmentCB";
+            this.DepartmentCB.Size = new System.Drawing.Size(219, 24);
+            this.DepartmentCB.TabIndex = 11;
+            // 
+            // DatePicker
+            // 
+            this.DatePicker.Enabled = false;
+            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DatePicker.Location = new System.Drawing.Point(1255, 164);
+            this.DatePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.DatePicker.Name = "DatePicker";
+            this.DatePicker.Size = new System.Drawing.Size(265, 22);
+            this.DatePicker.TabIndex = 12;
+            // 
+            // dentistLabel
+            // 
+            this.dentistLabel.AutoSize = true;
+            this.dentistLabel.Location = new System.Drawing.Point(200, 140);
+            this.dentistLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dentistLabel.Name = "dentistLabel";
+            this.dentistLabel.Size = new System.Drawing.Size(48, 16);
+            this.dentistLabel.TabIndex = 13;
+            this.dentistLabel.Text = "Dentist";
+            // 
+            // PatientLabel
+            // 
+            this.PatientLabel.AutoSize = true;
+            this.PatientLabel.Location = new System.Drawing.Point(545, 140);
+            this.PatientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PatientLabel.Name = "PatientLabel";
+            this.PatientLabel.Size = new System.Drawing.Size(48, 16);
+            this.PatientLabel.TabIndex = 14;
+            this.PatientLabel.Text = "Patient";
+            // 
+            // DepartmentLabel
+            // 
+            this.DepartmentLabel.AutoSize = true;
+            this.DepartmentLabel.Location = new System.Drawing.Point(897, 140);
+            this.DepartmentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DepartmentLabel.Name = "DepartmentLabel";
+            this.DepartmentLabel.Size = new System.Drawing.Size(77, 16);
+            this.DepartmentLabel.TabIndex = 15;
+            this.DepartmentLabel.Text = "Department";
+            // 
+            // DateLabel
+            // 
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Location = new System.Drawing.Point(1255, 140);
+            this.DateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(36, 16);
+            this.DateLabel.TabIndex = 16;
+            this.DateLabel.Text = "Date";
+            // 
+            // treatmentID
+            // 
+            this.treatmentID.Location = new System.Drawing.Point(1617, 164);
+            this.treatmentID.Margin = new System.Windows.Forms.Padding(4);
+            this.treatmentID.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.treatmentID.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.treatmentID.Name = "treatmentID";
+            this.treatmentID.Size = new System.Drawing.Size(207, 22);
+            this.treatmentID.TabIndex = 17;
+            this.treatmentID.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
+            // TreatmentLabel
+            // 
+            this.TreatmentLabel.AutoSize = true;
+            this.TreatmentLabel.Location = new System.Drawing.Point(1613, 140);
+            this.TreatmentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TreatmentLabel.Name = "TreatmentLabel";
+            this.TreatmentLabel.Size = new System.Drawing.Size(68, 16);
+            this.TreatmentLabel.TabIndex = 18;
+            this.TreatmentLabel.Text = "Treatment";
+            // 
+            // enableDate
+            // 
+            this.enableDate.AutoSize = true;
+            this.enableDate.Location = new System.Drawing.Point(1304, 140);
+            this.enableDate.Margin = new System.Windows.Forms.Padding(4);
+            this.enableDate.Name = "enableDate";
+            this.enableDate.Size = new System.Drawing.Size(153, 20);
+            this.enableDate.TabIndex = 19;
+            this.enableDate.Text = "Check to find by date";
+            this.enableDate.UseVisualStyleBackColor = true;
+            this.enableDate.CheckedChanged += new System.EventHandler(this.enableDate_CheckedChanged);
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -467,7 +468,7 @@
             this.Controls.Add(this.searchBy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.scheduleTable);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Schedule";
             this.Text = "Schedule";
             this.Load += new System.EventHandler(this.Schedule_Load);

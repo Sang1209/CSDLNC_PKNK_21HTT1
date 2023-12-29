@@ -253,5 +253,10 @@ namespace QLPKNK_App
         {
             DatePicker.Enabled = enableDate.Checked;
         }
+
+        private void PatientCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
