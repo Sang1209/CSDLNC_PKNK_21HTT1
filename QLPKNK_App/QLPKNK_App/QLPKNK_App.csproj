@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAdmin_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAdmin_Staff.Designer.cs">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,7 @@
     <Compile Include="AddSchedule.Designer.cs">
       <DependentUpon>AddSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Admin_StaffBUS.cs" />
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
     <Compile Include="BUS\DiUngBUS.cs" />
@@ -84,6 +91,7 @@
     <Compile Include="BUS\KHDieuTriBUS.cs" />
     <Compile Include="BUS\LichHenBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
+    <Compile Include="BUS\MedUseBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
     <Compile Include="Department.cs">
@@ -102,6 +110,7 @@
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
     <Compile Include="DTO\LichHenDTO.cs" />
+    <Compile Include="DTO\MedUseDTO.cs" />
     <Compile Include="DTO\NhaSiDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
     <Compile Include="AddDentist.cs">
@@ -115,6 +124,18 @@
     </Compile>
     <Compile Include="AddContradicated.Designer.cs">
       <DependentUpon>AddContradicated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineUsed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineUsed.Designer.cs">
+      <DependentUpon>MedicineUsed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reserveSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reserveSchedule.Designer.cs">
+      <DependentUpon>reserveSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateContradicated.cs">
       <SubType>Form</SubType>
@@ -185,6 +206,15 @@
     <Compile Include="ViewContradicated.Designer.cs">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewMedUsage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMedUsage.Designer.cs">
+      <DependentUpon>ViewMedUsage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddAdmin_Staff.resx">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddContradicated.resx">
       <DependentUpon>AddContradicated.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +251,9 @@
     <EmbeddedResource Include="Prescription.resx">
       <DependentUpon>Prescription.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="reserveSchedule.resx">
+      <DependentUpon>reserveSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Schedule.resx">
       <DependentUpon>Schedule.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewContradicated.resx">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMedUsage.resx">
+      <DependentUpon>ViewMedUsage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

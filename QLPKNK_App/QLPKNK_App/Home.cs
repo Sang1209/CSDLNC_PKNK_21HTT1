@@ -109,5 +109,11 @@ namespace QLPKNK_App
             AddMedicine m = new AddMedicine();
             m.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ViewMedUsage m = new ViewMedUsage();
+            m.Show();
+        }
     }
 }

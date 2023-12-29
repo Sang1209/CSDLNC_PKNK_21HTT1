@@ -41,11 +41,9 @@
             // 
             // treatmentBtn
             // 
-            this.treatmentBtn.Location = new System.Drawing.Point(111, 97);
-            this.treatmentBtn.Margin = new System.Windows.Forms.Padding(4);
-
+            this.treatmentBtn.Location = new System.Drawing.Point(83, 79);
             this.treatmentBtn.Name = "treatmentBtn";
-            this.treatmentBtn.Size = new System.Drawing.Size(100, 28);
+            this.treatmentBtn.Size = new System.Drawing.Size(75, 23);
             this.treatmentBtn.TabIndex = 0;
             this.treatmentBtn.Text = "Treatment";
             this.treatmentBtn.UseVisualStyleBackColor = true;
@@ -53,11 +51,9 @@
             // 
             // Payment
             // 
-            this.Payment.Location = new System.Drawing.Point(317, 97);
-            this.Payment.Margin = new System.Windows.Forms.Padding(4);
-
+            this.Payment.Location = new System.Drawing.Point(238, 79);
             this.Payment.Name = "Payment";
-            this.Payment.Size = new System.Drawing.Size(100, 28);
+            this.Payment.Size = new System.Drawing.Size(75, 23);
             this.Payment.TabIndex = 1;
             this.Payment.Text = "Payment";
             this.Payment.UseVisualStyleBackColor = true;
@@ -65,11 +61,9 @@
             // 
             // ScheduleBtn
             // 
-            this.ScheduleBtn.Location = new System.Drawing.Point(527, 97);
-            this.ScheduleBtn.Margin = new System.Windows.Forms.Padding(4);
-
+            this.ScheduleBtn.Location = new System.Drawing.Point(395, 79);
             this.ScheduleBtn.Name = "ScheduleBtn";
-            this.ScheduleBtn.Size = new System.Drawing.Size(100, 28);
+            this.ScheduleBtn.Size = new System.Drawing.Size(75, 23);
             this.ScheduleBtn.TabIndex = 2;
             this.ScheduleBtn.Text = "Schedule";
             this.ScheduleBtn.UseVisualStyleBackColor = true;
@@ -77,33 +71,29 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(724, 97);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-
+            this.button4.Location = new System.Drawing.Point(543, 79);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 28);
+            this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "Manage";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(288, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(216, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 58);
+            this.label1.Size = new System.Drawing.Size(295, 47);
             this.label1.TabIndex = 17;
             this.label1.Text = "Home page";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // depBtn
             // 
-            this.depBtn.Location = new System.Drawing.Point(111, 186);
-            this.depBtn.Margin = new System.Windows.Forms.Padding(4);
-
+            this.depBtn.Location = new System.Drawing.Point(83, 151);
             this.depBtn.Name = "depBtn";
-            this.depBtn.Size = new System.Drawing.Size(100, 28);
+            this.depBtn.Size = new System.Drawing.Size(75, 23);
             this.depBtn.TabIndex = 18;
             this.depBtn.Text = "Department";
             this.depBtn.UseVisualStyleBackColor = true;
@@ -111,11 +101,9 @@
             // 
             // logoutBtn
             // 
-            this.logoutBtn.Location = new System.Drawing.Point(111, 33);
-            this.logoutBtn.Margin = new System.Windows.Forms.Padding(4);
-
+            this.logoutBtn.Location = new System.Drawing.Point(83, 27);
             this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(100, 28);
+            this.logoutBtn.Size = new System.Drawing.Size(75, 23);
             this.logoutBtn.TabIndex = 19;
             this.logoutBtn.Text = "Logout";
             this.logoutBtn.UseVisualStyleBackColor = true;
@@ -123,11 +111,9 @@
             // 
             // ContraBtn
             // 
-            this.ContraBtn.Location = new System.Drawing.Point(317, 185);
-            this.ContraBtn.Margin = new System.Windows.Forms.Padding(4);
-
+            this.ContraBtn.Location = new System.Drawing.Point(238, 150);
             this.ContraBtn.Name = "ContraBtn";
-            this.ContraBtn.Size = new System.Drawing.Size(100, 28);
+            this.ContraBtn.Size = new System.Drawing.Size(75, 23);
             this.ContraBtn.TabIndex = 20;
             this.ContraBtn.Text = "Contradicated";
             this.ContraBtn.UseVisualStyleBackColor = true;
@@ -135,9 +121,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(527, 184);
+            this.button1.Location = new System.Drawing.Point(395, 150);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
+            this.button1.Size = new System.Drawing.Size(75, 24);
             this.button1.TabIndex = 21;
             this.button1.Text = "Medicine";
             this.button1.UseVisualStyleBackColor = true;
@@ -145,12 +132,10 @@
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-
             this.Controls.Add(this.ContraBtn);
             this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.depBtn);
@@ -159,8 +144,6 @@
             this.Controls.Add(this.ScheduleBtn);
             this.Controls.Add(this.Payment);
             this.Controls.Add(this.treatmentBtn);
-            this.Margin = new System.Windows.Forms.Padding(4);
-
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);

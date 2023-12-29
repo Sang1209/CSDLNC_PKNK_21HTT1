@@ -124,10 +124,10 @@ go
 create or alter proc pr_used_medicine_day
 as
 begin
-	select medicine, sum(quantity) as usage_count
-	from prescription p join treatment t on p.treatment = t.id
+	select medicine,m.name, sum(quantity) as usage_count
+	from prescription p join treatment t on p.treatment = t.id join medicine m on m.id=p.medicine
 	where datediff(day, t.[date], getdate()) = 0
-	group by medicine
+	group by medicine,m.name
 	order by usage_count desc
 end
 
@@ -136,11 +136,11 @@ go
 create or alter proc pr_used_medicine_month
 as
 begin
-	select medicine, count(medicine) as Usage_Count
-	from prescription p join treatment t on p.treatment = t.id
+	select medicine,m.name, sum(quantity) as usage_count
+	from prescription p join treatment t on p.treatment = t.id join medicine m on m.id=p.medicine
 	where year(t.[date]) = year(getdate())
 		  and month(t.[date]) = month(getdate())
-	group by medicine
+	group by medicine,m.name
 	order by usage_count desc
 end
 --Thêm hồ sơ bệnh nhân
