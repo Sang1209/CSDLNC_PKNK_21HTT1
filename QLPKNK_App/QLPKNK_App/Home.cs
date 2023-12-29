@@ -32,6 +32,7 @@ namespace QLPKNK_App
             else
             {
                 Text = "Staff home page";
+                DentistButton.Hide();
             }
             
         }
@@ -42,6 +43,7 @@ namespace QLPKNK_App
             Text = "Dentist home page";
             button4.Hide();
             depBtn.Hide();
+            DentistButton.Hide();
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)
@@ -108,6 +110,24 @@ namespace QLPKNK_App
         {
             AddMedicine m = new AddMedicine();
             m.Show();
+        }
+
+        private void ProfileButton_Click(object sender, EventArgs e)
+        {
+            PatientProfile p = new PatientProfile();
+            p.Show();
+        }
+
+        private void DentistButton_Click(object sender, EventArgs e)
+        {
+            ViewDentist d = new ViewDentist();
+            d.Show();
+        }
+
+        private void StaffButton_Click(object sender, EventArgs e)
+        {
+            ViewStaff_Admin s = new ViewStaff_Admin();
+            s.Show();
         }
     }
 }

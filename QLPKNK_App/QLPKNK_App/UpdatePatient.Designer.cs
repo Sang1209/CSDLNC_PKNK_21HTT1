@@ -154,7 +154,7 @@
             // 
             this.PatientPhone.Location = new System.Drawing.Point(154, 182);
             this.PatientPhone.Name = "PatientPhone";
-            this.PatientPhone.Size = new System.Drawing.Size(100, 22);
+            this.PatientPhone.Size = new System.Drawing.Size(152, 22);
             this.PatientPhone.TabIndex = 4;
             this.PatientPhone.TextChanged += new System.EventHandler(this.PatientPhone_TextChanged);
             // 
@@ -162,7 +162,7 @@
             // 
             this.PatientEmail.Location = new System.Drawing.Point(154, 234);
             this.PatientEmail.Name = "PatientEmail";
-            this.PatientEmail.Size = new System.Drawing.Size(100, 22);
+            this.PatientEmail.Size = new System.Drawing.Size(152, 22);
             this.PatientEmail.TabIndex = 5;
             this.PatientEmail.TextChanged += new System.EventHandler(this.PatientEmail_TextChanged);
             // 

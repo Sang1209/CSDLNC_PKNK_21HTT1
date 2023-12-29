@@ -16,5 +16,6 @@ namespace QLPKNK_App.DTO
         public string address { get; set; }
         public bool gender { get; set; }
         public int depID { get; set; }
+        public string dep_addr { get; set; }
     }
 }

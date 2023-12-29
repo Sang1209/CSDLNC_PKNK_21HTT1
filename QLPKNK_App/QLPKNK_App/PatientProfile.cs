@@ -15,10 +15,10 @@ namespace QLPKNK_App
 {
     public partial class PatientProfile : Form
     {
-        List<HoSoDTO> rowsChanged = new List<HoSoDTO>();
         public PatientProfile()
         {
             InitializeComponent();
+            AddUpdateButton();
             LoadPatientList();
         }
 
@@ -27,14 +27,16 @@ namespace QLPKNK_App
 
         }
 
-        private void LoadView(IList<HoSoDTO> data) 
+        private void AddUpdateButton()
         {
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "";
             buttonColumn.Text = "Update";
             buttonColumn.UseColumnTextForButtonValue = true;
             PatientList.Columns.Add(buttonColumn);
-
+        }
+        private void LoadView(IList<HoSoDTO> data) 
+        {
             PatientList.DataSource = data;
         }
         private void LoadPatientList()

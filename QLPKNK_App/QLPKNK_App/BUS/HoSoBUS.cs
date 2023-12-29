@@ -79,7 +79,6 @@ namespace QLPKNK_App.BUS
                         command.Parameters.AddWithValue("@email", email);
                         command.Parameters.AddWithValue("@address", address);
                         command.Parameters.AddWithValue("@gender", gender);
-                        // Thêm các parameters cho các cột khác nếu cần
 
                         command.ExecuteNonQuery();
                     }

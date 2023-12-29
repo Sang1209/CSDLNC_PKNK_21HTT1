@@ -36,55 +36,49 @@ end
 go
 create or alter proc update_account_adst
 @username varchar(12),
+@password varchar(30),
 @name varchar(20),
-@gender char(1),
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
-@address varchar(50)
+@address varchar(50),
+@admin bit
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update account_adst set '
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	if @Query = @Query + ' where username' + ' = ''' + @username + ''''
-
-    exec sp_executesql @Query
+    update account_adst
+	set username = @username,
+		password = @password,
+		name = @name,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		address = @address,
+		admin = @admin
+	where username = @username
 end
 --Sửa tài khoản nha sĩ
 go
 create or alter proc update_account_de
-@username varchar(12),
+@username varchar(10),
+@password varchar(30),
 @name varchar(20),
-@gender char(1),
+@gender bit,
 @phone varchar(12),
 @email varchar(50),
-@address varchar(50)
+@address varchar(50),
+@department smallint
 as
 begin
-    declare @Query nvarchar(MAX)
-    set @Query = 'update account_de set '
-    if @name IS NOT NULL
-        set @Query = @Query + '[name]' + ' = ''' + @name + ''', '
-	if @gender IS NOT NULL
-        set @Query = @Query + 'gender' + ' = ' + @gender + ', '
-	if @phone IS NOT NULL
-        set @Query = @Query + 'phone' + ' = ''' + @phone + ''', '
-	if @email IS NOT NULL
-        set @Query = @Query + 'email' + ' = ''' + @email + ''', '
-	if @address IS NOT NULL
-        set @Query = @Query + '[address]' + ' = ''' + @address + ''''
-	set @Query = @Query + ' where username' + ' = ''' + @username + ''''
-
-    exec sp_executesql @Query
+    update account_de
+	set username = @username,
+		password = @password,
+		name = @name,
+		gender = @gender,
+		phone = @phone,
+		email = @email,
+		address = @address,
+		department = @department
+	where username = @username
 end
 --Đổi mật khẩu nhân viên, quản trị viên
 go

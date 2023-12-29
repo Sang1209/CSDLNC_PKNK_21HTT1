@@ -37,13 +37,15 @@
             this.logoutBtn = new System.Windows.Forms.Button();
             this.ContraBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.ProfileButton = new System.Windows.Forms.Button();
+            this.DentistButton = new System.Windows.Forms.Button();
+            this.StaffButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // treatmentBtn
             // 
             this.treatmentBtn.Location = new System.Drawing.Point(111, 97);
             this.treatmentBtn.Margin = new System.Windows.Forms.Padding(4);
-
             this.treatmentBtn.Name = "treatmentBtn";
             this.treatmentBtn.Size = new System.Drawing.Size(100, 28);
             this.treatmentBtn.TabIndex = 0;
@@ -55,7 +57,6 @@
             // 
             this.Payment.Location = new System.Drawing.Point(317, 97);
             this.Payment.Margin = new System.Windows.Forms.Padding(4);
-
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(100, 28);
             this.Payment.TabIndex = 1;
@@ -67,7 +68,6 @@
             // 
             this.ScheduleBtn.Location = new System.Drawing.Point(527, 97);
             this.ScheduleBtn.Margin = new System.Windows.Forms.Padding(4);
-
             this.ScheduleBtn.Name = "ScheduleBtn";
             this.ScheduleBtn.Size = new System.Drawing.Size(100, 28);
             this.ScheduleBtn.TabIndex = 2;
@@ -79,7 +79,6 @@
             // 
             this.button4.Location = new System.Drawing.Point(724, 97);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
-
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 3;
@@ -101,7 +100,6 @@
             // 
             this.depBtn.Location = new System.Drawing.Point(111, 186);
             this.depBtn.Margin = new System.Windows.Forms.Padding(4);
-
             this.depBtn.Name = "depBtn";
             this.depBtn.Size = new System.Drawing.Size(100, 28);
             this.depBtn.TabIndex = 18;
@@ -113,7 +111,6 @@
             // 
             this.logoutBtn.Location = new System.Drawing.Point(111, 33);
             this.logoutBtn.Margin = new System.Windows.Forms.Padding(4);
-
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(100, 28);
             this.logoutBtn.TabIndex = 19;
@@ -125,7 +122,6 @@
             // 
             this.ContraBtn.Location = new System.Drawing.Point(317, 185);
             this.ContraBtn.Margin = new System.Windows.Forms.Padding(4);
-
             this.ContraBtn.Name = "ContraBtn";
             this.ContraBtn.Size = new System.Drawing.Size(100, 28);
             this.ContraBtn.TabIndex = 20;
@@ -143,14 +139,45 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ProfileButton
+            // 
+            this.ProfileButton.Location = new System.Drawing.Point(724, 184);
+            this.ProfileButton.Name = "ProfileButton";
+            this.ProfileButton.Size = new System.Drawing.Size(100, 29);
+            this.ProfileButton.TabIndex = 22;
+            this.ProfileButton.Text = "Patient Profile";
+            this.ProfileButton.UseVisualStyleBackColor = true;
+            this.ProfileButton.Click += new System.EventHandler(this.ProfileButton_Click);
+            // 
+            // DentistButton
+            // 
+            this.DentistButton.Location = new System.Drawing.Point(198, 282);
+            this.DentistButton.Name = "DentistButton";
+            this.DentistButton.Size = new System.Drawing.Size(147, 27);
+            this.DentistButton.TabIndex = 23;
+            this.DentistButton.Text = "Manage Dentist";
+            this.DentistButton.UseVisualStyleBackColor = true;
+            this.DentistButton.Click += new System.EventHandler(this.DentistButton_Click);
+            // 
+            // StaffButton
+            // 
+            this.StaffButton.Location = new System.Drawing.Point(527, 282);
+            this.StaffButton.Name = "StaffButton";
+            this.StaffButton.Size = new System.Drawing.Size(147, 27);
+            this.StaffButton.TabIndex = 24;
+            this.StaffButton.Text = "Manage Staff";
+            this.StaffButton.UseVisualStyleBackColor = true;
+            this.StaffButton.Click += new System.EventHandler(this.StaffButton_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-
+            this.Controls.Add(this.StaffButton);
+            this.Controls.Add(this.DentistButton);
+            this.Controls.Add(this.ProfileButton);
             this.Controls.Add(this.button1);
-
             this.Controls.Add(this.ContraBtn);
             this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.depBtn);
@@ -160,7 +187,6 @@
             this.Controls.Add(this.Payment);
             this.Controls.Add(this.treatmentBtn);
             this.Margin = new System.Windows.Forms.Padding(4);
-
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
@@ -179,5 +205,8 @@
         private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Button ContraBtn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ProfileButton;
+        private System.Windows.Forms.Button DentistButton;
+        private System.Windows.Forms.Button StaffButton;
     }
 }

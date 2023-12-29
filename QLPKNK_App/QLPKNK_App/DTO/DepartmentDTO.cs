@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace QLPKNK_App.DTO
 {
@@ -10,5 +11,9 @@ namespace QLPKNK_App.DTO
     {
         public int id { get; set; }
         public string address { get; set; }
+        public override string ToString()
+        {
+            return address;
+        }
     }
 }
