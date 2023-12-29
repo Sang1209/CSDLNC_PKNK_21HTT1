@@ -233,6 +233,7 @@ namespace QLPKNK_App.BUS
                     Console.WriteLine(ex.Message);
                 }
             }
+            MessageBox.Show("Success");
         }
 
         public void capNhatNhanVien(string username, string password, string name, string phone, string email, string address, bool gender, bool admin)
@@ -267,6 +268,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
     }
 }

@@ -142,6 +142,7 @@ namespace QLPKNK_App
                 if(pId!=0)
                 {
                     MessageBox.Show(this, "Cannot delete a schedule that already been reserved!");
+                    return;
                 }
                 lichHenBUS.xoaLichHen(date, shiftID, dentist);
                 loadData();
@@ -196,6 +197,7 @@ namespace QLPKNK_App
                 if(accept)
                 {
                     MessageBox.Show(this, "This schedule is already accepted!");
+                    return;
                 }
                 lichHenBUS.nhanLichHen(date, shiftID, dentist);
                 loadData();

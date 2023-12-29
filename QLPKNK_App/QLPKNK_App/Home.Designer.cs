@@ -1,4 +1,6 @@
-﻿namespace QLPKNK_App
+﻿using System;
+
+namespace QLPKNK_App
 {
     partial class Home
     {
@@ -47,7 +49,7 @@
             this.treatmentBtn.Location = new System.Drawing.Point(111, 97);
             this.treatmentBtn.Margin = new System.Windows.Forms.Padding(4);
             this.treatmentBtn.Name = "treatmentBtn";
-            this.treatmentBtn.Size = new System.Drawing.Size(75, 23);
+            this.treatmentBtn.Size = new System.Drawing.Size(109, 23);
             this.treatmentBtn.TabIndex = 0;
             this.treatmentBtn.Text = "Treatment";
             this.treatmentBtn.UseVisualStyleBackColor = true;
@@ -58,7 +60,7 @@
             this.Payment.Location = new System.Drawing.Point(317, 97);
             this.Payment.Margin = new System.Windows.Forms.Padding(4);
             this.Payment.Name = "Payment";
-            this.Payment.Size = new System.Drawing.Size(75, 23);
+            this.Payment.Size = new System.Drawing.Size(109, 23);
             this.Payment.TabIndex = 1;
             this.Payment.Text = "Payment";
             this.Payment.UseVisualStyleBackColor = true;
@@ -69,7 +71,7 @@
             this.ScheduleBtn.Location = new System.Drawing.Point(527, 97);
             this.ScheduleBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ScheduleBtn.Name = "ScheduleBtn";
-            this.ScheduleBtn.Size = new System.Drawing.Size(75, 23);
+            this.ScheduleBtn.Size = new System.Drawing.Size(96, 23);
             this.ScheduleBtn.TabIndex = 2;
             this.ScheduleBtn.Text = "Schedule";
             this.ScheduleBtn.UseVisualStyleBackColor = true;
@@ -80,7 +82,7 @@
             this.button4.Location = new System.Drawing.Point(724, 97);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(106, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "Manage";
             this.button4.UseVisualStyleBackColor = true;
@@ -101,7 +103,7 @@
             this.depBtn.Location = new System.Drawing.Point(111, 186);
             this.depBtn.Margin = new System.Windows.Forms.Padding(4);
             this.depBtn.Name = "depBtn";
-            this.depBtn.Size = new System.Drawing.Size(75, 23);
+            this.depBtn.Size = new System.Drawing.Size(109, 23);
             this.depBtn.TabIndex = 18;
             this.depBtn.Text = "Department";
             this.depBtn.UseVisualStyleBackColor = true;
@@ -123,7 +125,7 @@
             this.ContraBtn.Location = new System.Drawing.Point(317, 185);
             this.ContraBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ContraBtn.Name = "ContraBtn";
-            this.ContraBtn.Size = new System.Drawing.Size(75, 23);
+            this.ContraBtn.Size = new System.Drawing.Size(109, 23);
             this.ContraBtn.TabIndex = 20;
             this.ContraBtn.Text = "Contradicated";
             this.ContraBtn.UseVisualStyleBackColor = true;
@@ -131,10 +133,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(395, 150);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(527, 189);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.Size = new System.Drawing.Size(96, 24);
             this.button1.TabIndex = 21;
             this.button1.Text = "Medicine";
             this.button1.UseVisualStyleBackColor = true;
@@ -142,9 +144,9 @@
             // 
             // ProfileButton
             // 
-            this.ProfileButton.Location = new System.Drawing.Point(724, 184);
+            this.ProfileButton.Location = new System.Drawing.Point(724, 189);
             this.ProfileButton.Name = "ProfileButton";
-            this.ProfileButton.Size = new System.Drawing.Size(100, 29);
+            this.ProfileButton.Size = new System.Drawing.Size(106, 26);
             this.ProfileButton.TabIndex = 22;
             this.ProfileButton.Text = "Patient Profile";
             this.ProfileButton.UseVisualStyleBackColor = true;
@@ -152,9 +154,9 @@
             // 
             // DentistButton
             // 
-            this.DentistButton.Location = new System.Drawing.Point(198, 282);
+            this.DentistButton.Location = new System.Drawing.Point(111, 267);
             this.DentistButton.Name = "DentistButton";
-            this.DentistButton.Size = new System.Drawing.Size(147, 27);
+            this.DentistButton.Size = new System.Drawing.Size(109, 27);
             this.DentistButton.TabIndex = 23;
             this.DentistButton.Text = "Manage Dentist";
             this.DentistButton.UseVisualStyleBackColor = true;
@@ -162,9 +164,9 @@
             // 
             // StaffButton
             // 
-            this.StaffButton.Location = new System.Drawing.Point(527, 282);
+            this.StaffButton.Location = new System.Drawing.Point(317, 267);
             this.StaffButton.Name = "StaffButton";
-            this.StaffButton.Size = new System.Drawing.Size(147, 27);
+            this.StaffButton.Size = new System.Drawing.Size(109, 27);
             this.StaffButton.TabIndex = 24;
             this.StaffButton.Text = "Manage Staff";
             this.StaffButton.UseVisualStyleBackColor = true;
@@ -193,6 +195,12 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.ResumeLayout(false);
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ViewMedUsage viewMedUsage = new ViewMedUsage();
+            viewMedUsage.Show();
         }
 
         #endregion

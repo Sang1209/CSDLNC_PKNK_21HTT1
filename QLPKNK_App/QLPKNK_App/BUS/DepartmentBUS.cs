@@ -78,6 +78,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void themCoSo(int id, string address)
         {
@@ -104,6 +105,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
         public void capNhatCoSo(int id,string address)
         {
@@ -130,6 +132,7 @@ namespace QLPKNK_App.BUS
                     connection.Close();
                 }
             }
+            MessageBox.Show("Success");
         }
     }
 }

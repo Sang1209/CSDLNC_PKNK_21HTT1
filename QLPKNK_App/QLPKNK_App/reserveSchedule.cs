@@ -15,9 +15,6 @@ namespace QLPKNK_App
 {
     public partial class reserveSchedule : Form
     {
-        DateTime d;
-        int sID;
-        string den;
         public reserveSchedule()
         {
             InitializeComponent();
@@ -25,20 +22,17 @@ namespace QLPKNK_App
         public reserveSchedule(DateTime d,int sID,string den)
         {
             InitializeComponent();
-            this.d = d;
-            this.sID = sID;
-            this.den = den;
-        }
-
-        private void reserveSchedule_Load(object sender, EventArgs e)
-        {
-            date.Value= d;
+            date.Value = d;
             shiftID.Text = sID.ToString();
             dentist.Text = den;
             CaBUS caBUS = new CaBUS();
             CaDTO caDTO = caBUS.LayTTCa(sID);
             from.Text = caDTO.start.ToString();
             to.Text = caDTO.finish.ToString();
+        }
+
+        private void reserveSchedule_Load(object sender, EventArgs e)
+        {
             patientCB.Items.Clear();
             patientCB.DisplayMember = "name";
             BenhNhanBUS benhNhanBUS = new BenhNhanBUS();
@@ -63,7 +57,9 @@ namespace QLPKNK_App
 
         private void AddNewPatient_Click(object sender, EventArgs e)
         {
-
+            AddProfile addProfile = new AddProfile();
+            addProfile.FormClosing += new FormClosingEventHandler(reserveSchedule_Load);
+            addProfile.ShowDialog();
         }
     }
 }

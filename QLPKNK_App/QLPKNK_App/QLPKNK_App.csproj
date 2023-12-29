@@ -137,6 +137,12 @@
     <Compile Include="UpdateAdmin_Staff.Designer.cs">
       <DependentUpon>UpdateAdmin_Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewMedUsage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMedUsage.Designer.cs">
+      <DependentUpon>ViewMedUsage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewStaff_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,10 +320,11 @@
     <EmbeddedResource Include="ViewContradicated.resx">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewMedUsage.resx">
-      <DependentUpon>ViewMedUsage.cs</DependentUpon>
     <EmbeddedResource Include="ViewDentist.resx">
       <DependentUpon>ViewDentist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMedUsage.resx">
+      <DependentUpon>ViewMedUsage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStaff_Admin.resx">
       <DependentUpon>ViewStaff_Admin.cs</DependentUpon>

@@ -238,6 +238,7 @@ namespace QLPKNK_App.BUS
                     Console.WriteLine(ex.Message);
                 }
             }
+            MessageBox.Show("Success");
         }
 
         public void capNhatNhaSi(string username, string password, string name, string phone, string email, string address, bool gender, int depID)
