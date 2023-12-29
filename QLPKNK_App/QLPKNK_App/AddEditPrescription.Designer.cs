@@ -45,8 +45,8 @@
             this.MedicineNameCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.MedicineNameCB.FormattingEnabled = true;
             this.MedicineNameCB.IntegralHeight = false;
-            this.MedicineNameCB.Location = new System.Drawing.Point(129, 165);
-            this.MedicineNameCB.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MedicineNameCB.Location = new System.Drawing.Point(76, 126);
+            this.MedicineNameCB.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineNameCB.Name = "MedicineNameCB";
             this.MedicineNameCB.Size = new System.Drawing.Size(363, 24);
             this.MedicineNameCB.Sorted = true;
@@ -55,8 +55,8 @@
             // 
             // MedicineQuantity
             // 
-            this.MedicineQuantity.Location = new System.Drawing.Point(129, 300);
-            this.MedicineQuantity.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MedicineQuantity.Location = new System.Drawing.Point(76, 220);
+            this.MedicineQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineQuantity.Name = "MedicineQuantity";
             this.MedicineQuantity.Size = new System.Drawing.Size(364, 22);
             this.MedicineQuantity.TabIndex = 6;
@@ -68,8 +68,8 @@
             // 
             // MedicineNote
             // 
-            this.MedicineNote.Location = new System.Drawing.Point(129, 447);
-            this.MedicineNote.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MedicineNote.Location = new System.Drawing.Point(76, 308);
+            this.MedicineNote.Margin = new System.Windows.Forms.Padding(4);
             this.MedicineNote.Multiline = true;
             this.MedicineNote.Name = "MedicineNote";
             this.MedicineNote.Size = new System.Drawing.Size(363, 73);
@@ -121,8 +121,8 @@
             // 
             // updatedMedName
             // 
-            this.updatedMedName.Location = new System.Drawing.Point(131, 204);
-            this.updatedMedName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.updatedMedName.Location = new System.Drawing.Point(76, 127);
+            this.updatedMedName.Margin = new System.Windows.Forms.Padding(4);
             this.updatedMedName.Name = "updatedMedName";
             this.updatedMedName.Size = new System.Drawing.Size(363, 22);
             this.updatedMedName.TabIndex = 13;
@@ -141,7 +141,7 @@
             this.Controls.Add(this.MedicineNote);
             this.Controls.Add(this.MedicineQuantity);
             this.Controls.Add(this.MedicineNameCB);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddEditPrescription";
             this.Text = "AddEditPrescription";
             this.Load += new System.EventHandler(this.AddEditPrescription_Load);

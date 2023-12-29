@@ -40,57 +40,34 @@ namespace QLPKNK_App
             createSchedule.Show();
             scheduleTable.Columns["Reserve"].Visible = false;
         }
-        private void checkSearch(object sender, EventArgs e)
-        {
-            DentistCB.SelectedIndex = 0;
-            PatientCB.SelectedIndex = 0;
-            DepartmentCB.SelectedIndex = 0;
-            if(searchBy.SelectedIndex==0)
-            {
-                treatmentID.Show();
-                TreatmentLabel.Show();
-                DentistCB.Enabled = false;
-                PatientCB.Enabled=false;
-                DepartmentCB.Enabled=false;
-                enableDate.Enabled = false;
-            }
-            else
-            {
-                DentistCB.Enabled = true;
-                PatientCB.Enabled = true;
-                DepartmentCB.Enabled = true;
-                enableDate.Enabled = true;
-                treatmentID.Hide();
-                TreatmentLabel.Hide();
-            }
-        }
         private void keyDownEvt(object sender, EventArgs e)
         {
             DentistCB.DroppedDown = false;
+            DepartmentCB.DroppedDown = false;
         }
         private void Schedule_Load(object sender, EventArgs e)
         {
-            searchBy.Items.Clear();
-            searchBy.Hide();
-            label2.Hide();
-            treatmentID.Hide();
-            TreatmentLabel.Hide();
-            FilterBtn.Hide();
-            //searchBy.Items.Add("7 days from today");
-            //searchBy.Items.Add("All");
-            //searchBy.SelectedIndex = 0;
-            //searchBy.SelectedIndexChanged += new EventHandler(checkSearch);
-            DentistCB.KeyDown += new KeyEventHandler(keyDownEvt);
             DentistCB.DisplayMember = "name";
-            NhaSiBUS nhaSi = new NhaSiBUS();
-            IList<NhaSiDTO> dsNS = nhaSi.layDSNhaSi();
-            DentistCB.Items.Add(new NhaSiDTO() { username="-1", name = "All" });
-            DentistCB.Items.AddRange(dsNS.ToArray());
-            if (DentistCB.Items.Count > 0)
-            {
-                DentistCB.SelectedIndex = 0;
-            }
             DepartmentCB.DisplayMember = "address";
+            if (ns!=null)
+            {
+                DentistCB.Items.Add(ns);
+                DentistCB.SelectedIndex = 0;
+                DentistCB.Enabled = false;
+            }
+            else
+            {
+                DentistCB.KeyDown += new KeyEventHandler(keyDownEvt);
+                NhaSiBUS nhaSi = new NhaSiBUS();
+                IList<NhaSiDTO> dsNS = nhaSi.layDSNhaSi();
+                DentistCB.Items.Add(new NhaSiDTO() { username = "-1", name = "All" });
+                DentistCB.Items.AddRange(dsNS.ToArray());
+                if (DentistCB.Items.Count > 0)
+                {
+                    DentistCB.SelectedIndex = 0;
+                }
+            }
+            DepartmentCB.KeyDown += new KeyEventHandler(keyDownEvt);
             DepartmentBUS departmentBUS = new DepartmentBUS();
             IList<DepartmentDTO> dsDep = departmentBUS.LayDSDepartment();
             DepartmentCB.Items.Add(new DepartmentDTO() { id = -1, address = "All" });
@@ -142,31 +119,6 @@ namespace QLPKNK_App
             foreach (LichHenDTO lh in dsLichHen)
             {
                 scheduleTable.Rows.Add(lh.accept, "", "", "", "", "", lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist, lh.den_name, lh.patient, lh.pat_name, lh.assistant, lh.ass_name, lh.type, lh.depId, lh.DepAddress);
-            }
-        }
-        private void FilterBtn_Click(object sender, EventArgs e)
-        {
-            scheduleTable.Rows.Clear();
-            LichHenBUS lichHenBUS = new LichHenBUS();
-            //int s = searchBy.SelectedIndex;
-            string dentist = ((NhaSiDTO)DentistCB.SelectedItem).username;
-            int pId=((BenhNhanDTO)PatientCB.SelectedItem).id;
-            int dId=((DepartmentDTO)DepartmentCB.SelectedItem).id;
-            //int tId = (int)treatmentID.Value;
-            DateTime date;
-            IList<LichHenDTO> dsLichHen=lichHenBUS.layDSLichHenTrongNgay(pId,dId,dentist);
-            if (!enableDate.Checked)
-            {
-                dsLichHen = lichHenBUS.layDSLichHenTrongNgay(pId, dId, dentist);
-            }
-            else if (enableDate.Checked)
-            {
-                date = DatePicker.Value;
-                dsLichHen = lichHenBUS.layDSLichHenTheoNgay(pId, dId, dentist,date);
-            }
-            foreach (LichHenDTO lh in dsLichHen)
-            {
-                scheduleTable.Rows.Add(lh.accept,"","","","","",lh.date.ToShortDateString(), lh.shiftId, lh.start, lh.finish, lh.dentist,lh.den_name, lh.patient,lh.pat_name, lh.assistant,lh.ass_name, lh.type, lh.depId, lh.DepAddress);
             }
         }
 

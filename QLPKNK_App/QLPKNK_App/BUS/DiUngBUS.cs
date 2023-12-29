@@ -160,6 +160,7 @@ namespace QLPKNK_App.BUS
                 {
                     connection.Open();
                     Console.WriteLine(pID);
+                    Console.WriteLine(mID);
                     using (SqlCommand command = new SqlCommand("xoaDiUng", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
