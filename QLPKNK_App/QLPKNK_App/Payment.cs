@@ -52,5 +52,12 @@ namespace QLPKNK_App
         {
             patientSearch.DroppedDown = false;
         }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            AddPayment addPayment = new AddPayment();
+            addPayment.FormClosing += new FormClosingEventHandler(searchPatient_Click);
+            addPayment.ShowDialog();
+        }
     }
 }

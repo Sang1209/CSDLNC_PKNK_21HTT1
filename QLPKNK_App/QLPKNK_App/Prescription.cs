@@ -1,5 +1,4 @@
-﻿using buhbuhlmao;
-using buhbuhlmao.BUS;
+﻿
 using QLPKNK_App.BUS;
 using QLPKNK_App.DTO;
 using System;

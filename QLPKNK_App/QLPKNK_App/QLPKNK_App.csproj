@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
+    <Compile Include="BUS\CachTraBUS.cs" />
     <Compile Include="BUS\DiUngBUS.cs" />
     <Compile Include="BUS\HoSoBUS.cs" />
     <Compile Include="BUS\DepartmentBUS.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Department.Designer.cs">
       <DependentUpon>Department.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\CachTraDTO.cs" />
     <Compile Include="DTO\DiUngDTO.cs" />
     <Compile Include="DTO\HoSoDTO.cs" />
     <Compile Include="DTO\DepartmentDTO.cs" />
@@ -115,6 +117,12 @@
     </Compile>
     <Compile Include="AddContradicated.Designer.cs">
       <DependentUpon>AddContradicated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPayment.Designer.cs">
+      <DependentUpon>AddPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateContradicated.cs">
       <SubType>Form</SubType>
@@ -205,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Department.resx">
       <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPayment.resx">
+      <DependentUpon>AddPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientProfile.resx">
       <DependentUpon>PatientProfile.cs</DependentUpon>

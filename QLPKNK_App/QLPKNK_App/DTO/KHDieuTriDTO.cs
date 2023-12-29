@@ -5,7 +5,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace buhbuhlmao.BUS
+namespace QLPKNK_App.DTO
 {
     public class KHDieuTriDTO
     {
