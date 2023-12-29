@@ -259,4 +259,38 @@ update contraindicated set medicine=@mID_new where patient=@pID and medicine=@mI
 commit tran
 go
 
+go
+create or alter proc addTreatment
+@department smallint,
+@dentist char(10),
+@patient int,
+@assistant char(10),
+@description varchar(100),
+@note varchar(100),
+@method smallint,
+@tooth smallint
+as
+begin
+	declare @id int, @den_name varchar(20), @pat_name varchar(20), @ass_name varchar(20), @date date
+
+	if exists (select 1 from treatment)
+	begin
+		set @id = (select MAX(id) from patient_profile) + 1
+	end
+	else
+	begin
+		set @id = 1
+	end
+	set @den_name = (select name from account_de where username = @dentist)
+	set @pat_name = (select name from patient_profile where id = @patient)
+	if (@assistant <> null)
+	set @ass_name = (select name from account_de where username = @assistant)
+	set @date = getdate()
+
+	insert into treatment(id, department, dentist, patient, assistant, den_name, pat_name, ass_name, 
+						  description, date, note, method, tooth, state, total)
+	values (@id, @department, @dentist, @patient, @assistant, @den_name, @pat_name, @ass_name, @description, 
+			@date, @note, @method, @tooth, 0, 0)
+end
+
 
