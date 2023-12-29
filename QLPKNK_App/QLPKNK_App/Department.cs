@@ -58,7 +58,13 @@ namespace QLPKNK_App
                 departmentBUS.xoaCoSo(id);
                 loadData();
             }
-            
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                ViewDepMedicine viewDepMedicine = new ViewDepMedicine(id,dep);
+                viewDepMedicine.ShowDialog();
+            }
+
+
         }
     }
 }

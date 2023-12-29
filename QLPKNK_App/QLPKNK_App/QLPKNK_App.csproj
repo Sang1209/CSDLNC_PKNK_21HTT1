@@ -68,6 +68,12 @@
     <Compile Include="AddEditDepartment.Designer.cs">
       <DependentUpon>AddEditDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMedDep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMedDep.Designer.cs">
+      <DependentUpon>AddMedDep.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,7 @@
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
     <Compile Include="DTO\LichHenDTO.cs" />
+    <Compile Include="DTO\MedDepDTO.cs" />
     <Compile Include="DTO\MedUseDTO.cs" />
     <Compile Include="DTO\NhaSiDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
@@ -144,6 +151,12 @@
     </Compile>
     <Compile Include="UpdateAdmin_Staff.Designer.cs">
       <DependentUpon>UpdateAdmin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDepMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDepMedicine.Designer.cs">
+      <DependentUpon>ViewDepMedicine.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewMedUsage.cs">
       <SubType>Form</SubType>
@@ -280,6 +293,9 @@
     <EmbeddedResource Include="AddEditDepartment.resx">
       <DependentUpon>AddEditDepartment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMedDep.resx">
+      <DependentUpon>AddMedDep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEditPrescription.resx">
       <DependentUpon>AddEditPrescription.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewDentist.resx">
       <DependentUpon>ViewDentist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDepMedicine.resx">
+      <DependentUpon>ViewDepMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewMedUsage.resx">
       <DependentUpon>ViewMedUsage.cs</DependentUpon>
