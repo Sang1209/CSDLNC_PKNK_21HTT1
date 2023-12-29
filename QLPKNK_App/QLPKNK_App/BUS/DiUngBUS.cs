@@ -157,6 +157,7 @@ namespace QLPKNK_App.BUS
                 {
                     connection.Open();
                     Console.WriteLine(pID);
+                    Console.WriteLine(mID);
                     using (SqlCommand command = new SqlCommand("xoaDiUng", connection))
                     {
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int,0)).Value = pID;

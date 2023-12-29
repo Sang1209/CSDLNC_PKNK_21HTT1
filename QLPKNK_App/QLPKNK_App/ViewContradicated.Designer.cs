@@ -136,14 +136,14 @@
             // 
             // UpdateBtn
             // 
-            this.Update.HeaderText = "Update";
-            this.Update.MinimumWidth = 6;
-            this.Update.Name = "Update";
-            this.Update.ReadOnly = true;
-            this.Update.Text = "Update";
-            this.Update.ToolTipText = "Update";
-            this.Update.UseColumnTextForButtonValue = true;
-            this.Update.Width = 125;
+            this.UpdateBtn.HeaderText = "Update";
+            this.UpdateBtn.MinimumWidth = 6;
+            this.UpdateBtn.Name = "Update";
+            this.UpdateBtn.ReadOnly = true;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.ToolTipText = "Update";
+            this.UpdateBtn.UseColumnTextForButtonValue = true;
+            this.UpdateBtn.Width = 125;
             // 
             // Delete
             // 
