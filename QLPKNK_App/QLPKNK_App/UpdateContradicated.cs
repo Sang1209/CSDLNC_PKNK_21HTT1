@@ -54,7 +54,8 @@ namespace QLPKNK_App
         private void button1_Click(object sender, EventArgs e)
         {
             DiUngBUS DiUngBUS = new DiUngBUS();
-            string midnew = MedicineCB.Text;
+            string midnew = ((ThuocDTO)MedicineCB.SelectedItem).id;
+            Console.WriteLine(midnew);
             DiUngBUS.capNhatDiUng(pId, mid, midnew);
             this.Close();
         }

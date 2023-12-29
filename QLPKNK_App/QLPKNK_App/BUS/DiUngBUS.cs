@@ -34,7 +34,7 @@ namespace QLPKNK_App.BUS
                                 {
                                     patient = Convert.ToInt32(Reader["patient"]),
                                     pName = Reader["pName"].ToString(),
-                                    medicine= Convert.ToInt32(Reader["medicine"]),
+                                    medicine= Reader["medicine"].ToString(),
                                     medName= Reader["medName"].ToString(),
                                 });
                             }
@@ -74,7 +74,7 @@ namespace QLPKNK_App.BUS
                                 {
                                     patient = Convert.ToInt32(Reader["patient"]),
                                     pName = Reader["pName"].ToString(),
-                                    medicine = Convert.ToInt32(Reader["medicine"]),
+                                    medicine = Reader["medicine"].ToString(),
                                     medName = Reader["medName"].ToString(),
                                 });
                             }
@@ -101,10 +101,12 @@ namespace QLPKNK_App.BUS
                 try
                 {
                     connection.Open();
+
                     using (SqlCommand command = new SqlCommand("themDiUng", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int)).Value = pId;
-                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Char)).Value = mId;
+                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.VarChar)).Value = mId;
                         command.ExecuteNonQuery();
                         
                     }
@@ -130,9 +132,10 @@ namespace QLPKNK_App.BUS
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("capNhatDiUng", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int)).Value = pId;
-                        command.Parameters.Add(new SqlParameter("@mID_old", SqlDbType.Char)).Value = mId_old;
-                        command.Parameters.Add(new SqlParameter("@mID_new", SqlDbType.Char)).Value = mId_new;
+                        command.Parameters.Add(new SqlParameter("@mID_old", SqlDbType.VarChar)).Value = mId_old;
+                        command.Parameters.Add(new SqlParameter("@mID_new", SqlDbType.VarChar)).Value = mId_new;
                         command.ExecuteNonQuery();
 
                     }
@@ -160,8 +163,9 @@ namespace QLPKNK_App.BUS
                     Console.WriteLine(mID);
                     using (SqlCommand command = new SqlCommand("xoaDiUng", connection))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add(new SqlParameter("@pID", SqlDbType.Int,0)).Value = pID;
-                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.Char)).Value = mID;
+                        command.Parameters.Add(new SqlParameter("@mID", SqlDbType.VarChar)).Value = mID;
                         command.ExecuteNonQuery();
 
                     }
