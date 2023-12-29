@@ -30,10 +30,16 @@ namespace QLPKNK_App
         private void AddUpdateButton()
         {
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "";
+            buttonColumn.Name = "update";
             buttonColumn.Text = "Update";
             buttonColumn.UseColumnTextForButtonValue = true;
             PatientList.Columns.Add(buttonColumn);
+
+            DataGridViewButtonColumn buttonColumn2 = new DataGridViewButtonColumn();
+            buttonColumn2.Name = "treatment";
+            buttonColumn2.Text = "Add";
+            buttonColumn2.UseColumnTextForButtonValue = true;
+            PatientList.Columns.Add(buttonColumn2);
         }
         private void LoadView(IList<HoSoDTO> data) 
         {
@@ -60,12 +66,19 @@ namespace QLPKNK_App
         private void PatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem cột được bấm có phải là cột chứa nút không
-            if (e.ColumnIndex == PatientList.Columns[""].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == PatientList.Columns["update"].Index && e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = PatientList.Rows[e.RowIndex];
                 int id = Convert.ToInt32(selectedRow.Cells["id"].Value);
-
                 UpdatePatient openForm = new UpdatePatient(id);
+                openForm.ShowDialog();
+            }
+            else if (e.ColumnIndex == PatientList.Columns["treatment"].Index && e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = PatientList.Rows[e.RowIndex];
+                int id = Convert.ToInt32(selectedRow.Cells["id"].Value);
+                Console.WriteLine(id);
+                AddTreatment openForm = new AddTreatment(id);
                 openForm.ShowDialog();
             }
         }
