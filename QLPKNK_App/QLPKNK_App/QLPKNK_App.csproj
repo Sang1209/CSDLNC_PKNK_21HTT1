@@ -50,6 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAdmin_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAdmin_Staff.Designer.cs">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddContradicated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddContradicated.Designer.cs">
+      <DependentUpon>AddContradicated.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEditDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +86,7 @@
     <Compile Include="AddSchedule.Designer.cs">
       <DependentUpon>AddSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="BUS\Admin_StaffBUS.cs" />
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\CaBUS.cs" />
     <Compile Include="BUS\DiUngBUS.cs" />
@@ -84,6 +97,7 @@
     <Compile Include="BUS\KHDieuTriBUS.cs" />
     <Compile Include="BUS\LichHenBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
+    <Compile Include="BUS\MedUseBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
     <Compile Include="Department.cs">
@@ -102,6 +116,7 @@
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KHDieuTriDTO.cs" />
     <Compile Include="DTO\LichHenDTO.cs" />
+    <Compile Include="DTO\MedUseDTO.cs" />
     <Compile Include="DTO\NhaSiDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
     <Compile Include="AddDentist.cs">
@@ -110,11 +125,59 @@
     <Compile Include="AddDentist.Designer.cs">
       <DependentUpon>AddDentist.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddContradicated.cs">
+    <Compile Include="AddProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddContradicated.Designer.cs">
-      <DependentUpon>AddContradicated.cs</DependentUpon>
+    <Compile Include="AddProfile.Designer.cs">
+      <DependentUpon>AddProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAdmin_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAdmin_Staff.Designer.cs">
+      <DependentUpon>UpdateAdmin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStaff_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewStaff_Admin.Designer.cs">
+      <DependentUpon>ViewStaff_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDentist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDentist.Designer.cs">
+      <DependentUpon>UpdateDentist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDentist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDentist.Designer.cs">
+      <DependentUpon>ViewDentist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicineUsed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicineUsed.Designer.cs">
+      <DependentUpon>MedicineUsed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reserveSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reserveSchedule.Designer.cs">
+      <DependentUpon>reserveSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMedicine.Designer.cs">
+      <DependentUpon>EditMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Medicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Medicine.Designer.cs">
+      <DependentUpon>Medicine.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateContradicated.cs">
       <SubType>Form</SubType>
@@ -185,6 +248,9 @@
     <Compile Include="ViewContradicated.Designer.cs">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAdmin_Staff.resx">
+      <DependentUpon>AddAdmin_Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddContradicated.resx">
       <DependentUpon>AddContradicated.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,11 +266,20 @@
     <EmbeddedResource Include="AddMedicine.resx">
       <DependentUpon>AddMedicine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddProfile.resx">
+      <DependentUpon>AddProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSchedule.resx">
       <DependentUpon>AddSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Department.resx">
       <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMedicine.resx">
+      <DependentUpon>EditMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Medicine.resx">
+      <DependentUpon>Medicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientProfile.resx">
       <DependentUpon>PatientProfile.cs</DependentUpon>
@@ -221,6 +296,9 @@
     <EmbeddedResource Include="Prescription.resx">
       <DependentUpon>Prescription.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="reserveSchedule.resx">
+      <DependentUpon>reserveSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Schedule.resx">
       <DependentUpon>Schedule.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,8 +314,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateAdmin_Staff.resx">
+      <DependentUpon>UpdateAdmin_Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpdateContradicated.resx">
       <DependentUpon>UpdateContradicated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDentist.resx">
+      <DependentUpon>UpdateDentist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatePatient.resx">
       <DependentUpon>UpdatePatient.cs</DependentUpon>
@@ -247,6 +331,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewContradicated.resx">
       <DependentUpon>ViewContradicated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMedUsage.resx">
+      <DependentUpon>ViewMedUsage.cs</DependentUpon>
+    <EmbeddedResource Include="ViewDentist.resx">
+      <DependentUpon>ViewDentist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStaff_Admin.resx">
+      <DependentUpon>ViewStaff_Admin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -79,12 +79,43 @@ namespace QLPKNK_App.BUS
                         command.Parameters.AddWithValue("@email", email);
                         command.Parameters.AddWithValue("@address", address);
                         command.Parameters.AddWithValue("@gender", gender);
-                        // Thêm các parameters cho các cột khác nếu cần
 
                         command.ExecuteNonQuery();
                     }
                 }
                 catch (Exception ex) 
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void themHoSo(string name, DateTime birth, string phone, string email, string address, bool gender)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("pr_create_patient", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@birth", birth);
+                        command.Parameters.AddWithValue("@phone", phone);
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@address", address);
+                        command.Parameters.AddWithValue("@gender", gender);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }

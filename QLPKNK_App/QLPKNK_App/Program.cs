@@ -17,8 +17,12 @@ namespace QLPKNK_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+<<<<<<< HEAD
             Application.Run(new Login());
+=======
+
+            Application.Run(new Home());
+>>>>>>> 3dc3e59da5a8ef9089877d8e67f23b447bf322db
         }
     }
 }

@@ -31,9 +31,9 @@ namespace QLPKNK_App
             if (AdminType.SelectedItem.ToString() == "Admin")
                 type = true;
             else type = false;
-            string phone = AdminUsername.Text;
-            string email = AdminUsername.Text;
-            string address = AdminUsername.Text;
+            string phone = AdminPhone.Text;
+            string email = AdminEmail.Text;
+            string address = AdminAddress.Text;
 
             Admin_StaffBUS admin_staffBUS = new Admin_StaffBUS();
             admin_staffBUS.themAdmin_NhanVien(username, password, name, gender, type, phone, email, address);

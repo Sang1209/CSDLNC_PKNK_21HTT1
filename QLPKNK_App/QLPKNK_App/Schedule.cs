@@ -171,8 +171,9 @@ namespace QLPKNK_App
                     MessageBox.Show(this, "This schedule cannot be reserve anymore!");
                     return;
                 }
-                lichHenBUS.datLichHen(date, shiftID, dentist, pId);
-                loadData();
+                reserveSchedule datLH=new reserveSchedule(date,shiftID,dentist);
+                datLH.FormClosing +=new FormClosingEventHandler(refreshData);
+                datLH.ShowDialog();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
@@ -199,6 +200,11 @@ namespace QLPKNK_App
                 lichHenBUS.nhanLichHen(date, shiftID, dentist);
                 loadData();
             }
+        }
+
+        private void DatLH_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void enableDate_CheckedChanged(object sender, EventArgs e)
