@@ -100,7 +100,9 @@
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\MedUseBUS.cs" />
     <Compile Include="BUS\NhaSiBUS.cs" />
+    <Compile Include="BUS\PTDieuTriBUS.cs" />
     <Compile Include="BUS\ThuocBUS.cs" />
+    <Compile Include="BUS\ToothBUS.cs" />
     <Compile Include="Department.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +122,7 @@
     <Compile Include="DTO\LichHenDTO.cs" />
     <Compile Include="DTO\MedUseDTO.cs" />
     <Compile Include="DTO\NhaSiDTO.cs" />
+    <Compile Include="DTO\PTDieuTriDTO.cs" />
     <Compile Include="DTO\ThuocDTO.cs" />
     <Compile Include="AddDentist.cs">
       <SubType>Form</SubType>
@@ -139,6 +142,7 @@
     <Compile Include="AddTreatment.Designer.cs">
       <DependentUpon>AddTreatment.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\ToothDTO.cs" />
     <Compile Include="UpdateAdmin_Staff.cs">
       <SubType>Form</SubType>
     </Compile>
