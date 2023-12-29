@@ -118,7 +118,7 @@ namespace QLPKNK_App
             this.logoutBtn.TabIndex = 19;
             this.logoutBtn.Text = "Logout";
             this.logoutBtn.UseVisualStyleBackColor = true;
-            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            //this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
             // ContraBtn
             // 
