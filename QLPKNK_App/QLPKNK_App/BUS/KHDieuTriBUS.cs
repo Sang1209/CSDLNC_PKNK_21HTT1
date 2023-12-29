@@ -5,10 +5,13 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QLPKNK_App.BUS
 {
@@ -102,6 +105,40 @@ namespace QLPKNK_App.BUS
             }
             return dsKHDieuTri;
         }
-        
+
+        public void themDieuTri(int patient, int department, string dentist, string assistant, string description, string note, int method, int tooth)
+        {
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("addTreatment", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@patient", patient);
+                        command.Parameters.AddWithValue("@department", department);
+                        command.Parameters.AddWithValue("@dentist", dentist);
+                        command.Parameters.AddWithValue("@assistant", assistant);
+                        command.Parameters.AddWithValue("@description", description);
+                        command.Parameters.AddWithValue("@note", note);
+                        command.Parameters.AddWithValue("@method", method);
+                        command.Parameters.AddWithValue("@tooth", tooth);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
-}
+ }
+

@@ -77,7 +77,6 @@ namespace QLPKNK_App
             {
                 DataGridViewRow selectedRow = PatientList.Rows[e.RowIndex];
                 int id = Convert.ToInt32(selectedRow.Cells["id"].Value);
-                Console.WriteLine(id);
                 AddTreatment openForm = new AddTreatment(id);
                 openForm.ShowDialog();
             }

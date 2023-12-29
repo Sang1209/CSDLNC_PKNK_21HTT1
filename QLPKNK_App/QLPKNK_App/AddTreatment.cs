@@ -33,6 +33,52 @@ namespace QLPKNK_App
             HoSoBUS hsBUS = new HoSoBUS();
             hs = hsBUS.layThongTinHoSO(pID);
             PatientName.Text = hs.name;
+
+            DepartmentBUS depBUS = new DepartmentBUS();
+            IList<DepartmentDTO> dep = depBUS.LayDSDepartment();
+            DepartmentCB.DataSource = dep;
+            DepartmentCB.DisplayMember = "address";
+            DepartmentCB.ValueMember = "id";
+
+            NhaSiBUS nsBUS = new NhaSiBUS();
+            IList<NhaSiDTO> ns = nsBUS.layDSNhaSi();
+            DentistCB.DataSource = ns;
+            DentistCB.DisplayMember = "name";
+            DentistCB.ValueMember = "username";
+
+            IList<NhaSiDTO> ass = nsBUS.layDSNhaSi();
+            NhaSiDTO empty = new NhaSiDTO();
+            ass.Insert(0, empty);
+            AssistantCB.DataSource = ass;
+            AssistantCB.DisplayMember = "name";
+            AssistantCB.ValueMember = "username";
+
+            PTDieuTriBUS ptBUS = new PTDieuTriBUS();
+            IList<PTDieuTriDTO> pt = ptBUS.layDSPhuongThucDT();
+            MethodCB.DataSource = pt;
+            MethodCB.DisplayMember = "name";
+            MethodCB.ValueMember = "id";
+
+            ToothBUS tBUS = new ToothBUS();
+            IList<ToothDTO> t = tBUS.layDSRang();
+            ToothCB.DataSource = t;
+            ToothCB.DisplayMember = "name";
+            ToothCB.ValueMember = "id";
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            int patient = (int)PatientID.Value;
+            int department = (int)DepartmentCB.SelectedValue;
+            string dentist = DentistCB.SelectedValue.ToString();
+            string assistant = AssistantCB.SelectedIndex.ToString();
+            string description = Description.Text;
+            string note = Note.Text;
+            int method = (int)MethodCB.SelectedValue;
+            int tooth = (int)ToothCB.SelectedValue;
+
+            KHDieuTriBUS dtBUS = new KHDieuTriBUS();
+            dtBUS.themDieuTri(patient, department, dentist, assistant, description, note, method, tooth);
         }
     }
 }
