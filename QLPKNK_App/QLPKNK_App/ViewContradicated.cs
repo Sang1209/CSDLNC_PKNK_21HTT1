@@ -54,7 +54,7 @@ namespace QLPKNK_App
             int mId = Convert.ToInt32(contraTable.Rows[e.RowIndex].Cells["MedicineID"].Value);
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                UpdateContradicated u=new UpdateContradicated(pId, mId);
+                UpdateContradicated u = new UpdateContradicated();
                 u.FormClosing += new FormClosingEventHandler(ViewContradicated_Load);
                 u.ShowDialog();
             }

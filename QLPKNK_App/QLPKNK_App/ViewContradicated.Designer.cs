@@ -32,13 +32,13 @@
             this.patient = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.contraTable = new System.Windows.Forms.DataGridView();
+            this.addBtn = new System.Windows.Forms.Button();
             this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MedicineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.UpdateBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.addBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.contraTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,13 +79,22 @@
             this.PatientName,
             this.MedicineID,
             this.MedicineName,
-            this.Update,
+            this.UpdateBtn,
             this.Delete});
             this.contraTable.Location = new System.Drawing.Point(43, 244);
             this.contraTable.Name = "contraTable";
             this.contraTable.Size = new System.Drawing.Size(655, 311);
             this.contraTable.TabIndex = 3;
             this.contraTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contraTable_CellContentClick);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(623, 64);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(75, 23);
+            this.addBtn.TabIndex = 4;
+            this.addBtn.Text = "Add contradicated";
+            this.addBtn.UseVisualStyleBackColor = true;
             // 
             // PatientID
             // 
@@ -111,14 +120,14 @@
             this.MedicineName.Name = "MedicineName";
             this.MedicineName.ReadOnly = true;
             // 
-            // Update
+            // UpdateBtn
             // 
-            this.Update.HeaderText = "Update";
-            this.Update.Name = "Update";
-            this.Update.ReadOnly = true;
-            this.Update.Text = "Update";
-            this.Update.ToolTipText = "Update";
-            this.Update.UseColumnTextForButtonValue = true;
+            this.UpdateBtn.HeaderText = "Update";
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.ReadOnly = true;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.ToolTipText = "Update";
+            this.UpdateBtn.UseColumnTextForButtonValue = true;
             // 
             // Delete
             // 
@@ -128,15 +137,6 @@
             this.Delete.Text = "Delete";
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
-            // 
-            // addBtn
-            // 
-            this.addBtn.Location = new System.Drawing.Point(623, 64);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(75, 23);
-            this.addBtn.TabIndex = 4;
-            this.addBtn.Text = "Add contradicated";
-            this.addBtn.UseVisualStyleBackColor = true;
             // 
             // ViewContradicated
             // 
@@ -163,12 +163,12 @@
         private System.Windows.Forms.ComboBox patient;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView contraTable;
+        private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn MedicineID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MedicineName;
-        private System.Windows.Forms.DataGridViewButtonColumn Update;
+        private System.Windows.Forms.DataGridViewButtonColumn UpdateBtn;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button addBtn;
     }
 }
