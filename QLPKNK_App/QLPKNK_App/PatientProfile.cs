@@ -82,6 +82,12 @@ namespace QLPKNK_App
                 SearchPatient(name);
             }
         }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            AddProfile a = new AddProfile();
+            a.Show();
+        }
     }
 }
 

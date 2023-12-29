@@ -32,6 +32,7 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.SearchName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.CreateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PatientList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(422, 43);
+            this.RefreshButton.Location = new System.Drawing.Point(301, 38);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(75, 23);
             this.RefreshButton.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             // SearchName
             // 
-            this.SearchName.Location = new System.Drawing.Point(298, 43);
+            this.SearchName.Location = new System.Drawing.Point(177, 38);
             this.SearchName.Name = "SearchName";
             this.SearchName.Size = new System.Drawing.Size(100, 22);
             this.SearchName.TabIndex = 2;
@@ -66,17 +67,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 46);
+            this.label1.Location = new System.Drawing.Point(109, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Name";
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Location = new System.Drawing.Point(570, 37);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(130, 23);
+            this.CreateButton.TabIndex = 0;
+            this.CreateButton.Text = "Create Profile";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // PatientProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchName);
             this.Controls.Add(this.RefreshButton);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.TextBox SearchName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button CreateButton;
     }
 }
