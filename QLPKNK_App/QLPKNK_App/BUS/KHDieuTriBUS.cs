@@ -59,7 +59,6 @@ namespace QLPKNK_App.BUS
                 catch (Exception ex)
                 {
                     // Xử lý các ngoại lệ nếu có
-                    MessageBox.Show("Error khdtBUS");
                     Console.WriteLine(ex.Message);
                 }
                 finally
