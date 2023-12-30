@@ -133,7 +133,7 @@ end
 go
 
 go
-create or alter trigger schedule_name on schedule for insert, update
+create or alter trigger schedule_name on schedule for insert
 as
 begin
 if (select assistant from inserted) is not null
