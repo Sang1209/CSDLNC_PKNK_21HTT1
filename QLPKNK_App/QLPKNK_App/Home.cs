@@ -21,18 +21,21 @@ namespace QLPKNK_App
         {
             InitializeComponent();
         }
-        public Home(Admin_StaffDTO adst)
+        public Home(Admin_StaffDTO adst, bool admin)
         {
             InitializeComponent();
             this.adst = adst;
-            if(adst.admin)
+            if(admin)
             {
                 Text = "Admin home page";
             }
             else
             {
                 Text = "Staff home page";
+                button1.Hide();
                 DentistButton.Hide();
+                StaffButton.Hide();
+                depBtn.Hide();
             }
             
         }
@@ -41,9 +44,10 @@ namespace QLPKNK_App
             InitializeComponent();
             this.ns= ns;
             Text = "Dentist home page";
-            button4.Hide();
+            button1.Hide();
             depBtn.Hide();
             DentistButton.Hide();
+            StaffButton.Hide();
         }
 
         private void treatmentBtn_Click(object sender, EventArgs e)
