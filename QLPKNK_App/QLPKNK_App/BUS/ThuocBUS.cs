@@ -57,7 +57,7 @@ namespace QLPKNK_App.BUS
             }
             return dsThuoc;
         }
-        public void ThemThuoc(string id, string name, float price)
+        public void ThemThuoc(string id, string name, Double price)
         {
             using (SqlConnection connection = new SqlConnection(connStr))
             {
@@ -68,12 +68,12 @@ namespace QLPKNK_App.BUS
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                       
-                        command.Parameters.AddWithValue("@id", id);
-                        command.Parameters.AddWithValue("@name", name);
-                        command.Parameters.AddWithValue("@price", price);
 
-          
+                        command.Parameters.Add(new SqlParameter("@id", SqlDbType.Char)).Value = id;
+                        command.Parameters.Add(new SqlParameter("@name", SqlDbType.VarChar)).Value = name;
+                        command.Parameters.Add(new SqlParameter("@price", SqlDbType.Float)).Value = price;
+
+
                         command.ExecuteNonQuery();
                     }
                 }
@@ -117,8 +117,9 @@ namespace QLPKNK_App.BUS
                 }
             }
         }
-        public void SuaThuoc(string id, string name, float price)
+        public void SuaThuoc(string id, string name, Double price)
         {
+            Console.WriteLine(id);
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 try
@@ -126,9 +127,10 @@ namespace QLPKNK_App.BUS
                     connection.Open();
                     using (SqlCommand command = new SqlCommand("UpdateMedicine", connection))
                     {
-                        command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = id;
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add(new SqlParameter("@id", SqlDbType.Char)).Value = id;
                         command.Parameters.Add(new SqlParameter("@newName", SqlDbType.VarChar)).Value = name;
-                        command.Parameters.Add(new SqlParameter("@newPrice", SqlDbType.VarChar)).Value = price;
+                        command.Parameters.Add(new SqlParameter("@newPrice", SqlDbType.Float)).Value = price;
                         command.ExecuteNonQuery();
                     }
                 }

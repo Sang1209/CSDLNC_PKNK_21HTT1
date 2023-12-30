@@ -39,10 +39,11 @@ namespace QLPKNK_App
         {
             string id = textBox1.Text;
             string name = textBox2.Text;
-            float price = float.Parse(textBox3.Text);
+            Double price = Convert.ToDouble(textBox3.Text);
 
             ThuocBUS thuocBUS = new ThuocBUS();
             thuocBUS.ThemThuoc(id,name,price);
+            this.Close();
         }
 
 

@@ -1,10 +1,13 @@
 ﻿using QLPKNK_App.BUS;
+using QLPKNK_App.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,57 +16,64 @@ namespace QLPKNK_App
 {
     public partial class Medicine : Form
     {
+        public object ThuocBus { get; private set; }
+
         public Medicine()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id, name;
-            float price;
+            string mId = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
+            string mName = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
+            Double price = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["price"].Value);
 
-         
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count && dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
-                id = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-                name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
-                price = Convert.ToSingle(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
+
+                EditMedicine editFrm = new EditMedicine(mId, mName, price);
+                editFrm.FormClosing += new FormClosingEventHandler(this.EditMedicine_FormClosing);
+                editFrm.ShowDialog();
             }
-            else
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                return;
-            }
-
-            ThuocBUS thuocBUS = new ThuocBUS();
-
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
-            {
-   
-                thuocBUS.XoaThuoc(id);
+                ThuocBUS ThuocBUS = new ThuocBUS();
+                ThuocBUS.XoaThuoc(mId);
                 LoadData();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
-            {
-   
-                EditMedicine edit = new EditMedicine(id, name, price);
-                edit.FormClosing += new FormClosingEventHandler((s, args) => LoadData());
-                edit.ShowDialog();
-            }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
-            {
+        }
 
-                AddMedicine add = new AddMedicine();
-                add.FormClosing += new FormClosingEventHandler((s, args) => LoadData());
-                add.ShowDialog();
-            }
+        private void EditMedicine_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadData();
         }
 
         private void LoadData()
         {
-            ThuocBUS thuocBUS = new ThuocBUS();
-            dataGridView1.DataSource = thuocBUS.LayDSThuoc();
+            dataGridView1.Rows.Clear();
+            ThuocBUS tBUS = new ThuocBUS();
+            IList<ThuocDTO> dsThuoc = tBUS.LayDSThuoc();
+            foreach (ThuocDTO dt in dsThuoc)
+            {
+                dataGridView1.Rows.Add(dt.id, dt.name, dt.price);
+            }
+
         }
 
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddMedicine addFrm = new AddMedicine();
+            addFrm.FormClosing += new FormClosingEventHandler(this.EditMedicine_FormClosing);
+            addFrm.ShowDialog();
+        }
     }
 }
